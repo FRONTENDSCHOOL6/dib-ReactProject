@@ -35,6 +35,10 @@
 
 ## 🐈 **2. dib 팀원 소개**
 
+| [이호(SM)](https://github.com/bomlang)                |                 [전진승](https://github.com/wlstmd1004v)                  |         [양정아(L)](https://github.com/jjang-aaa)         |         [강예나](https://github.com/yenaf)        |
+| :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
+| ![이호의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/40b7515a-ee3e-43de-ac1a-569292cdfbd9) | ![전진승의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/ab8a2d06-9a58-4781-a8ab-5e0f4355e6f4) | ![양정아의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/ed331cc0-f268-44a7-b27e-041456dd50e8) | ![강예나의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/dbe4add9-0e65-4e2d-b33c-ae59cc00e187) |
+
 
 
 
