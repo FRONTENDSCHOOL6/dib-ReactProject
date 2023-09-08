@@ -8,9 +8,14 @@
 ![React](https://badgen.net/badge/React/v18.2.0/cyan?)
 ![React-Router-dom](https://badgen.net/badge/React-Router/v6.15.0/CA4245?)
 ![React-Query](https://badgen.net/badge/React-Query/v3.39.3/FF4154?)
+![tailwindcss](https://badgen.net/badge/tailwindcss/v3.3.3/cyan?)
+![framer-motion](https://badgen.net/badge/framer-motion/v10.16.4/FF4154?)
 
+![zustand](https://badgen.net/badge/zustand/v4.4.1/FF4154?)
+![vite](https://badgen.net/badge/vite/v4.4.5/FF4154?)
 ![Eslint](https://badgen.net/badge/Eslint/v8.48.0/4B32C3?)
 ![Prettier](https://badgen.net/badge/Prettier/v3.0.3/F7B93E?)
+
 </div>
 
 <br />
