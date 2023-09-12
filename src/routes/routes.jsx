@@ -4,14 +4,16 @@ import { Route } from 'react-router-dom';
 import { createRoutesFromElements } from 'react-router-dom';
 import Home from '@/pages/Home';
 import WritePage from '@/pages/WritePage';
-import BookDescription from '@/pages/BookDescription';
+import Login from '@/pages/Login';
+import SignIn from '@/pages/SignIn';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="writePage" element={<WritePage />} />
-      <Route path="bookDescription" element={<BookDescription />} />
+      <Route path="login" element={<Login />} />
+      <Route path="signIn" element={<SignIn />} />
     </Route>
   )
 );
