@@ -5,6 +5,7 @@ function FormInput({ type, name, id, placeholder, label, width = 'w-full' }) {
     <>
       <label htmlFor={id}>{label}</label>
       <input
+        required
         type={type}
         name={name}
         id={id}
