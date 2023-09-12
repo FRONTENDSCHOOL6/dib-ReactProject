@@ -4,7 +4,8 @@ function SignPageTitle({ title, subTitle }) {
   return (
     <>
       <div
-        className="ml-auto
+        className="
+        ml-auto
         mr-auto
         mb-20
         pt-[230px]

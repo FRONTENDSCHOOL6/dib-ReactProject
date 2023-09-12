@@ -20,7 +20,14 @@ function FormInput({ type, name, id, placeholder, label, width = 'w-full' }) {
 export default FormInput;
 
 FormInput.propTypes = {
-  type: PropTypes.oneOf(['text', 'password', 'number', 'email', 'file', 'passwordConfirm']),
+  type: PropTypes.oneOf([
+    'text',
+    'password',
+    'number',
+    'email',
+    'file',
+    'passwordConfirm',
+  ]),
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,

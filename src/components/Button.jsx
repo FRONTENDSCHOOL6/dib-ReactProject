@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-function Button({type,title,width="w-full",height="leading-[60px]"}) {
+function Button({ type, title, width = 'w-full', height = 'leading-[60px]' }) {
   return (
     <button
       type={type}
@@ -8,7 +8,7 @@ function Button({type,title,width="w-full",height="leading-[60px]"}) {
     >
       {title}
     </button>
-  )
+  );
 }
 
 export default Button;
@@ -18,6 +18,4 @@ Button.propTypes = {
   title: PropTypes.string.isRequired,
   width: PropTypes.string,
   height: PropTypes.string,
-}
-
-
+};
