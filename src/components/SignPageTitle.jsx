@@ -5,20 +5,20 @@ function SignPageTitle({ title, subTitle }) {
     <>
       <div
         className="
-        pt-[230px]
         ml-auto
         mr-auto
         mb-20
+        pt-[230px]
         w-[400px]"
       >
         <h2
           className="
-          pb-8
-          border-b-[1px]
-          text-center
-          text-5xl
-          font-normal
-          text-dibBlack"
+        pb-8
+        border-b-[1px]
+        text-center
+        text-5xl
+        font-normal
+        text-dibBlack"
         >
           {title}
         </h2>
