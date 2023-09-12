@@ -1,10 +1,10 @@
 function HeaderBar() {
   return (
-    <header className="w-screen h-[100px] bg-white bg-opacity-50 border-b border-primary text-[24px] fixed">
+    <header className="w-screen h-[100px] bg-white bg-opacity-50 border-b border-primary text-[24px] fixed z-[100]">
       <div className="w-[1600px] flex m-auto justify-end items-center">
         <h1 className="ml-5">
           <a href="#">
-            <img src="/public/logo_black.png" alt="dib" />
+            <img src="/public/logoBlack.png" alt="dib" />
           </a>
         </h1>
         <nav>
