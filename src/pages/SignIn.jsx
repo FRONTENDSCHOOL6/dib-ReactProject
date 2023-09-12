@@ -6,10 +6,11 @@ function SignIn() {
   return (
     <>
       <SignPageTitle title="회원가입" subTitle="회원가입에 필요한 정보를 입력해주세요"/>
+
       <form action="" method="post" className="flex flex-col gap-[30px] w-[600px] m-auto">
         <div className="flex flex-col gap-2 text-left text-lg">
           <FormInput type="text" name="name" id="name" placeholder="본인 이름을 입력해주세요" label="실명" />
-          <span className="text-dibHeart">한글을 사용해 입력해주세요. (특수기호, 공백 사용 불가)</span>
+          <span className="text-dibRed">한글을 사용해 입력해주세요. (특수기호, 공백 사용 불가)</span>
         </div>
         
         <div className="flex flex-col gap-2 text-left text-lg relative">
@@ -22,18 +23,18 @@ function SignIn() {
               <option value="구글">@google.com</option>
             </select>
           </div>
-          <span className="text-dibHeart">한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)</span>
+          <span className="text-dibRed">한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)</span>
         </div>
 
         <div className="flex flex-col gap-2 text-left text-lg">
           <FormInput type="password" name="password" id="password" placeholder="비밀번호(영문/숫자/특수문자 조합 8~20자)" label="비밀번호"/>
           <img src="" alt="" />
-          <span className="text-dibHeart">8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>
+          <span className="text-dibRed">8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>
         </div>
 
         <div className="flex flex-col gap-2 text-left text-lg">
           <FormInput type="passwordConfirm" name="passwordConfirm" id="passwordConfirm" placeholder="비밀번호를 다시 입력해주세요" label="비밀번호 확인"/>
-          <span className="text-dibHeart">비밀번호가 일치하지 않습니다.</span>
+          <span className="text-dibRed">비밀번호가 일치하지 않습니다.</span>
         </div>
 
         <Button type="submit" title="회원가입" />

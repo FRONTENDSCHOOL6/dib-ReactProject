@@ -16,6 +16,7 @@ module.exports = {
         dibBookWrite: '#818181',
         dibCategory: '#999',
         horizontal: '#c8c8c8',
+        dibRed:'#FF0000',
       },
     },
   },
