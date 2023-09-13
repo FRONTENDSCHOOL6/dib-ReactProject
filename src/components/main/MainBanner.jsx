@@ -8,8 +8,8 @@ function MainBanner() {
     const swiperRef = useRef(null)
     
 return (
-    <>
-
+    <section>
+    <h2 className='sr-only'>메인 베너</h2>
     <Swiper
         ref={swiperRef}
         spaceBetween={30}
@@ -41,9 +41,8 @@ return (
             개발자 필독도서는 못참지!"
         />
         </SwiperSlide>
-    </Swiper>
-
-    </>
+    </Swiper>    
+    </section>
     );
 }
 
