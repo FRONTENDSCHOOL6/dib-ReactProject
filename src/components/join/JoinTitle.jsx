@@ -1,6 +1,6 @@
 import SignPageTitle from "../common/SignPageTitle"
 
-function SignInTitle() {
+function JoinTitle() {
   return (
     <SignPageTitle
         title="회원가입"
@@ -9,4 +9,4 @@ function SignInTitle() {
   )
 }
 
-export default SignInTitle
+export default JoinTitle

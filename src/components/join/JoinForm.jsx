@@ -2,7 +2,7 @@ import Button from "../common/Button"
 import FormInput from "../common/FormInput"
 import InputValidation from "../common/InputValidation"
 
-function SignForm() {
+function JoinForm() {
   return (
     <form
         action=""
@@ -61,4 +61,4 @@ function SignForm() {
   )
 }
 
-export default SignForm
+export default JoinForm
