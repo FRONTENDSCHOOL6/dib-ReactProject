@@ -8,6 +8,7 @@ module.exports = {
         mainVisual: 'url("/MainBanner1.png")',
         mainVisual1: 'url("/MainBanner2.png")',
         bookMarkTrue: 'url("/bookMarkTrue.png")',
+        plus: 'url("/Plus.png")',
       },
       colors: {
         primary: '#627D59',
