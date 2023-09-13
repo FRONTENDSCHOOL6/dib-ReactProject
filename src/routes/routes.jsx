@@ -8,6 +8,7 @@ import Login from '@/pages/Login';
 import SignIn from '@/pages/SignIn';
 import BookDescription from '@/pages/BookDescription';
 import RegisterProfile from '@/pages/RegisterProfile';
+import PostListPage from '@/pages/PostListPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       <Route path="signIn" element={<SignIn />} />
       <Route path="bookDescription" element={<BookDescription />} />
       <Route path="registerProfile" element={<RegisterProfile />} />
+      <Route path="postListPage" element={<PostListPage />} />
     </Route>
   )
 );
