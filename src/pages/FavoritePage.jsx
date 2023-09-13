@@ -10,3 +10,4 @@ function FavoritePage() {
     );
 }
 export default FavoritePage;
+
