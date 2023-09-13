@@ -5,7 +5,7 @@ function HeaderBar() {
     <header className="w-screen h-[100px] bg-white bg-opacity-50 border-b border-primary text-[24px] fixed z-[100]">
       <div className="w-[1600px] flex m-auto justify-end items-center">
         <h1 className="ml-5">
-          <Link to="/index.html">
+          <Link to="/">
             <img src="/logoBlack.png" alt="dib" />
           </Link>
         </h1>
