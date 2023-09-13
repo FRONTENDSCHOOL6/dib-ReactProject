@@ -7,12 +7,14 @@ import WritePage from '@/pages/WritePage';
 import Login from '@/pages/Login';
 import SignIn from '@/pages/SignIn';
 import BookDescription from '@/pages/BookDescription';
+import FavoritePage from '@/pages/FavoritePage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="writePage" element={<WritePage />} />
+      <Route path="favoritePage" element={<FavoritePage />} />
       <Route path="login" element={<Login />} />
       <Route path="signIn" element={<SignIn />} />
       <Route path="bookDescription" element={<BookDescription />} />
