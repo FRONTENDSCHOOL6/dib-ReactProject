@@ -1,4 +1,4 @@
-import SignPageTitle from '../SignPageTitle';
+import SignPageTitle from '../common/SignPageTitle';
 
 function LoginTitle() {
   return <SignPageTitle title="로그인" />;

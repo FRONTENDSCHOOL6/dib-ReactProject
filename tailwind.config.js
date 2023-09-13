@@ -7,6 +7,7 @@ module.exports = {
         subVisual: 'url("/subVisual.png")',
         mainVisual: 'url("/MainBanner1.png")',
         mainVisual1: 'url("/MainBanner2.png")',
+        bookMarkTrue: 'url("/bookMarkTrue.png")',
       },
       colors: {
         primary: '#627D59',
@@ -18,6 +19,9 @@ module.exports = {
         dibBookWrite: '#818181',
         dibCategory: '#999',
         horizontal: '#c8c8c8',
+        bookInfoBg: '#f1f1f1',
+        infoCategory: '#3e3e3e',
+        dateColor: '#9c9c9c',
       },
     },
   },

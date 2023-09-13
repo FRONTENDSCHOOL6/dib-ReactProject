@@ -4,12 +4,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useRef } from 'react';
+import mainBanner1 from '@/assets/mainBanner1.png';
+import mainBanner2 from '@/assets/mainBanner2.png';
+
 function MainBanner() {
-    const swiperRef = useRef(null)
-    
+    const swiperRef = useRef(null);
 return (
     <section>
-    <h2 className='sr-only'>메인 베너</h2>
+    <h2 className="sr-only">광고</h2>
     <Swiper
         ref={swiperRef}
         spaceBetween={30}
@@ -26,24 +28,24 @@ return (
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
     >
-        
         <SwiperSlide>
         <img
-            src="/MainBanner1.png"
+            src={mainBanner1}
             alt="더 많은 개발 지식을 알고싶다
             dib 추천도서"
         />
         </SwiperSlide>
         <SwiperSlide>
         <img
-            src="/MainBanner2.png"
+            src={mainBanner2}
             alt="개발자라면?
             개발자 필독도서는 못참지!"
         />
         </SwiperSlide>
-    </Swiper>    
+        </Swiper>
     </section>
-    );
+);
+
 }
 
 export default MainBanner;
