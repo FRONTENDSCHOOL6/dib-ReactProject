@@ -6,6 +6,8 @@ module.exports = {
       backgroundImage: {
         subVisual: 'url("/subVisual.png")',
         bookMarkTrue: 'url("/bookMarkTrue.png")',
+        mainVisual: 'url("/mainBanner.png")',
+        mainVisual1: 'url("/mainBanner-1.png")',
       },
       colors: {
         primary: '#627D59',

@@ -9,7 +9,7 @@ function BookInfoLayout() {
   };
   return (
     <>
-      <article className="mt-[92px] w-screen bg-bookInfoBg h-[720px] px-40 py-20 flex justify-center relative mb-[170px]">
+      <article className="w-screen bg-bookInfoBg h-[720px] px-40 py-20 flex justify-center relative mb-[170px]">
         <dl className="flex items-center justify-center w-[1480px] h-[565px]">
           <div className="mr-52">
             <dt>
@@ -29,9 +29,11 @@ function BookInfoLayout() {
             <dd className="text-xl">한빛 출판사</dd>
           </div>
         </dl>
+
+        {/* 체크박스 이미지 구현 */}
         <input
-          className="absolute top-[-5px] right-[300px] w-[46px] h-[98px] bg-bookMarkTrue bg-no-repeat bg-bookInfoBg"
-          type="checkboxs"
+          className="absolute top-[-5px] right-[300px] w-[46px] h-[98px]"
+          type="checkbox"
           onClick={handlePressedBtn}
           aria-pressed={isPressed}
           aria-label={isPressed ? '선택됨' : '선택 안 됨'}

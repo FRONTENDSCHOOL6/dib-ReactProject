@@ -4,7 +4,7 @@ function HeaderBar() {
       <div className="w-[1600px] flex m-auto justify-end items-center">
         <h1 className="ml-5">
           <a href="#">
-            <img src="/public/logoBlack.png" alt="dib" />
+            <img src="/logoBlack.png" alt="dib" />
           </a>
         </h1>
         <nav>
@@ -20,10 +20,12 @@ function HeaderBar() {
             </li>
           </ul>
         </nav>
-        <a href="#" className="ml-[820px]">로그인</a>
+        <a href="#" className="ml-[820px]">
+          로그인
+        </a>
       </div>
     </header>
-  )
+  );
 }
 
-export default HeaderBar
+export default HeaderBar;
