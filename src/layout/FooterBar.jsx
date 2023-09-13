@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 function FooterBar() {
     return(
         <footer className="bg-dibFooter w-full h-[500px]">
-        <section>
-            <article className="flex-shrink">
+            <section className="flex-shrink">
                     <div className="flex items-center">
                         <span className="text-white text-[18px] not-italic font-normal leading-[normal] ml-40 ">제작자 | 책사조</span>
                         <img src="/logo-white.png"  alt="whibte-logo" className="w-20 h-20 " />
@@ -53,8 +52,7 @@ function FooterBar() {
                         <img src="/github.png" alt="4조 공통 깃허브 주소" className="w-[38px] h-[37px]"/>
                     </div>
                 </Link>
-            </article>
-        </section>
+            </section>
     </footer>
     )
 }
