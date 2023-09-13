@@ -1,4 +1,4 @@
-import FormInput from '../FormInput';
+import FormInput from '../common/FormInput';
 
 function PasswordInput() {
   return (

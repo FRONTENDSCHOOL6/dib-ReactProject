@@ -1,4 +1,4 @@
-import Button from '../Button';
+import Button from '../common/Button';
 
 function LoginButton() {
   return <Button type="summit" title="로그인" />;
