@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         subVisual: 'url("/subVisual.png")',
+        bookMarkTrue: 'url("/bookMarkTrue.png")',
+        mainVisual: 'url("/mainBanner.png")',
+        mainVisual1: 'url("/mainBanner-1.png")',
       },
       colors: {
         primary: '#627D59',
@@ -17,6 +20,9 @@ module.exports = {
         dibCategory: '#999',
         horizontal: '#c8c8c8',
         dibRed:'#FF0000',
+        bookInfoBg: '#f1f1f1',
+        infoCategory: '#3e3e3e',
+        dateColor: '#9c9c9c',
       },
     },
   },

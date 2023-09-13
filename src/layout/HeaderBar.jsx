@@ -25,7 +25,7 @@ function HeaderBar() {
         <Link to="/login" className="ml-[820px]">로그인</Link>
       </div>
     </header>
-  )
+  );
 }
 
-export default HeaderBar
+export default HeaderBar;
