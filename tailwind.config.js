@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         subVisual: 'url("/subVisual.png")',
-        mainVisual: 'url("/mainBanner.png")',
-        mainVisual1: 'url("/mainBanner-1.png")',
+        mainVisual: 'url("/MainBanner1.png")',
+        mainVisual1: 'url("/MainBanner2.png")',
       },
       colors: {
         primary: '#627D59',
