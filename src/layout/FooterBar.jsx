@@ -4,12 +4,12 @@ function FooterBar() {
 return (
     <footer className="bg-dibFooter w-full h-[500px]">
     <section className="flex-shrink">
-        <div className="flex items-center">
+        <h2 className="flex items-center">
         <span className="text-white text-[18px] not-italic font-normal leading-[normal] ml-40 ">
             제작자 | 책사조
         </span>
         <img src="/logo-white.png" alt="whibte-logo" className="w-20 h-20 " />
-        </div>
+        </h2>
         <div className="flex justify-center items-center">
         <Link
             to="https://github.com/jjang-aaa"
