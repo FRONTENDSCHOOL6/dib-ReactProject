@@ -8,19 +8,21 @@ return (
         <span className="text-white text-[18px] not-italic font-normal leading-[normal] ml-40 ">
             제작자 | 책사조
         </span>
-        <img src="/logo-white.png" alt="whibte-logo" className="w-20 h-20 " />
+        <img src="/logo-white.png" alt="whibte-logo" className="w-20 h-20 " aria-hidden/>
         </h2>
         <div className="flex justify-center items-center">
         <Link
             to="https://github.com/jjang-aaa"
             title="정아 깃헙으로 바로가기"
             className="text-lg not-italic font-normal leading-[24px] text-center block"
+            aria-hidden
             >
             <div className="text-white flex flex-col items-center justify-center">
             <img
                 src="/jjang-aaa.png"
                 alt="양정아"
-                className="w-[300px] h-[300px] "
+                className="w-[300px] h-[300px]"
+                aria-hidden
             />
             <div className="flex gap-2">
                 <span>양정아</span>
@@ -28,6 +30,7 @@ return (
                     src="/github.png"
                     alt="양정아 깃허브 주소"
                     className="w-[24px] h-[24px]"
+                    aria-hidden
                 />
                 </div>
             </div>
@@ -36,15 +39,17 @@ return (
             to="https://github.com/bomlang"
             title="호 깃헙으로 바로가기"
             className="text-lg not-italic font-normal leading-[24px] text-center block"
+            aria-hidden
             >
             <div className="text-white flex flex-col items-center justify-center">
-            <img src="/ho.png" alt="이호" className="w-[300px] h-[300px] " />
+            <img src="/ho.png" alt="이호" className="w-[300px] h-[300px] " aria-hidden />
             <div className="flex gap-2">
                 <span>이호</span>
                 <img
                     src="/github.png"
                     alt="이호 깃허브 주소"
                     className="w-[24px] h-[24px]"
+                    aria-hidden
                 />
                 </div>
             </div>
@@ -53,12 +58,14 @@ return (
             to="https://github.com/yenaf"
             title="예나 깃헙으로 바로가기"
             className="text-lg not-italic font-normal leading-[24px] text-center block"
+            aria-hidden
             >
             <div className="text-white flex flex-col items-center justify-center">
             <img
                 src="/yenaf.png"
                 alt="강예나"
-                className="w-[300px] h-[300px] "
+                className="w-[300px] h-[300px]"
+                aria-hidden
             />
             <div className="flex gap-2">
                 <span>강예나</span>
@@ -66,6 +73,7 @@ return (
                     src="/github.png"
                     alt="강예나 깃허브 주소"
                     className="w-[24px] h-[24px]"
+                    aria-hidden
                 />
                 </div>
             </div>
@@ -74,12 +82,14 @@ return (
             to="https://github.com/wlstmd1004v"
             title="진승 깃헙으로 바로가기"
             className="text-lg not-italic font-normal leading-[24px] text-center block"
+            aria-hidden
         >
             <div className="text-white flex flex-col items-center justify-center">
             <img
                 src="/jin.png"
                 alt="전진승"
                 className="w-[300px] h-[300px]"
+                aria-hidden
             />
             <div className="flex gap-2">
                 <span>전진승</span>
@@ -87,6 +97,7 @@ return (
                     src="/github.png"
                     alt="전진승 깃허브 주소"
                     className="w-[24px] h-[24px]"
+                    aria-hidden
                 />
                 </div>
             </div>
@@ -102,6 +113,7 @@ return (
                 src="/github.png"
                 alt="4조 공통 깃허브 주소"
                 className="w-[38px] h-[37px]"
+                aria-hidden
             />
             </div>
         </Link>
