@@ -1,14 +1,10 @@
-import FooterBar from "@/layout/FooterBar";
-
+import FooterBar from '@/layout/FooterBar';
 
 function Favorite() {
-    return (
-        <>
-
-            
-            <FooterBar />
-        </>
-        );
-    
+  return (
+    <>
+      <FooterBar />
+    </>
+  );
 }
 export default Favorite;
