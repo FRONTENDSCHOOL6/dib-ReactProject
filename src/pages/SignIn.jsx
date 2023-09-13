@@ -1,7 +1,7 @@
-import Button from "@/components/Button"
-import FormInput from "@/components/FormInput"
-import SignPageTitle from "@/components/SignPageTitle"
-import InputValidation from "@/components/InputValidation"
+import FormInput from "@/components/common/FormInput"
+import SignPageTitle from "@/components/common/SignPageTitle"
+import InputValidation from "@/components/common/InputValidation"
+import Button from "@/components/common/Button";
 
 function SignIn() {
   return (
