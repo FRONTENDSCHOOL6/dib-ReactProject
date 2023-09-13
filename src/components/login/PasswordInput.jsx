@@ -1,6 +1,6 @@
 import FormInput from '../FormInput';
 
-function LoginPassword() {
+function PasswordInput() {
   return (
     <div className="flex flex-col gap-2 text-left text-lg">
       <FormInput
@@ -18,4 +18,4 @@ function LoginPassword() {
   );
 }
 
-export default LoginPassword;
+export default PasswordInput;

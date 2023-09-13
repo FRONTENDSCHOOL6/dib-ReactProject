@@ -1,6 +1,6 @@
 import FormInput from '../FormInput';
 
-function LoginEmail() {
+function EmailInput() {
   return (
     <div className="flex flex-col gap-2 text-left text-lg">
       <FormInput
@@ -18,4 +18,4 @@ function LoginEmail() {
   );
 }
 
-export default LoginEmail;
+export default EmailInput;
