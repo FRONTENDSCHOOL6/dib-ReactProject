@@ -1,10 +1,8 @@
-import FooterBar from '@/layout/FooterBar';
 
-function Favorite() {
+function FavoritePage() {
   return (
     <>
-      <FooterBar />
     </>
   );
 }
-export default Favorite;
+export default FavoritePage;
