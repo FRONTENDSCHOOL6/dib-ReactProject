@@ -12,7 +12,7 @@ function EmailInput() {
         placeholder="이메일을 입력해주세요"
       />
       <span className="text-[#FF0000]">
-        아이디는 이메일 형식으로 입력해 주세요.
+        아이디는 이메일 형식으로 입력해주세요.
       </span>
     </div>
   );
