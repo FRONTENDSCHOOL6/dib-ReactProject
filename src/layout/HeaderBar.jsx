@@ -2,14 +2,15 @@ import { Link } from "react-router-dom"
 
 function HeaderBar() {
   return (
-    <header className="w-screen h-20 fixed z-50 bg-white opacity-50">
-      <div className="w-[1200px] h-20  bg-red-300 m-auto flex justify-between items-center">
+    <header className="w-screen h-20 bg-white bg-opacity-50 border-b fixed z-[100] " style={{ backdropFilter: 'blur(10px)' }}
+    >
+      <div className="w-[1200px] h-20 m-auto flex justify-between items-center relative">
         <h1>
           <Link to="/">
             <img src="/logoBlack.png" alt="dib" />
           </Link>
         </h1>
-        <nav>
+        <nav className="absolute left-52">
           <ul className="flex gap-24">
             <li>
               <Link to="/bookList">도서목록</Link>
