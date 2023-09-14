@@ -14,6 +14,7 @@ function MainBanner() {
     <section>
       <h2 className="sr-only">광고</h2>
       <Swiper
+        slidesPerView={'auto'}
         ref={swiperRef}
         spaceBetween={30}
         centeredSlides={true}
@@ -24,23 +25,28 @@ function MainBanner() {
         }}
         pagination={{
           clickable: true,
+          col: 'white',
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
         <SwiperSlide>
+          {/* <div className="bg-mainBanner1 w-screen  h-[500px] flex justify-center items-center mb-16 bg-no-repeat"></div> */}
           <img
             src={mainBanner1}
             alt="더 많은 개발 지식을 알고싶다
             dib 추천도서"
+            className="inline-block w-full"
           />
         </SwiperSlide>
         <SwiperSlide>
+          {/* <div className="bg-red-200  h-[500px] bg-no-repeat"></div> */}
           <img
             src={mainBanner2}
-            alt="개발자라면?
-            개발자 필독도서는 못참지!"
+            alt="더 많은 개발 지식을 알고싶다
+            dib 추천도서"
+            className="inline-block w-full"
           />
         </SwiperSlide>
       </Swiper>
