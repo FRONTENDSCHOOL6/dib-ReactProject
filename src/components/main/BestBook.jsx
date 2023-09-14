@@ -1,3 +1,4 @@
+import Heart from "../common/Heart";
 
 function BestBook() {
 return (
@@ -14,6 +15,7 @@ return (
             aria-labelledby="tab-1"
             className="flex flex-wrap gap-10 justify-start mt-20 mb-20">
             <li className="w-[380px] h-[584px] bg-slate-300">도서카드</li>
+            <Heart/>
             <li className="w-[380px] h-[584px] bg-slate-300">도서카드</li>
             <li className="w-[380px] h-[584px] bg-slate-300">도서카드</li>
             <li className="w-[380px] h-[584px] bg-slate-300">도서카드</li>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import CategoryTabButton from './../category/CategoryTabButton';
+import HeartButton from './../common/HeartButton';
 function CategoryBook() {
   return (
     <>
@@ -20,6 +21,7 @@ function CategoryBook() {
             aria-labelledby="tab-1"
             className="flex flex-wrap gap-10 justify-center mt-20 mb-20">
             <li className="w-[810px] h-[338px] bg-slate-300">도서카드</li>
+            <HeartButton/>
             <li className="w-[810px] h-[338px] bg-slate-300">도서카드</li>
             <li className="w-[810px] h-[338px] bg-slate-300">도서카드</li>
             <li className="w-[810px] h-[338px] bg-slate-300">도서카드</li>
@@ -27,7 +29,7 @@ function CategoryBook() {
     </div>
       </section>
     </>
-  );
+  ); 
 }
 
 export default CategoryBook;

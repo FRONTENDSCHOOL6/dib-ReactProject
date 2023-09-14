@@ -1,5 +1,4 @@
 
-import { Link } from 'react-router-dom';
 import ScrollButton from '../common/ScrollButton';
 function NewBook() {
 return (
