@@ -10,6 +10,8 @@ module.exports = {
         mainVisual: 'url("/mainBanner.png")',
         mainVisual1: 'url("/mainBanner-1.png")',
         mainBanner1: 'url("@/assets/mainBanner1.png")',
+        bookMark: 'url("/bookMark.png")',
+        checkedBookMark: 'url("/checkedBookMark.png")',
       },
       colors: {
         primary: '#627D59',
