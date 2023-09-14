@@ -2,15 +2,15 @@ import { Link } from "react-router-dom"
 
 function HeaderBar() {
   return (
-    <header className="w-screen h-[100px] bg-white bg-opacity-50 border-b border-primary text-[24px] fixed z-[100]">
-      <div className="w-[1600px] flex m-auto justify-end items-center">
-        <h1 className="ml-5">
+    <header className="w-screen h-20 fixed z-50 bg-white opacity-50">
+      <div className="w-[1200px] h-20  bg-red-300 m-auto flex justify-between items-center">
+        <h1>
           <Link to="/">
             <img src="/logoBlack.png" alt="dib" />
           </Link>
         </h1>
         <nav>
-          <ul className="flex flex-row gap-[90px] ml-32">
+          <ul className="flex gap-24">
             <li>
               <Link to="/bookList">도서목록</Link>
             </li>
@@ -22,7 +22,7 @@ function HeaderBar() {
             </li>
           </ul>
         </nav>
-        <Link to="/login" className="ml-[820px]">로그인</Link>
+        <Link to="/login" className="">로그인</Link>
       </div>
     </header>
   );
