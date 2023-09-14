@@ -95,7 +95,7 @@ function MainBanner() {
           ></div>
         <div className='flex relative'>
         <div className="swiper-scrollbar" style={STYLES2}></div>
-        <button onClick={handleAutoplayToggle} className='absolute z-[100] left-[59%] bottom-11'>
+        <button onClick={handleAutoplayToggle} className='absolute z-[100] left-[60%] bottom-11'>
           {autoplayState ? (
             <img src="/Pause.svg" alt="정지" aria-hidden />
           ) : (
