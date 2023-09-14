@@ -8,7 +8,7 @@ import SubVisualBanner from '@/components/common/SubVisualBanner';
 function WirtePage() {
   return (
     <div className="w-screen flex items-center flex-col">
-      <SubVisualBanner title={'게시글 목록'} />
+      <SubVisualBanner title={'게시글 작성'} />
       <SearchBooks />
       <div className="w-[1235px]">
         <BookInfo />

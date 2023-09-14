@@ -1,6 +1,9 @@
 function HeaderBar() {
   return (
-    <header className="w-screen h-[100px] bg-white bg-opacity-50 border-b border-primary text-[24px] fixed z-[100]">
+    <header
+      className="w-screen h-[100px] bg-white bg-opacity-50 border-b text-[24px] fixed z-[100] "
+      style={{ backdropFilter: 'blur(10px)' }}
+    >
       <div className="w-[1600px] flex m-auto justify-end items-center">
         <h1 className="ml-5">
           <a href="#">
