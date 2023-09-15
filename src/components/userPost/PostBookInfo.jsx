@@ -9,9 +9,10 @@ function BookInfoLayout() {
   };
   return (
     <>
-      <article className="w-screen bg-bookInfoBg h-[720px] px-40 py-20 flex justify-center relative mb-[170px]">
-        <dl className="flex items-center justify-center w-[1480px] h-[565px]">
-          <div className="mr-52">
+      <div className="h-[300px]"></div>
+      <article className="w-screen bg-bookInfoBg h-[710px] px-40 py-20 flex justify-center relative mb-[170px]">
+        <dl className="flex justify-center w-[1480px] h-[565px]">
+          <div className="mr-52 ">
             <dt>
               <img src={reactBook} alt="도서이미지" />
             </dt>
@@ -31,13 +32,21 @@ function BookInfoLayout() {
         </dl>
 
         {/* 체크박스 이미지 구현 */}
+
         <input
-          className="absolute top-[-5px] right-[300px] w-[46px] h-[98px]"
+          className="absolute top-[-5px] right-[300px] w-[46px] h-[98px] hidden"
           type="checkbox"
           onClick={handlePressedBtn}
           aria-pressed={isPressed}
           aria-label={isPressed ? '선택됨' : '선택 안 됨'}
+          id="bookMark"
+          name="bookMark"
         />
+        <label
+          htmlFor="bookMark"
+          className={`bg-no-repeat absolute top-[-3px] right-[300px] w-[46px] h-[98px] 
+          ${isPressed ? 'bg-bookMarkTrue' : 'bg-bookMarkFalse'}`}
+        ></label>
       </article>
     </>
   );
