@@ -15,17 +15,23 @@ function CategoryBook() {
         <Link to="/bookList" className="absolute top-2 right-32">
           <img src="/Plus.png" alt="더보기" />
         </Link>
-        <div className="w-[1140px] mx-auto my-10">
-          <div className='flex'>
+        <div className='w-[1140px] my-10 mx-auto'>
+        <ul id="tab-panel-1"
+            aria-labelledby="tab-1"
+            className="flex flex-wrap gap-x-5 gap-y-5">
+          <li>
           <RowBookCard />
-          <div className="mr-20"></div>
+          </li>
+          <li>
           <RowBookCard />
-          </div>
-          <div className='flex pt-4'>
+          </li>
+          <li>
           <RowBookCard />
-          <div className="mr-20"></div>
+          </li>
+          <li>
           <RowBookCard />
-          </div>
+          </li>
+        </ul>
         </div>
       </section>
     </>
