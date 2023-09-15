@@ -4,11 +4,11 @@ import SignUp from '@/components/login/SignUp';
 
 function Login() {
   return (
-    <>
+    <div className="flex flex-col mb-[100px]">
       <LoginTitle />
       <LoginForm />
       <SignUp />
-    </>
+    </div>
   );
 }
 
