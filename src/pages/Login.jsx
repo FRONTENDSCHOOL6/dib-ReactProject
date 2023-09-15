@@ -4,11 +4,11 @@ import LoginTitle from '@/components/login/LoginTitle';
 
 function Login() {
   return (
-    <>
+    <div className="flex flex-col mb-[100px]">
       <LoginTitle />
       <LoginForm />
       <JoinButton />
-    </>
+    </div>
   );
 }
 
