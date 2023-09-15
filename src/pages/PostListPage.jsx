@@ -4,7 +4,7 @@ import PostWriteButton from '@/components/postList/PostWriteButton';
 
 function PostListPage() {
   return (
-    <div>
+    <div className="mb-[100px]">
       <PostListTitle />
       <PostList />
       <PostWriteButton />
