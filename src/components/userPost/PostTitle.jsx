@@ -2,7 +2,7 @@ import hori from '@/assets/hori.png';
 
 function PostTitle() {
   return (
-    <div className="flex items-start flex-col mx-[150px] mb-[150px]">
+    <div className="flex items-start flex-col m-auto mb-[150px] w-[1525px]">
       <h3 className="mb-10 text-4xl">
         제가 React를 배울 때 도움이 많이 된 책을 소개합니다!
       </h3>

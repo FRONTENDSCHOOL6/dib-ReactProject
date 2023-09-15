@@ -6,8 +6,12 @@ module.exports = {
       backgroundImage: {
         subVisual: 'url("/subVisual.png")',
         bookMarkTrue: 'url("/bookMarkTrue.png")',
+        bookMarkFalse: 'url("/bookMarkFalse.png")',
         mainVisual: 'url("/mainBanner.png")',
         mainVisual1: 'url("/mainBanner-1.png")',
+        mainBanner1: 'url("@/assets/mainBanner1.png")',
+        bookMark: 'url("/bookMark.png")',
+        checkedBookMark: 'url("/checkedBookMark.png")',
       },
       colors: {
         primary: '#627D59',
@@ -23,6 +27,8 @@ module.exports = {
         bookInfoBg: '#f1f1f1',
         infoCategory: '#3e3e3e',
         dateColor: '#9c9c9c',
+        dibCommentsInfo: '#F7F2EF',
+        commentBox: '#333',
       },
     },
   },
