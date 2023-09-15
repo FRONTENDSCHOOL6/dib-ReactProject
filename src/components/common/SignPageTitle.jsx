@@ -7,7 +7,7 @@ function SignPageTitle({ title, subTitle }) {
         <h2 className="pb-8 border-b-[1px] text-center text-[28px] font-normal text-dibBlack">
           {title}
         </h2>
-        <p className="text-center text-dibCategory mt-2 text-[16px]">
+        <p className="text-center text-dibCategory mt-2 text-base">
           {subTitle}
         </p>
       </div>
