@@ -18,7 +18,7 @@ module.exports = {
         dibFooter: '#382F2D',
         dibBlack: '#181818',
         dibHeart: '#FA2D2D',
-        dibGray: '#808080',
+        dibGray: '#757575',
         dibCategoryBg: '#EEF1EC',
         dibBookWrite: '#818181',
         dibCategory: '#999',
