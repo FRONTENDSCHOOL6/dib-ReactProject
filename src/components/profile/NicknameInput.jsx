@@ -2,7 +2,7 @@ import FormInput from '../common/FormInput';
 
 function NicknameInput() {
   return (
-    <div className="flex flex-col gap-2 text-left text-lg w-[500px]">
+    <div className="flex flex-col gap-2 text-left text-lg w-[500px] mb-[30px]">
       <FormInput
         type="text"
         label="닉네임등록"
