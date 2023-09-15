@@ -7,12 +7,12 @@ import { useRef, useState } from 'react';
 import mainBanner1 from '@/assets/mainBanner1.png';
 import mainBanner2 from '@/assets/mainBanner2.png';
 const STYLES = {
-  top: '92%',
+  top: '90%',
   left: '35%',
   color: 'white',
 };
 const STYLES1 = {
-  top: '92%',
+  top: '90%',
   right: '35%',
   color: 'white',
 };
@@ -44,7 +44,7 @@ function MainBanner() {
   };
 
   return (
-    <section>
+    <section className='w-[1920px] h-[490px]'>
       <h2 className="sr-only">광고</h2>
       <Swiper
         slidesPerView={'auto'}
@@ -69,7 +69,6 @@ function MainBanner() {
         className="mySwiper"
       >
         <SwiperSlide>
-          {/* <div className="bg-mainBanner1 w-screen  h-[500px] flex justify-center items-center mb-16 bg-no-repeat"></div> */}
           <img
             src={mainBanner1}
             alt="더 많은 개발 지식을 알고싶다
@@ -78,12 +77,12 @@ function MainBanner() {
           />
         </SwiperSlide>
         <SwiperSlide>
-          {/* <div className="bg-red-200  h-[500px] bg-no-repeat"></div> */}
           <img
             src={mainBanner2}
             alt="더 많은 개발 지식을 알고싶다
             dib 추천도서"
             className="inline-block w-full"
+            title=''
           />
         </SwiperSlide>
         <div
@@ -91,23 +90,23 @@ function MainBanner() {
           style={STYLES}
           role="button"
           tabIndex={0}
+          title='왼쪽'
           ></div>
         <div
           className="swiper-button-next "
           style={STYLES1}
           role="button"
           tabIndex={0}
+          title='오른쪽'
           ></div>
-        <div className='flex relative'>
         <div className="swiper-scrollbar" style={STYLES2}></div>
         <button onClick={handleAutoplayToggle} className='absolute z-[100] left-[60%] bottom-11'>
           {autoplayState ? (
-            <img src="/Pause.svg" alt="정지" aria-hidden />
+            <img src="/Pause.svg" alt="정지" />
           ) : (
             <img src="/Play.svg" alt="재생" aria-hidden />
           )}
         </button>
-        </div>
           </Swiper>
     </section>
   );

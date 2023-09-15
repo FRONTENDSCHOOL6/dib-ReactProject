@@ -16,7 +16,7 @@ function RowBookCardInfo({ postTitle, bookTitle }) {
       <h4 className="text-base text-left mb-[10px] truncate">{bookTitle}</h4>
 
       <div className="flex items-center justify-between w-[217px]">
-        <div className="w-[150px] h-[28px] flex items-center mr-10">
+        <div className="w-[200px] h-[28px] flex items-center mr-10">
           <div className="w-7 h-7 rounded-full bg-slate-300 mr-[5px]"></div>
           <span className="text-sm">한글여덜글자가자</span>
         </div>

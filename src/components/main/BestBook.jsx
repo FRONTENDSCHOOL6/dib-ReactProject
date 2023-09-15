@@ -1,12 +1,9 @@
-
 import ColBookCard from '../common/bookCards/ColBookCard';
-import RowBookCard from '../common/bookCards/RowBookCard';
-
 
 function BestBook() {
   return (
     <>
-      <section className="text-center">
+      <section className="text-center w-[1920px] h-[670px]">
         <h2 className="text-dibBlack text-[70px] not-italic font-normal leading-[normal] tracking-[-1.5px]">
           베스트 도서
         </h2>
@@ -16,10 +13,13 @@ function BestBook() {
         <div className="flex justify-center my-10">
           <ColBookCard />
           <div className="mr-20"></div>
-          <RowBookCard />
+          <ColBookCard />
+          <div className="mr-20"></div>
+          <ColBookCard />
+          <div className="mr-20"></div>
+          <ColBookCard />
         </div>
       </section>
-
     </>
   );
 }
