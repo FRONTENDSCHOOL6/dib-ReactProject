@@ -1,6 +1,6 @@
 function ReviewBtn() {
   return (
-    <button className="w-[600px] h-[80px] bg-primary text-white text-2xl rounded-[100px]">
+    <button className="w-[300px] h-[53px] bg-primary text-white text-lg rounded-[100px]">
       리뷰 등록
     </button>
   );

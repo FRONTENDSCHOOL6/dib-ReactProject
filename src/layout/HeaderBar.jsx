@@ -1,31 +1,33 @@
+import { Link } from 'react-router-dom';
+
 function HeaderBar() {
   return (
     <header
-      className="w-screen h-[100px] bg-white bg-opacity-50 border-b text-[24px] fixed z-[100] "
+      className="w-screen h-20 bg-white bg-opacity-50 fixed z-[100] "
       style={{ backdropFilter: 'blur(10px)' }}
     >
-      <div className="w-[1600px] flex m-auto justify-end items-center">
-        <h1 className="ml-5">
-          <a href="#">
+      <div className="w-[1200px] h-20 m-auto flex justify-between items-center relative">
+        <h1>
+          <Link to="/">
             <img src="/logoBlack.png" alt="dib" />
-          </a>
+          </Link>
         </h1>
-        <nav>
-          <ul className="flex flex-row gap-[90px] ml-32">
+        <nav className="absolute left-52">
+          <ul className="flex gap-24">
             <li>
-              <a href="#">도서목록</a>
+              <Link to="/bookList">도서목록</Link>
             </li>
             <li>
-              <a href="#">게시글</a>
+              <Link to="#">게시글</Link>
             </li>
             <li>
-              <a href="#">즐겨찾기</a>
+              <Link to="/favoritePage">즐겨찾기</Link>
             </li>
           </ul>
         </nav>
-        <a href="#" className="ml-[820px]">
+        <Link to="/login" className="">
           로그인
-        </a>
+        </Link>
       </div>
     </header>
   );

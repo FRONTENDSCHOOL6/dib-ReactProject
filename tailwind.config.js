@@ -22,7 +22,7 @@ module.exports = {
         dibCategoryBg: '#EEF1EC',
         dibBookWrite: '#818181',
         dibCategory: '#999',
-        horizontal: '#c8c8c8',
+        horizontal: '#808080',
         bookInfoBg: '#f1f1f1',
         infoCategory: '#3e3e3e',
         dateColor: '#9c9c9c',
