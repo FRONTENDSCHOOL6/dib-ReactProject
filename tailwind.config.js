@@ -5,15 +5,17 @@ module.exports = {
     extend: {
       backgroundImage: {
         subVisual: 'url("/subVisual.png")',
-        mainVisual: 'url("/MainBanner1.png")',
-        mainVisual1: 'url("/MainBanner2.png")',
         bookMarkTrue: 'url("/bookMarkTrue.png")',
-        mainVisual: 'url("/mainBanner.png")',
-        mainVisual1: 'url("/mainBanner-1.png")',
+        bookMarkFalse: 'url("/bookMarkFalse.png")',
+        mainVisual: 'url("/mainBanner1.png")',
+        mainVisual1: 'url("/mainBanner2.png")',
+        mainBanner1: 'url("@/assets/mainBanner1.png")',
+        bookMark: 'url("/bookMark.png")',
+        checkedBookMark: 'url("/checkedBookMark.png")',
       },
       colors: {
         primary: '#627D59',
-        dibFooter: '#382F2D',
+        dibFooter: '#EEF1EC',
         dibBlack: '#181818',
         dibHeart: '#FA2D2D',
         dibGray: '#DCDCDC',
