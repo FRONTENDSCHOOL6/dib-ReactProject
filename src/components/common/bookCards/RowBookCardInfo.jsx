@@ -9,7 +9,7 @@ function RowBookCardInfo({ postTitle, bookTitle }) {
   };
 
   return (
-    <div className="py-5 px-7 w-[280px] h-[284px] flex flex-col justify-center border-l-8 border-l-[#DCDCDC] border-dashed">
+    <div className="bg-white py-5 px-7 w-[280px] h-[284px] flex flex-col justify-center border-l-8 border-l-[#DCDCDC] border-dashed">
       <h3 className="text-xl text-left font-semibold mb-[40px] truncate">
         {postTitle}
       </h3>
