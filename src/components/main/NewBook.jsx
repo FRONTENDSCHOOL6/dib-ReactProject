@@ -10,14 +10,21 @@ return (
         <strong className="text-dibBlack text-[16px] not-italic font-normal">
             새롭게 소개하는 도서를 여기서 만나보세요!
         </strong>
-        <div className="flex justify-center my-10">
+        <div className='w-[1200px] mx-auto'>
+        <ul className="flex justify-center gap-6 my-10">
+            <li>
             <ColBookCard />
-            <div className="mr-20"></div>
+            </li>
+            <li>
             <ColBookCard />
-            <div className="mr-20"></div>
+            </li>
+            <li>
             <ColBookCard />
-            <div className="mr-20"></div>
+            </li>
+            <li>
             <ColBookCard />
+            </li>
+        </ul>
         </div>
         <div >
         <ScrollButton />
