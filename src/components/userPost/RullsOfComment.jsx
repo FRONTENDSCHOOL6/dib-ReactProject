@@ -1,6 +1,6 @@
 function RullsOfComment() {
   return (
-    <div className="w-[1525px] h-[252px] bg-dibCommentsInfo my-5 m-auto flex flex-col justify-center px-[100px] font-semibold">
+    <div className="w-[1200px] h-[252px] bg-dibCommentsInfo my-5 m-auto flex flex-col justify-center px-[100px] font-semibold">
       <p className="my-3 opacity-60">
         광고, 욕설, 악의적 비방, 허위사실 기재 등의 내용 등록 시 관리자에 의해
         삭제 될 수 있습니다.

@@ -1,9 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { useState } from 'react';
 
 function PostOptions() {
+  const [putHeart, setPutHerart] = useState(false);
+
+  function handleClickHeart() {
+    setPutHerart(!putHeart);
+  }
+
   return (
-    <div className="m-auto mt-20 flex justify-between w-[1525px] h-[25px]">
+    <div className="m-auto mt-20 flex justify-between w-[1200px] h-[25px] text-base">
       <div className="flex items-center">
         <button>
           <span className="mr-2">댓글</span>
@@ -13,20 +21,17 @@ function PostOptions() {
         <div className="w-[1px] h-[13px] bg-slate-400 mx-3"></div>
 
         <div>
-          <button className="mr-2">
+          <button onClick={handleClickHeart} className="mr-2">
             <span className="mr-2">좋아요</span>
             <span>
-              <FontAwesomeIcon icon={faBars} />
+              <FontAwesomeIcon
+                icon={putHeart ? solidHeart : regularHeart}
+                className="text-dibHeart"
+              />
             </span>
           </button>
           <span>30</span>
         </div>
-      </div>
-
-      <div className="flex items-center">
-        <button>수정</button>
-        <div className="w-[1px] h-[13px] bg-slate-400 mx-3"></div>
-        <button>삭제</button>
       </div>
     </div>
   );
