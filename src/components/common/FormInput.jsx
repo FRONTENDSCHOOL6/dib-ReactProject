@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 function FormInput({ type, name, id, placeholder, label, width = 'w-full' }) {
   return (
     <>
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id} className="text-base">
+        {label}
+      </label>
       <input
         required
         type={type}
