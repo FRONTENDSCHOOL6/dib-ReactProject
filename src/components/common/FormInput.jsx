@@ -11,7 +11,7 @@ function FormInput({ type, name, id, placeholder, label, width = 'w-full' }) {
         id={id}
         placeholder={placeholder}
         className={`border border-dibBlack pl-5
-        rounded-full leading-[60px] ${width}`}
+        rounded-full leading-[54px] text-base ${width}`}
       />
     </>
   );

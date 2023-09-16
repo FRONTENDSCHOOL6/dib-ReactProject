@@ -4,10 +4,8 @@ import JoinTitle from "@/components/join/JoinTitle";
 function Join() {
   return (
     <>
-      <div>
-        <JoinTitle/>
-        <JoinForm/>
-      </div>
+      <JoinTitle/>
+      <JoinForm/>
     </>
   );
 }
