@@ -44,7 +44,7 @@ function MainBanner() {
   };
 
   return (
-    <section className='w-[1920px] h-[490px]'>
+    <section className="w-[1920px] h-[490px] m-auto">
       <h2 className="sr-only">광고</h2>
       <Swiper
         slidesPerView={'auto'}
@@ -82,7 +82,7 @@ function MainBanner() {
             alt="더 많은 개발 지식을 알고싶다
             dib 추천도서"
             className="inline-block w-full"
-            title=''
+            title=""
           />
         </SwiperSlide>
         <div
@@ -90,24 +90,27 @@ function MainBanner() {
           style={STYLES}
           role="button"
           tabIndex={0}
-          title='왼쪽'
-          ></div>
+          title="왼쪽"
+        ></div>
         <div
           className="swiper-button-next "
           style={STYLES1}
           role="button"
           tabIndex={0}
-          title='오른쪽'
-          ></div>
+          title="오른쪽"
+        ></div>
         <div className="swiper-scrollbar" style={STYLES2}></div>
-        <button onClick={handleAutoplayToggle} className='absolute z-[100] left-[60%] bottom-11'>
+        <button
+          onClick={handleAutoplayToggle}
+          className="absolute z-[100] left-[60%] bottom-11"
+        >
           {autoplayState ? (
             <img src="/Pause.svg" alt="정지" />
           ) : (
             <img src="/Play.svg" alt="재생" aria-hidden />
           )}
         </button>
-          </Swiper>
+      </Swiper>
     </section>
   );
 }

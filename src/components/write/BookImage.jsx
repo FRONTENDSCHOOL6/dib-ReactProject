@@ -4,7 +4,7 @@ function BookImage() {
       <img
         src="/blankImage.png"
         alt="등록할 도서의 이미지"
-        className="w-[434px] h-[564px]"
+        className="w-[400px] h-[513px]"
       />
     </div>
   );
