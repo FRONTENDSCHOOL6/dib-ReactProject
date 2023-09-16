@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 
-function SearchBooks() {
+function SearchBooks({ onChange, onClick }) {
   const handleSearchBook = (event) => {
     event.preventDefault;
   };
@@ -15,11 +16,13 @@ function SearchBooks() {
             id="searchBook"
             name="search"
             placeholder="등록하고 싶은 도서를 입력해주세요"
+            onChange={onChange}
             className="w-[900px] h-[60px] text-xl"
           ></input>
         </label>
         <button aria-label="검색하기">
           <FontAwesomeIcon
+            onClick={onClick}
             icon={faMagnifyingGlass}
             className="w-[35px] h-[35px]"
           />
@@ -30,3 +33,8 @@ function SearchBooks() {
 }
 
 export default SearchBooks;
+
+SearchBooks.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
