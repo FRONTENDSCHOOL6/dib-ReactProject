@@ -18,7 +18,7 @@ function SearchBooks() {
             className="w-[900px] h-[60px] text-xl"
           ></input>
         </label>
-        <button>
+        <button aria-label="검색하기">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
             className="w-[35px] h-[35px]"

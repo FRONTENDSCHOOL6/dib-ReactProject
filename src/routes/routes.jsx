@@ -6,7 +6,9 @@ import Home from '@/pages/Home';
 import WritePage from '@/pages/WritePage';
 import Login from '@/pages/Login';
 import SignIn from '@/pages/SignIn';
+import BookList from '@/pages/BookList';
 import BookDescription from '@/pages/BookDescription';
+import FavoritePage from '@/pages/FavoritePage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,7 +17,9 @@ const router = createBrowserRouter(
       <Route path="writePage" element={<WritePage />} />
       <Route path="login" element={<Login />} />
       <Route path="signIn" element={<SignIn />} />
+      <Route path="bookList" element={<BookList />} />
       <Route path="bookDescription" element={<BookDescription />} />
+      <Route path="favoritePage" element={<FavoritePage />} />
     </Route>
   )
 );
