@@ -29,6 +29,9 @@ dependencies:
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
+  pocketbase:
+    specifier: ^0.18.0
+    version: 0.18.0
   prop-types:
     specifier: ^15.8.1
     version: 15.8.1
@@ -2764,6 +2767,10 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
     dev: true
+
+  /pocketbase@0.18.0:
+    resolution: {integrity: sha512-09ri0Rnm4JjboU4OJeibd6pgvKi4DPg/r/Uu/QI3mKSZsrROoMT75zyiOldbBBMWZUDG1TRlv6BjQj30SFsrVw==}
+    dev: false
 
   /postcss-import@15.1.0(postcss@8.4.29):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}

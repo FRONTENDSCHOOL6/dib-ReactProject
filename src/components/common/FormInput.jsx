@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 function FormInput({ type, name, id, placeholder, label, width = 'w-full' }) {
   return (
     <>
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id} className="text-base">
+        {label}
+      </label>
       <input
         required
         type={type}
@@ -11,7 +13,7 @@ function FormInput({ type, name, id, placeholder, label, width = 'w-full' }) {
         id={id}
         placeholder={placeholder}
         className={`border border-dibBlack pl-5
-        rounded-full leading-[60px] ${width}`}
+        rounded-full leading-[54px] text-base ${width}`}
       />
     </>
   );

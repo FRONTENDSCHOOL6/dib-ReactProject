@@ -10,7 +10,7 @@ function BookInfoLayout() {
   return (
     <>
       <div className="h-[110px]"></div>
-      <article className="w-screen min-w-[1200px] bg-bookInfoBg h-[600px] flex justify-center items-center relative mb-[170px]">
+      <article className="w-screen min-w-[1920px] bg-bookInfoBg h-[600px] flex justify-center items-center relative mb-[170px]">
         <dl className="flex justify-between w-[1050px] m-auto">
           <dt className="sr-only">도서 이미지</dt>
           <dd className="mr-[100px]">
