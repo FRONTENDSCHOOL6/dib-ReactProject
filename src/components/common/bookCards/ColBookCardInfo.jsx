@@ -14,7 +14,7 @@ function ColBookCardInfo({ postTitle, bookTitle }) {
       <h4 className="text-base text-left mb-[10px]">{bookTitle}</h4>
 
       <div className="flex items-center justify-between w-[217px]">
-        <div className="w-[94px] h-[28px] flex items-center mr-10">
+        <div className="w-[200px] h-[28px] flex items-center mr-10">
           <div className="w-7 h-7 rounded-full bg-slate-300 mr-[5px]"></div>
           <span className="text-sm">닉네임없음</span>
         </div>
