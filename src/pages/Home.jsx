@@ -3,6 +3,7 @@ import BestBook from '@/components/main/BestBook';
 import CategoryBook from '@/components/main/CategoryBook';
 import NewBook from '@/components/main/NewBook';
 
+
 function Home() {
   return (
     <>
