@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function FooterBar() {
   return (
-    <footer className="bg-dibFooter w-[1920px] h-[400px]">
+    <footer className="bg-dibFooter w-[1920px] h-[400px] mt-[100px]">
       <section className="flex-shrink">
         <h2 className="flex items-center">
           <span className="text-[24px] not-italic font-normal leading-[normal] ml-40 ">
