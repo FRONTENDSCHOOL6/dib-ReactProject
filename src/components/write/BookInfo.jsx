@@ -6,11 +6,12 @@ function BookInfo({
   title = '책 제목',
   author = '저자',
   publisher = '출판사',
+  image,
 }) {
   return (
     <div className="w-[1050px]">
       <div className="flex mt-24 mb-20 justify-between items-center">
-        <BookImage />
+        <BookImage image={image} />
         <div className="flex flex-col justify-between flex-grow">
           <Category />
           <ul className="w-[418px] h-[300px] flex flex-col">
@@ -36,4 +37,5 @@ BookInfo.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string,
   publisher: PropTypes.string,
+  image: PropTypes.string,
 };
