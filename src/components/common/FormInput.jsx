@@ -29,7 +29,6 @@ FormInput.propTypes = {
     'number',
     'email',
     'file',
-    'passwordConfirm',
   ]),
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
