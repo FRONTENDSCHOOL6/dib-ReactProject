@@ -3,7 +3,7 @@ import TabButton from "../common/TabButton"
 function TabButtonList() {
   return (
     <div className="w-screen">
-      <ul aria-label="tablist" className="flex gap-12 m-auto w-[1565px]">
+      <ul aria-label="tablist" className="flex gap-12 m-auto w-[942px]">
         <li>
           <TabButton category="전체" bgColor="bg-primary" textColor="text-white" borderColor="border-transparent"/> 
         </li>

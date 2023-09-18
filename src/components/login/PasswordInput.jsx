@@ -1,6 +1,7 @@
 import FormInput from '../common/FormInput';
+import PropTypes from 'prop-types';
 
-function PasswordInput() {
+function PasswordInput({ defaultValue, onChange, isValidPassword }) {
   return (
     <div className="flex flex-col gap-2 text-left text-lg">
       <FormInput
@@ -10,12 +11,22 @@ function PasswordInput() {
         name="password"
         id="userPassword"
         placeholder="비밀번호를 입력해주세요"
+        defaultValue={defaultValue}
+        onChange={onChange}
       />
-      <span className="text-[#FF0000]">
-        비밀번호는 특수문자, 숫자 포함 8자리 이상 입력해주세요.
-      </span>
+      {isValidPassword === false && (
+        <span className="text-dibRed">
+          8~20자의 영문, 숫자, 특수문자를 포함해주세요.
+        </span>
+      )}
     </div>
   );
 }
 
 export default PasswordInput;
+
+PasswordInput.propTypes = {
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func,
+  isValidPassword: PropTypes.bool,
+};

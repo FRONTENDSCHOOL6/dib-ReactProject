@@ -17,11 +17,11 @@ function TabButton({
       //해당 본문과 연결하여 연관관계가있다는것을 명시
       aria-controls="tab-panel-1"
       className={`
-        w-[270px] 
-        h-16 
+        w-[150px] 
+        h-11 
         rounded-full 
         border
-        text-2xl
+        text-lg
         ${borderColor}
         ${textColor}
         ${bgColor}
