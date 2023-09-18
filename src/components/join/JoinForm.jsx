@@ -16,7 +16,6 @@ function JoinForm() {
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  
   let nameError = '';
   let emailError = '';
   let passwordError = '';
@@ -57,7 +56,7 @@ function JoinForm() {
       [name]: value,
     });
   };
-  
+
   const handleDebounceInput = debounce(handleInput, 500);
 
   const handleTogglePasswordVisibility = () => {
