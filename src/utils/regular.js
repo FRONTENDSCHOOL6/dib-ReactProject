@@ -1,9 +1,8 @@
 //한글만 사용가능한 이름 정규식
 export function nameReg(text){
-  const reg = /^[가-힣\s]*$/;
+  const reg = /^[가-힣]*$/;
   return reg.test(String(text))
 }
-
 
 //특수문자포함 최소 8자이상~20자이하 비밀번호정규식
 export function pwReg(text){
