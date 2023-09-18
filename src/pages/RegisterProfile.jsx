@@ -5,7 +5,7 @@ import RegistrationButton from '@/components/profile/RegistrationButton';
 
 function RegisterProfile() {
   return (
-    <div className="flex flex-col items-center mb-[100px]">
+    <div className="flex flex-col items-center gap-7">
       <ProfileTitle />
       <ImageUpload />
       <NicknameInput />
