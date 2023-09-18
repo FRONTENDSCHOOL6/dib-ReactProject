@@ -9,7 +9,7 @@ function NicknameInput() {
     const newNickname = event.target.value;
     setNickname(newNickname);
 
-    const regex = /^[가-힣]{1,8}$/;
+    const regex = /^[ㄱ-힣]{1,8}$/;
     if (!regex.test(newNickname)) {
       setErrorMessage('한글 8자 이하로 입력해주세요.');
     } else {
