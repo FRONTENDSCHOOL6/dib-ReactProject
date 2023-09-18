@@ -12,20 +12,16 @@ import toast from 'react-hot-toast';
 function WritePage() {
   const [searchBook, setSearchBook] = useState('');
   const [books, setBooks] = useState([]);
+  const [reviewMainText, setReviewMainText] = useState('');
   const [selectedBook, setSelectedBook] = useState({
     title: '책 제목',
     author: '저자',
   });
-
-  const [inputValues, setInputValues] = useState({
-    title: '',
-    author: '',
-  });
+  const [inputValues, setInputValues] = useState('');
 
   useEffect(() => {
     let timer;
 
-    // 검색어가 변경될 때 타이머를 설정하여 1초 후에 API 호출
     if (searchBook) {
       timer = setTimeout(() => {
         async function searchBookInfo() {
@@ -45,7 +41,6 @@ function WritePage() {
             }
           );
           const data = await response.json();
-          console.log(data);
           setBooks(data.items);
         }
         searchBookInfo();
@@ -53,7 +48,6 @@ function WritePage() {
     } else {
       setBooks([]);
     }
-
     return () => {
       clearTimeout(timer);
     };
@@ -61,18 +55,18 @@ function WritePage() {
 
   const handleClickBookRegist = (book) => {
     setSelectedBook(book);
-    setInputValues({
-      title: '',
-      author: '',
-    });
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setInputValues({
-      ...inputValues,
-      [name]: value,
-    });
+  const handleReviewMainText = (e) => {
+    setTimeout(() => {
+      setReviewMainText(e.target.value);
+    }, 1000);
+  };
+
+  const handleReviewTitle = (e) => {
+    setTimeout(() => {
+      setInputValues(e.target.value);
+    }, 1000);
   };
 
   const handleSubmitReview = async () => {
@@ -82,8 +76,8 @@ function WritePage() {
       author: selectedBook.author,
       publisher: selectedBook.publisher,
       book_image_link: selectedBook.image,
-      post_title: '어쩌다보니 성공했다',
-      post_contents: '더미포스트',
+      post_title: inputValues,
+      post_contents: reviewMainText,
       category: ['HTML'],
       like_count: 22,
       // comments: ['5n8naynj4lcra5a'],
@@ -92,7 +86,6 @@ function WritePage() {
     const pb = new PocketBase('https://db-dib.pockethost.io');
     try {
       const record = await pb.collection('posts').create(data);
-      console.log(record);
       if (record) {
         toast.success('리뷰저장에 성공하였습니다! ✅');
       } else {
@@ -129,10 +122,9 @@ function WritePage() {
         <ReviewInfo
           placeholder={'리뷰 제목'}
           name="title"
-          value={inputValues.title}
-          onChange={handleInputChange}
+          onChange={handleReviewTitle}
         />
-        <ReviewMainText />
+        <ReviewMainText onChange={handleReviewMainText} />
         <ReviewBtn onClick={handleSubmitReview} />
       </div>
 
