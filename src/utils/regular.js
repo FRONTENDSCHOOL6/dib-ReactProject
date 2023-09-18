@@ -12,8 +12,7 @@ export function pwReg(text){
 
 //@ 기호 포함, .포함 이후 2글자 이상 이메일정규식
 export function emailReg(text){
-  const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+  const reg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
   return reg.test(String(text).toLowerCase())
 }
 
