@@ -20,6 +20,7 @@ function JoinForm() {
   let emailError = '';
   let passwordError = '';
   let confirmPwdError = '';
+  let samePwd = false;
   const emailCheck = emailReg(formState.email);
   const pwdCheck = pwReg(formState.password);
   const nameCheck = nameReg(formState.name);
@@ -46,6 +47,9 @@ function JoinForm() {
     confirmPwdError = '';
   }else if(formState.password !== formState.passwordConfirm){
     confirmPwdError = '비밀번호가 일치하지 않습니다.';
+    samePwd = false;
+  }else{
+    samePwd = true;
   }
 
 
@@ -121,6 +125,7 @@ function JoinForm() {
         <Button 
           type="submit" 
           title="회원가입" 
+          disabled = {!(samePwd && emailCheck && pwdCheck && nameCheck)}
         />
       </form>
   )
