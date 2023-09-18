@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 function InputValidation({message}) {
   return (
-    <span className="text-dibRed">{message}</span>
+    <span className="text-[#FF0000]">{message}</span>
   )
 }
 
