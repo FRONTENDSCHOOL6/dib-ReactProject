@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function FormInput({ type, name, id, placeholder, label, width = 'w-full' }) {
+function FormInput({ type, name, id, placeholder, label, width = 'w-full',...restProps }) {
   return (
     <>
       <label htmlFor={id} className="text-base">
@@ -14,6 +14,7 @@ function FormInput({ type, name, id, placeholder, label, width = 'w-full' }) {
         placeholder={placeholder}
         className={`border border-dibBlack pl-5
         rounded-full leading-[54px] text-base ${width}`}
+        {...restProps}
       />
     </>
   );
