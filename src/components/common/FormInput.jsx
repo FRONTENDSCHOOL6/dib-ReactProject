@@ -7,7 +7,7 @@ function FormInput({
   placeholder,
   label,
   width = 'w-full',
-  ...rest
+  ...restProps
 }) {
   return (
     <>
@@ -22,7 +22,7 @@ function FormInput({
         placeholder={placeholder}
         className={`border border-dibBlack pl-5
         rounded-full leading-[54px] text-base ${width}`}
-        {...rest}
+        {...restProps}
       />
     </>
   );
@@ -31,14 +31,7 @@ function FormInput({
 export default FormInput;
 
 FormInput.propTypes = {
-  type: PropTypes.oneOf([
-    'text',
-    'password',
-    'number',
-    'email',
-    'file',
-    'passwordConfirm',
-  ]),
+  type: PropTypes.oneOf(['text', 'password', 'number', 'email', 'file']),
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
