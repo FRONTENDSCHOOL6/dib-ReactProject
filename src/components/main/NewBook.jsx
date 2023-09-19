@@ -29,11 +29,15 @@ function NewBook() {
           </strong>
           <div className="w-[1200px] mx-auto">
             <ul className="flex justify-center gap-6 my-10">
-              {' '}
               {data.map((item) => (
                 <li key={item.id}>
-                  {/* 이미지와 제목 출력 */}
-                  <ColBookCard data={item} />
+                  <ColBookCard
+                    imgSrc={item.book_image_link}
+                    imgAlt={item.book_title}
+                    nickName={item.user_id[0]}
+                    postTitle={item.post_title}
+                    bookTitle={item.book_title}
+                  />
                 </li>
               ))}
             </ul>
