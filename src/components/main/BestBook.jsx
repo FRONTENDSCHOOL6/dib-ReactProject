@@ -1,6 +1,6 @@
 import { useEffect,useState } from 'react';
 import { pb } from '@/api/pocketbase';
-import { getPbImageURL } from '@/utils/getPbImageURL';
+import ColBookCard from '../common/bookCards/ColBookCard';
 
 function BestBook() {
   const [data, setData] = useState([]);
@@ -18,7 +18,6 @@ function BestBook() {
     fetchBestBooks();
   }, []);
 
-  if (data.length > 0) {
     return (
       <>
         <section className="text-center w-[1920px] h-[670px] m-auto flex flex-col mb-[60px]">
@@ -30,12 +29,10 @@ function BestBook() {
           </strong>
           <div className="w-[1200px] mx-auto">
             <ul className="flex justify-center gap-6 my-10">
-              {data.map((item) => (
+            {data.map((item) => (
                 <li key={item.id}>
                   {/* 이미지와 제목 출력 */}
-                  <img src={getPbImageURL(item, 'book_image')} alt={item.book_title} />
-                  <span>{item.book_title}</span>
-                  <span>{item.id}</span>
+                  <ColBookCard data={item} />
                 </li>
               ))}
             </ul>
@@ -44,6 +41,6 @@ function BestBook() {
       </>
     );
   }
-}
+
 
 export default BestBook;
