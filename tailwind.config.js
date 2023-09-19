@@ -28,6 +28,7 @@ module.exports = {
         dateColor: '#9c9c9c',
         dibCommentsInfo: '#F7F2EF',
         commentBox: '#333',
+        dibRed: '#ED0000',
       },
     },
   },
