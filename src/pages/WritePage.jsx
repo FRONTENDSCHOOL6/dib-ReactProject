@@ -7,7 +7,7 @@ import SubVisualBanner from '@/components/common/SubVisualBanner';
 import { useState, useEffect } from 'react';
 import PocketBase from 'pocketbase';
 import toast from 'react-hot-toast';
-// import { createReview, readReviews } from "@/api/pocketbase";
+import { useCategoryStore } from '@/hooks/categoryStore';
 
 function WritePage() {
   const [searchBook, setSearchBook] = useState('');
@@ -18,6 +18,7 @@ function WritePage() {
     author: '저자',
   });
   const [inputValues, setInputValues] = useState('');
+  const { category, setCategory } = useCategoryStore();
 
   useEffect(() => {
     let timer;
@@ -29,7 +30,7 @@ function WritePage() {
           const response = await fetch(
             `${
               import.meta.env.VITE_NAVER_BOOK_SEARCH_API
-            }?query=${keyword}&display=4`, // 여기에서 display 값을 4로 변경
+            }?query=${keyword}&display=4`,
             {
               method: 'GET',
               headers: {
@@ -44,7 +45,7 @@ function WritePage() {
           setBooks(data.items);
         }
         searchBookInfo();
-      }, 1000);
+      }, 800);
     } else {
       setBooks([]);
     }
@@ -57,19 +58,35 @@ function WritePage() {
     setSelectedBook(book);
   };
 
-  const handleReviewMainText = (e) => {
+  const handleReviewMainText = (event) => {
     setTimeout(() => {
-      setReviewMainText(e.target.value);
+      setReviewMainText(event.target.value);
     }, 1000);
   };
 
-  const handleReviewTitle = (e) => {
+  const handleReviewTitle = (event) => {
     setTimeout(() => {
-      setInputValues(e.target.value);
+      setInputValues(event.target.value);
     }, 1000);
+  };
+
+  const handleSelectCategory = (event) => {
+    event.preventDefault();
+    setCategory(event.target.textContent);
   };
 
   const handleSubmitReview = async () => {
+    if (
+      !selectedBook.title ||
+      !selectedBook.author ||
+      !selectedBook.publisher ||
+      !inputValues ||
+      !reviewMainText ||
+      !category
+    ) {
+      alert('모든 필드를 입력해주세요.');
+      return;
+    }
     const data = {
       user_id: ['02jn7lwydw4swze'],
       book_title: selectedBook.title,
@@ -78,9 +95,8 @@ function WritePage() {
       book_image_link: selectedBook.image,
       post_title: inputValues,
       post_contents: reviewMainText,
-      category: ['HTML'],
+      category: [category],
       like_count: 22,
-      // comments: ['5n8naynj4lcra5a'],
     };
 
     const pb = new PocketBase('https://db-dib.pockethost.io');
@@ -106,6 +122,7 @@ function WritePage() {
               className="my-5 hover:bg-slate-300 cursor-pointer"
               key={index}
               onClick={() => handleClickBookRegist(book)}
+              aria-label={book.title}
             >
               {book.title}
             </li>
@@ -117,6 +134,9 @@ function WritePage() {
           author={selectedBook.author}
           publisher={selectedBook.publisher}
           image={selectedBook.image}
+          onClick={(event) => {
+            handleSelectCategory(event);
+          }}
         />
 
         <ReviewInfo
