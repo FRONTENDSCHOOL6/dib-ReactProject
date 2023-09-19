@@ -18,7 +18,7 @@ function HeaderBar() {
               <Link to="/bookList">도서목록</Link>
             </li>
             <li>
-              <Link to="#">게시글</Link>
+              <Link to="/postListPage">게시글</Link>
             </li>
             <li>
               <Link to="/favoritePage">즐겨찾기</Link>

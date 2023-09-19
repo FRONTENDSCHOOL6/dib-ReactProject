@@ -1,6 +1,7 @@
 import FormInput from '../common/FormInput';
+import PropTypes from 'prop-types';
 
-function EmailInput() {
+function EmailInput({ defaultValue, onChange, isValidEmail }) {
   return (
     <div className="flex flex-col gap-2 text-left text-lg">
       <FormInput
@@ -10,12 +11,20 @@ function EmailInput() {
         name="email"
         id="userEmail"
         placeholder="이메일을 입력해주세요"
+        defaultValue={defaultValue}
+        onChange={onChange}
       />
-      <span className="text-[#FF0000]">
-        아이디는 이메일 형식으로 입력해주세요.
-      </span>
+      {isValidEmail === false && (
+        <span className="text-dibRed">올바른 이메일 형식을 입력해주세요.</span>
+      )}
     </div>
   );
 }
 
 export default EmailInput;
+
+EmailInput.propTypes = {
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func,
+  isValidEmail: PropTypes.bool,
+};

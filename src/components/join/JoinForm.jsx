@@ -4,8 +4,12 @@ import FormInput from "../common/FormInput"
 import InputValidation from "../common/InputValidation"
 import debounce from "@/utils/debounce";
 import { emailReg, nameReg, pwReg } from "@/utils/regular";
+import { pb } from "@/api/pocketbase";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function JoinForm() {
+  const navigate = useNavigate();
 
   const [formState, setFormState] = useState({
     name: '',
@@ -15,16 +19,15 @@ function JoinForm() {
   });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
+  const emailCheck = emailReg(formState.email);
+  const pwdCheck = pwReg(formState.password);
+  const nameCheck = nameReg(formState.name);
   let nameError = '';
   let emailError = '';
   let passwordError = '';
   let confirmPwdError = '';
   let samePwd = false;
-  const emailCheck = emailReg(formState.email);
-  const pwdCheck = pwReg(formState.password);
-  const nameCheck = nameReg(formState.name);
-
+  
   if(!formState.name){
     nameError = '';
   }else if(!nameCheck){
@@ -53,6 +56,31 @@ function JoinForm() {
   }
 
 
+  const handleRegister = async (e) =>{
+    e.preventDefault();
+
+    const userData = {
+      ...formState,
+      real_name: formState.name,
+      emailVisibility: true,
+    };
+
+    await pb.collection('users').create(userData);
+
+    toast.success('회원가입이 완료되었습니다.',{
+      position: 'top-center',
+      duration: 3000,
+      icon: '🆗',
+      ariaProps: {
+        role: 'status',
+        'aria-live': 'polite',
+      },
+    });
+    setTimeout(() => {
+      navigate('/');
+    }, 1000);
+  }
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormState({
@@ -62,14 +90,19 @@ function JoinForm() {
   };
 
   const handleDebounceInput = debounce(handleInput, 500);
-
+  
   const handleTogglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
+  };
+  const handleKeyDown = (event) => {
+    if (event.keyCode === 13 || event.keyCode === 32) {
+      handleTogglePasswordVisibility();
+    }
   };
 
   return (
     <form
-        action=""
+        onSubmit={handleRegister}
         method="post"
         className="flex flex-col gap-5 w-[500px] m-auto mt-10"
       >
@@ -102,9 +135,11 @@ function JoinForm() {
           <img 
             src={isPasswordVisible ? "/view.png" : "/hide.png"} 
             alt={isPasswordVisible ? "숨김" : "보임"}
-            id="eyeicon" 
+            role='button' 
             className="w-[25px absolute right-5 top-11 cursor-pointer"
             onClick={handleTogglePasswordVisibility}
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
           />
           <InputValidation message={passwordError}/>
         </div>

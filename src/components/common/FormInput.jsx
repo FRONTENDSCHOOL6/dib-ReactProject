@@ -1,6 +1,14 @@
 import PropTypes from 'prop-types';
 
-function FormInput({ type, name, id, placeholder, label, width = 'w-full',...restProps }) {
+function FormInput({
+  type,
+  name,
+  id,
+  placeholder,
+  label,
+  width = 'w-full',
+  ...restProps
+}) {
   return (
     <>
       <label htmlFor={id} className="text-base">
@@ -23,13 +31,7 @@ function FormInput({ type, name, id, placeholder, label, width = 'w-full',...res
 export default FormInput;
 
 FormInput.propTypes = {
-  type: PropTypes.oneOf([
-    'text',
-    'password',
-    'number',
-    'email',
-    'file',
-  ]),
+  type: PropTypes.oneOf(['text', 'password', 'number', 'email', 'file']),
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
