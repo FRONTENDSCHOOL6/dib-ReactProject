@@ -1,8 +1,11 @@
+import { useState, useEffect } from 'react';
 import LoginButton from './LoginButton';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
-import { useState } from 'react';
 import { emailReg, pwReg } from '@/utils/regular';
+import { pb } from '@/api/pocketbase';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
   const [values, setValues] = useState({
@@ -12,6 +15,9 @@ function LoginForm() {
 
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
+  const [userData, setUserData] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,17 +37,37 @@ function LoginForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // 이메일과 비밀번호가 유효한지 확인
     if (isValidEmail && isValidPassword) {
-      // 여기에서 로그인 또는 다음 단계로 진행
-      console.log('로그인 시도:', values);
+      try {
+        pb.autoCancellation(false);
+
+        const loginUser = await pb
+          .collection('users')
+          .authWithPassword(values.email, values.password);
+
+        console.log('로그인 성공:', loginUser);
+        alert('로그인에 성공하셨습니다!');
+        setUserData(loginUser);
+        navigate('/');
+      } catch (error) {
+        alert('로그인 실패하셨습니다!');
+        setUserData(null);
+      }
     } else {
       console.log('유효하지 않은 입력값이 있습니다.');
     }
   };
+
+  useEffect(() => {
+    if (userData) {
+      // 로그인이 성공한 경우 다음 페이지로 이동 또는 다른 작업 수행
+      <Link to="/home" />;
+    }
+  }, [userData]);
 
   return (
     <form
