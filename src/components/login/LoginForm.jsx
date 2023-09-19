@@ -40,7 +40,7 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 이메일과 비밀번호가 유효한지 확인
+    // 이메일과 비밀번호를 DB와 비교해서 유효성 검사
     if (isValidEmail && isValidPassword) {
       try {
         pb.autoCancellation(false);
@@ -50,11 +50,11 @@ function LoginForm() {
           .authWithPassword(values.email, values.password);
 
         console.log('로그인 성공:', loginUser);
-        alert('로그인에 성공하셨습니다!');
+        alert('로그인에 성공하셨습니다.');
         setUserData(loginUser);
         navigate('/');
       } catch (error) {
-        alert('로그인 실패하셨습니다!');
+        alert('로그인 실패하셨습니다.');
         setUserData(null);
       }
     } else {
@@ -64,7 +64,7 @@ function LoginForm() {
 
   useEffect(() => {
     if (userData) {
-      // 로그인이 성공한 경우 다음 페이지로 이동 또는 다른 작업 수행
+      // 로그인이 성공한 경우 홈으로 이동
       <Link to="/home" />;
     }
   }, [userData]);
