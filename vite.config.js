@@ -8,11 +8,24 @@ const isDev = env.NODE_ENV === 'development';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      '/v1': {
+        target: 'https://openapi.naver.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
+        ws: true,
+      },
+    },
+  },
   css: {
     devSourcemap: true,
     modules: {
-      generateScopedName: isDev ? '[name]_[local]__[hash:base64:5]' : '[hash:base64:4]'
-    }
+      generateScopedName: isDev
+        ? '[name]_[local]__[hash:base64:5]'
+        : '[hash:base64:4]',
+    },
   },
   resolve: {
     alias: {
