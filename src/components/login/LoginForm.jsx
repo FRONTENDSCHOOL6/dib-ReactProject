@@ -1,7 +1,6 @@
 import LoginButton from './LoginButton';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
-import AutoLoginButton from './AutoLoginButton';
 import { useState } from 'react';
 import { emailReg, pwReg } from '@/utils/regular';
 
@@ -59,7 +58,6 @@ function LoginForm() {
         onChange={handleInputChange}
         isValidPassword={isValidPassword}
       />
-      <AutoLoginButton />
       <LoginButton />
     </form>
   );
