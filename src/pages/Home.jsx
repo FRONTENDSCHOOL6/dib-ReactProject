@@ -1,20 +1,31 @@
+import { useState, useEffect } from 'react';
 import MainBanner from '@/components/main/MainBanner';
 import BestBook from '@/components/main/BestBook';
 import CategoryBook from '@/components/main/CategoryBook';
 import NewBook from '@/components/main/NewBook';
-import { motion } from 'framer-motion';
+import Spinner from '@/components/bookList/Spinner';
 
 function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
+
   return (
     <>
-      <motion.h1
-        initial={{ opacity: 0, y: -500 }}
-        animate={{ opacity: 1, y: 0 }}
-      ></motion.h1>
-      <MainBanner />
-      <BestBook />
-      <CategoryBook />
-      <NewBook />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <MainBanner />
+          <BestBook />
+          <CategoryBook />
+          <NewBook />
+        </>
+      )}
     </>
   );
 }
