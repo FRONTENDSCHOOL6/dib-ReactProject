@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 function HeaderBar() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
 
   useEffect(() => {
     const handleScroll = () => {
