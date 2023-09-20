@@ -67,17 +67,17 @@ function JoinForm() {
 
     await pb.collection('users').create(userData);
 
-    toast.success('회원가입이 완료되었습니다.',{
+    toast.success('프로필 등록 후 회원가입이 완료됩니다.',{
       position: 'top-center',
       duration: 3000,
-      icon: '🆗',
+      icon: '💌',
       ariaProps: {
         role: 'status',
         'aria-live': 'polite',
       },
     });
     setTimeout(() => {
-      navigate('/');
+      navigate('/registerProfile');
     }, 1000);
   }
 
@@ -94,6 +94,7 @@ function JoinForm() {
   const handleTogglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
+
   const handleKeyDown = (event) => {
     if (event.keyCode === 13 || event.keyCode === 32) {
       handleTogglePasswordVisibility();

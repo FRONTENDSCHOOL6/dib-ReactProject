@@ -41,3 +41,8 @@ BookCardImage.propTypes = {
 };
 
 export default BookCardImage;
+
+BookCardImage.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+}
