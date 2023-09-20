@@ -7,11 +7,6 @@ function TabButton({
   bgColor = 'bg-transparent',
   onClick,
 }) {
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
-  };
 
   return (
     <button
@@ -30,7 +25,7 @@ function TabButton({
         ${textColor}
         ${bgColor}
       `}
-      onClick={handleClick}
+      onClick={onClick}
     >
       {category}
     </button>

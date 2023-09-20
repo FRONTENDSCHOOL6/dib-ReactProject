@@ -1,16 +1,26 @@
 import BookCardImage from './BookCardImage';
 import RowBookCardInfo from './RowBookCardInfo';
+import PropTypes from 'prop-types';
 
-function RowBookCard() {
+function RowBookCard({ postTitle, bookTitle, nickName, imgSrc, imgAlt }) {
   return (
     <div className="flex w-[560px] h-[284px] ">
-      <BookCardImage />
+      <BookCardImage imgSrc={imgSrc} imgAlt={imgAlt} />
       <RowBookCardInfo
-        postTitle={'코드를 깔끔하게 쓰고 싶다면?'}
-        bookTitle={'Clean Code(클린코드)'}
+        nickName={nickName}
+        postTitle={postTitle}
+        bookTitle={bookTitle}
       />
     </div>
   );
 }
+
+RowBookCard.propTypes = {
+  postTitle: PropTypes.string.isRequired,
+  nickName: PropTypes.string.isRequired,
+  bookTitle: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+};
 
 export default RowBookCard;
