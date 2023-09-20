@@ -27,7 +27,7 @@ function BookCardImage({ imgSrc, imgAlt }) {
           draggable="false"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          whileHover={{ scale: isHovered ? 1.2 : 1, cursor: 'zoom-in' }}
+          whileHover={{ scale: isHovered ? 1.1 : 1, cursor: 'zoom-in' }}
           whileTap={{ scale: isHovered ? 0.9 : 1 }}
           className="w-[161px] h-[220px]"
         />
