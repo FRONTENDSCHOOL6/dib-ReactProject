@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
-
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+
+
 function HeaderBar() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
@@ -10,9 +11,7 @@ function HeaderBar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      setIsHeaderVisible(
-        prevScrollPos > currentScrollPos || currentScrollPos < 100
-      );
+      setIsHeaderVisible(prevScrollPos > currentScrollPos || currentScrollPos < 100);
       setPrevScrollPos(currentScrollPos);
     };
 
@@ -32,28 +31,14 @@ function HeaderBar() {
     >
       <div className="w-[1200px] h-20 m-auto flex justify-between items-center relative">
         <motion.h1
-            initial={{ opacity: 0,y:-600 }}
-            animate={{ opacity: 4,y:0 }}>
+        initial={{ opacity: 0,y:-600 }}
+        animate={{ opacity: 4,y:0 }}
+        whileHover={{ scale: 1.2 }}>
           <Link to="/">
             <img src="/logoBlack.png" alt="개발자의 도서리뷰 dib" />
           </Link>
         </motion.h1>
-        <nav className="absolute left-52">
-          <ul className="flex gap-24">
-            <li>
-              <Link to="/bookList">도서목록</Link>
-            </li>
-            <li>
-              <Link to="/postListPage">게시글</Link>
-            </li>
-            <li>
-              <Link to="/favoritePage">즐겨찾기</Link>
-            </li>
-          </ul>
-        </nav>
-        <Link to="/login" className="">
-          로그인
-        </Link>
+        <Nav />
       </div>
     </header>
   );
