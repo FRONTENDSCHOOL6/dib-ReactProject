@@ -37,6 +37,7 @@ function BestBook() {
                   nickName={item.user_id[0]}
                   postTitle={item.post_title}
                   bookTitle={item.book_title}
+                  bookMark={item.book_mark}
                 />
               </li>
             ))}
