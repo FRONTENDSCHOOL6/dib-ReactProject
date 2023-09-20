@@ -4,10 +4,28 @@ import PostMain from '@/components/userPost/PostMain';
 import CommentsLayout from '@/components/userPost/CommentsLayout';
 import PocketBase from 'pocketbase';
 import toast from 'react-hot-toast';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function BookDescription() {
-  const [writeCommnet, setWriteComment] = useState('');
+  const [writeComment, setWriteComment] = useState('');
+  const [reviewData, setReviewData] = useState(null);
+
+  useEffect(() => {
+    async function renderReviewPage() {
+      const pb = new PocketBase('https://db-dib.pockethost.io');
+      try {
+        const record = await pb.collection('posts').getOne('xd64yi7yecy272v', {
+          expand: 'relField1,relField2.subRelField',
+        });
+        setReviewData(record);
+        console.log(record);
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    }
+
+    renderReviewPage();
+  }, []);
 
   const handleWriteComment = (event) => {
     setWriteComment(event.target.value);
@@ -17,7 +35,7 @@ function BookDescription() {
     event.preventDefault();
     const data = {
       user_id: ['1u8j85zmyjckzwl'],
-      comment_contents: writeCommnet,
+      comment_contents: writeComment,
     };
 
     const pb = new PocketBase('https://db-dib.pockethost.io');
@@ -35,17 +53,26 @@ function BookDescription() {
 
   return (
     <>
-      <PostBookInfo />
-      <PostTitle />
-      <PostMain />
-      <CommentsLayout
-        onClick={(event) => {
-          handleClickPostComment(event);
-        }}
-        onChange={(event) => {
-          handleWriteComment(event);
-        }}
-      />
+      {reviewData && (
+        <>
+          <PostBookInfo
+            author={reviewData.author}
+            title={reviewData.book_title}
+            bookImage={reviewData.book_image_link}
+            publisher={reviewData.publisher}
+          />
+          <PostTitle
+            postTitle={reviewData.post_title}
+            userName={reviewData.user_id[0]}
+            createDate={reviewData.created}
+          />
+          <PostMain mainText={reviewData.post_contents} />
+          <CommentsLayout
+            onClick={handleClickPostComment}
+            onChange={handleWriteComment}
+          />
+        </>
+      )}
     </>
   );
 }

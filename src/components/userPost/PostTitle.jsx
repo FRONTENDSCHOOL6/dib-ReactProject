@@ -1,11 +1,10 @@
 import hori from '@/assets/hori.png';
+import PropTypes from 'prop-types';
 
-function PostTitle() {
+function PostTitle({ postTitle, userName, cearteDate }) {
   return (
     <div className="flex items-start flex-col m-auto mb-[60px] w-[1200px] border-b border-horizontal">
-      <h3 className="mb-10 text-[28px]">
-        제가 React를 배울 때 도움이 많이 된 책을 소개합니다!
-      </h3>
+      <h3 className="mb-10 text-[28px]">{postTitle}</h3>
       <div className="flex items-center justify-between mb-7 w-[1200px]">
         <div className="flex justify-center items-center">
           <img
@@ -13,8 +12,8 @@ function PostTitle() {
             alt="유저 아이콘 이미지"
             className="rounded-[50%] w-[30px] h-[30px] mr-[8px]"
           />
-          <span className="text-base mr-[25px]">유저닉네임</span>
-          <span className="text-horizontal">2023.09.15</span>
+          <span className="text-base mr-[25px]">{userName}</span>
+          <span className="text-horizontal">{cearteDate}</span>
         </div>
         <div className="flex items-center">
           <button>수정</button>
@@ -27,3 +26,9 @@ function PostTitle() {
 }
 
 export default PostTitle;
+
+PostTitle.propTypes = {
+  postTitle: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  cearteDate: PropTypes.string.isRequired,
+};

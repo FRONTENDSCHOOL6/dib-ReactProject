@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import react from '@/assets/reactBook.png';
+import PropTypes from 'prop-types';
 
-function BookInfoLayout() {
+function BookInfoLayout({ title, bookImage, author, publisher }) {
   const [isPressed, setIsPressed] = useState(false);
 
   const handlePressedBtn = () => {
@@ -15,29 +15,29 @@ function BookInfoLayout() {
           <dt className="sr-only">도서 이미지</dt>
           <dd className="mr-[100px]">
             <img
-              src={react}
+              src={bookImage}
               alt="도서 러닝리액트"
               className="w-[330px] h-[454px] min-w-[400px]"
             />
           </dd>
 
-          <dt className="flex flex-col justify-center flex-grow">
+          <div className="flex flex-col justify-center flex-grow">
             <dd className="mb-[75px]">
               <button className="border border-dibBlack text-lg flex justify-center items-center w-[150px] h-[45px] rounded-[50px] px-11 py-5">
                 <p>React</p>
               </button>
             </dd>
             <dt className="sr-only">도서 제목</dt>
-            <dd className="text-3xl mb-[100px]">Learning React 러닝 리액트</dd>
+            <dd className="text-3xl mb-[100px]">{title}</dd>
             <dt className="sr-only ">저자</dt>
             <dd className="text-lg mb-8 border-b border-horizontal w-[384px] h-[50px] flex items-center">
-              김아무개
+              {author}
             </dd>
             <dt className="sr-only">출판사</dt>
             <dd className="text-lg mb-8 border-b border-horizontal w-[384px] h-[50px] flex items-center">
-              한빛 출판사
+              {publisher}
             </dd>
-          </dt>
+          </div>
         </dl>
 
         {/* 체크박스 이미지 구현 */}
@@ -62,3 +62,10 @@ function BookInfoLayout() {
 }
 
 export default BookInfoLayout;
+
+BookInfoLayout.propTypes = {
+  title: PropTypes.string,
+  bookImage: PropTypes.string,
+  author: PropTypes.string,
+  publisher: PropTypes.string,
+};
