@@ -6,6 +6,7 @@ import { emailReg, pwReg } from '@/utils/regular';
 import { pb } from '@/api/pocketbase';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function LoginForm() {
   const [values, setValues] = useState({
@@ -50,11 +51,28 @@ function LoginForm() {
           .authWithPassword(values.email, values.password);
 
         console.log('로그인 성공:', loginUser);
-        alert('로그인에 성공하셨습니다.');
+
+        toast.success('최고의 프론트엔드 개발자님 입장!', {
+          position: 'top-center',
+          duration: 3000,
+          icon: '😎',
+          ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+          },
+        });
         setUserData(loginUser);
         navigate('/');
       } catch (error) {
-        alert('로그인 실패하셨습니다.');
+        toast.error('로그인 실패하셨어요', {
+          position: 'top-center',
+          duration: 3000,
+          icon: '😯',
+          ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+          },
+        });
         setUserData(null);
       }
     } else {
