@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+// import { useState } from 'react';
 
-function BookCardImage({ imgSrc, imgAlt }) {
-  const [isPressed, setIsPressed] = useState(false);
+function BookCardImage({ imgSrc, imgAlt, onClick, isPressed }) {
+  // const [isPressed, setIsPressed] = useState(false);
 
-  const handlePressedBtn = () => {
-    setIsPressed(!isPressed);
-  };
+  // const handlePressedBtn = () => {
+  //   setIsPressed(!isPressed);
+  // };
 
   return (
     <div className="relative">
@@ -17,7 +17,7 @@ function BookCardImage({ imgSrc, imgAlt }) {
         <input
           className="absolute top-[-5px] right-[300px] w-[46px] h-[98px] hidden"
           type="checkbox"
-          onClick={handlePressedBtn}
+          onClick={onClick}
           aria-pressed={isPressed}
           aria-label={isPressed ? '선택됨' : '선택 안 됨'}
           id="bookMark"
@@ -38,11 +38,8 @@ function BookCardImage({ imgSrc, imgAlt }) {
 BookCardImage.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isPressed: PropTypes.boolean,
 };
 
 export default BookCardImage;
-
-BookCardImage.propTypes = {
-  imgSrc: PropTypes.string.isRequired,
-  imgAlt: PropTypes.string.isRequired,
-}

@@ -1,15 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function PostOptions() {
-  const [putHeart, setPutHerart] = useState(false);
-
-  function handleClickHeart() {
-    setPutHerart(!putHeart);
-  }
-
+function PostOptions({ onClick, putHeart }) {
   return (
     <div className="m-auto mt-20 flex justify-between w-[1200px] h-[25px] text-base">
       <div className="flex items-center">
@@ -21,7 +15,7 @@ function PostOptions() {
         <div className="w-[1px] h-[13px] bg-slate-400 mx-3"></div>
 
         <div>
-          <button onClick={handleClickHeart} className="mr-2">
+          <button onClick={onClick} className="mr-2">
             <span className="mr-2">좋아요</span>
             <span>
               <FontAwesomeIcon
@@ -38,3 +32,8 @@ function PostOptions() {
 }
 
 export default PostOptions;
+
+PostOptions.propTypes = {
+  onClick: PropTypes.func,
+  putHeart: PropTypes.boolean,
+};

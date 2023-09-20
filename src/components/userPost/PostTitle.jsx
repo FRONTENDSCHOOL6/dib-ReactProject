@@ -28,7 +28,7 @@ function PostTitle({ postTitle, userName, cearteDate }) {
 export default PostTitle;
 
 PostTitle.propTypes = {
-  postTitle: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
-  cearteDate: PropTypes.string.isRequired,
+  postTitle: PropTypes.string,
+  userName: PropTypes.string,
+  cearteDate: PropTypes.string,
 };
