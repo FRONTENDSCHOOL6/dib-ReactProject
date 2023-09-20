@@ -14,6 +14,7 @@ function BookList() {
       try {
         const allRecord = await pb.collection('posts').getFullList();
         setData(allRecord);
+        setFilteredData(allRecord);
       } catch (error) {
         console.error(error);
       }
@@ -26,10 +27,9 @@ function BookList() {
     const newFilteredData = data.filter((item) =>
       item.category.includes(selectedCategory)
     );
-
     setFilteredData(newFilteredData);
   };
-  
+
   const handleHTMLCategory = (e) => {
     handleSelectCategory(e, "HTML");
   };
@@ -51,7 +51,7 @@ function BookList() {
   return (
     <>
       <SubVisualBanner title="도서목록" />
-      <TabButtonList htmlClick={handleHTMLCategory} cssClick={handleCSSCategory} reactClick={handleReactCategory} javascriptClick={handleJsCategory}/>
+      <TabButtonList htmlClick={handleHTMLCategory} cssClick={handleCSSCategory} reactClick={handleReactCategory} javascriptClick={handleJsCategory} allClick={() => setFilteredData(data)} />
 
       <div className="w-[1920px] m-auto">
         <ul
@@ -61,8 +61,7 @@ function BookList() {
         >
           {filteredData.map((item) => (
             <li key={item.id}>
-              <ColBookCard imgSrc={item.book_image_link} imgAlt={item.book_title} nickName={item.user_id[0]} postTitle={item.post_title}
-        bookTitle={item.book_title}/>
+              <ColBookCard imgSrc={item.book_image_link} imgAlt={item.book_title} nickName={item.user_id[0]} postTitle={item.post_title}bookTitle={item.book_title}/>
             </li>
           ))}
         </ul>
