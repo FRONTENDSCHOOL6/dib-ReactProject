@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function FooterBar() {
   return (
@@ -22,7 +23,11 @@ function FooterBar() {
             className="text-lg not-italic font-normal leading-[24px] text-center block"
             aria-hidden
           >
-            <div className="flex flex-col items-center justify-center">
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-col items-center justify-center"
+            >
               <img
                 src="/jjang-aaa.png"
                 alt="양정아"
@@ -33,12 +38,15 @@ function FooterBar() {
                 <span className="text-[20px]">양정아</span>
                 <img
                   src="/github.svg"
-                  alt="양정아 깃허브 주소"
-                  className="w-[24px] h-[24px]"
+                  alt=""
+                  className="
+                      w-[24px]
+                      h-[24x]
+                  "
                   aria-hidden
                 />
               </div>
-            </div>
+            </motion.div>
           </Link>
           <Link
             to="https://github.com/bomlang"
@@ -46,7 +54,11 @@ function FooterBar() {
             className="text-lg not-italic font-normal leading-[24px] text-center block"
             aria-hidden
           >
-            <div className="flex flex-col items-center justify-center">
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-col items-center justify-center"
+            >
               <img
                 src="/ho.png"
                 alt="이호"
@@ -62,7 +74,7 @@ function FooterBar() {
                   aria-hidden
                 />
               </div>
-            </div>
+            </motion.div>
           </Link>
           <Link
             to="https://github.com/yenaf"
@@ -70,7 +82,11 @@ function FooterBar() {
             className="text-lg not-italic font-normal leading-[24px] text-center block"
             aria-hidden
           >
-            <div className="flex flex-col items-center justify-center">
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-col items-center justify-center"
+            >
               <img
                 src="/yenaf.png"
                 alt="강예나"
@@ -86,7 +102,7 @@ function FooterBar() {
                   aria-hidden
                 />
               </div>
-            </div>
+            </motion.div>
           </Link>
           <Link
             to="https://github.com/wlstmd1004v"
@@ -94,7 +110,11 @@ function FooterBar() {
             className="text-lg not-italic font-normal leading-[24px] text-center block"
             aria-hidden
           >
-            <div className="flex flex-col items-center justify-center">
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-col items-center justify-center"
+            >
               <img
                 src="/jin.png"
                 alt="전진승"
@@ -110,7 +130,7 @@ function FooterBar() {
                   aria-hidden
                 />
               </div>
-            </div>
+            </motion.div>
           </Link>
         </div>
         <Link
@@ -119,7 +139,9 @@ function FooterBar() {
         >
           <div className="flex items-center">
             <span className="mr-5">멋쟁이 사자처럼 FE 6기 4조 깃허브</span>
-            <img
+            <motion.img
+              whileHover={{ scale: 1.3 }}
+              transition={{ duration: 0.3 }}
               src="/github.svg"
               alt="4조 공통 깃허브 주소"
               className="w-[38px] h-[37px]"
