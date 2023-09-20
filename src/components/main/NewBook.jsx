@@ -9,14 +9,26 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 const STYLES = {
-  width: '24px',
-  height: '12px',
-  color: 'black',
+  position: 'absolute',
+  width: '2100px',
+  height: '40px',
+  top: '80%',
+  color: '#222222',
 };
 const STYLES1 = {
-  width: '24px',
-  height: '12px',
-  color: 'black',
+  width: '14px',
+  height: '40px',
+  top: '80%',
+  color: '#222222',
+};
+const STYLES2 = {
+  position: 'absolute',
+  background: '#d6d6d6',
+  width: '1000px',
+  height: '2px',
+  top: '80%',
+  color: 'red',
+  zIndex: '50',
 };
 
 function NewBook() {
@@ -27,6 +39,7 @@ function NewBook() {
     async function fetchNewBooks() {
       const newRecords = await pb.collection('posts').getFullList({
         sort: '-created',
+        expand : 'user_id',
       });
       const filteredData = newRecords.slice(0, 8);
       setData(filteredData);
@@ -50,20 +63,24 @@ function NewBook() {
               spaceBetween={30}
               pagination={{
                 type: 'progressbar',
+                el:'.progressbar',
+                renderProgressbar(progressbarFillClass) {
+                  return `<span class="${progressbarFillClass}" style="background-color: #627D59;"></span>`;
+                },
               }}
               navigation={{
                 prevEl: '.swiper-button-prev',
                 nextEl: '.swiper-button-next',
               }}
               modules={[Pagination, Navigation]}
-              className="mySwiper h-[450px]"
+              className="mySwiper h-[600px] relative"
             >
               {data.map((item) => (
                 <SwiperSlide key={item.id}>
                   <ColBookCard
                     imgSrc={item.book_image_link}
                     imgAlt={item.book_title}
-                    nickName={item.user_id[0]}
+                    nickName={item.expand.user_id[0].nickname}
                     postTitle={item.post_title}
                     bookTitle={item.book_title}
                   />
@@ -83,6 +100,7 @@ function NewBook() {
                 tabIndex={0 }
                 title="오른쪽"
               ></div>
+              <div className="progressbar" style={STYLES2}></div>
             </Swiper>
           </div>
         </div>

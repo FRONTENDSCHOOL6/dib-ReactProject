@@ -1,33 +1,57 @@
 import { Link } from 'react-router-dom';
-import CategoryTabButton from './../category/CategoryTabButton';
 import RowBookCard from '../common/bookCards/RowBookCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import { pb } from '@/api/pocketbase';
+import CategoryTabButtonList from './../category/CategoryTabButton';
 
 function CategoryBook() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState();
 
   useEffect(() => {
     pb.autoCancellation(false);
     async function fetchCategory() {
       const CategoryRecords = await pb.collection('posts').getFullList({
         sort: '-created',
+        expand : 'user_id',
       });
       setData(CategoryRecords);
       setFilteredData(CategoryRecords.slice(0, 4));
     }
     fetchCategory();
   }, []);
-
-  const handleSelectCategory = (selectedCategory) => {
+  const handleSelectCategory = (e, selectedCategory) => {
+    e.preventDefault();
     const newFilteredData = data.filter((item) =>
-      item.category.includes(selectedCategory)
+    item.category.includes(selectedCategory)
     ).slice(0, 4); // 선택한 카테고리에 맞는 도서 중 최신순으로 4개만 필터링
     setFilteredData(newFilteredData);
   };
+
+  const handleHTMLCategory = (e) => {
+    handleSelectCategory(e, "HTML");
+    setSelectedCategory("HTML");
+  };
+
+  const handleCSSCategory = (e) => {
+    handleSelectCategory(e, "CSS");
+    setSelectedCategory("CSS");
+  };
+
+  const handleReactCategory = (e) => {
+    handleSelectCategory(e, "React");
+    setSelectedCategory("React");
+  };
+
+  const handleJsCategory = (e) => {
+    handleSelectCategory(e, "JavaScript");
+    setSelectedCategory("JavaScript");
+  };
+
+
 
   
    return (
@@ -46,7 +70,7 @@ function CategoryBook() {
          >
            <FontAwesomeIcon icon={faPlus} className="w-[28px] h-[28px]" />
          </Link>
-         <CategoryTabButton htmlClick={() => handleSelectCategory("HTML")} cssClick={() => handleSelectCategory("CSS")} reactClick={() => handleSelectCategory("React")} javascriptClick={() => handleSelectCategory("JavaScript")} allClick={() => setFilteredData(data.slice(0,4))} />
+         <CategoryTabButtonList selected={selectedCategory} htmlClick={handleHTMLCategory} cssClick={handleCSSCategory} reactClick={handleReactCategory} javascriptClick={handleJsCategory} allClick={() => {setFilteredData(data);setSelectedCategory("all");}} />
 
           <div className="w-[1140px] my-10 mx-auto">
             <ul
@@ -59,7 +83,7 @@ function CategoryBook() {
                   <RowBookCard
                     imgSrc={item.book_image_link}
                     imgAlt={item.book_title}
-                    nickName={item.user_id[0]}
+                    nickName={item.expand.user_id[0].nickname}
                     postTitle={item.post_title}
                     bookTitle={item.book_title}
                   />
