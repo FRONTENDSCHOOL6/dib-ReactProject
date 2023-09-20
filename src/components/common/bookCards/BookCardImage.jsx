@@ -5,7 +5,7 @@ function BookCardImage({ imgSrc, imgAlt }) {
   const [isPressed, setIsPressed] = useState(false);
 
   const handlePressedBtn = () => {
-    setIsPressed(!isPressed);
+    setIsPressed((prevIsPressed) => !prevIsPressed);
   };
 
   return (
@@ -15,20 +15,21 @@ function BookCardImage({ imgSrc, imgAlt }) {
       </div>
       <form className="absolute top-[2px] right-[-302px]">
         <input
-          className="absolute top-[-5px] right-[300px] w-[46px] h-[98px] hidden"
+          className="absolute top-[-5px] right-[300px] w-[46px] h-[98px]"
           type="checkbox"
           onClick={handlePressedBtn}
           aria-pressed={isPressed}
           aria-label={isPressed ? '선택됨' : '선택 안 됨'}
-          id="bookMark"
-          name="bookMark"
+          id={`bookMark-${imgSrc}`}
+          name={`bookMark-${imgSrc}`} 
+          hidden
         />
         <label
-          htmlFor="bookMark"
+          htmlFor={`bookMark-${imgSrc}`} 
           className={`bg-no-repeat absolute top-[-3px] right-[300px]
-           w-[46px]
-           h-[98px]
-           ${isPressed ? 'bg-checkedBookMark' : 'bg-bookMark'}`}
+            w-[46px]
+            h-[98px]
+            ${isPressed ? 'bg-checkedBookMark' : 'bg-bookMark'}`}
         ></label>
       </form>
     </div>
