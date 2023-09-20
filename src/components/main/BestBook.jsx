@@ -32,12 +32,12 @@ function BestBook() {
             {data.map((item) => (
               <li key={item.id}>
                 <ColBookCard
+                  id={item.id}
                   imgSrc={item.book_image_link}
                   imgAlt={item.book_title}
                   nickName={item.user_id[0]}
                   postTitle={item.post_title}
                   bookTitle={item.book_title}
-                  bookMark={item.book_mark}
                 />
               </li>
             ))}

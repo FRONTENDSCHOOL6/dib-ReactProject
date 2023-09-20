@@ -8,6 +8,16 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
+const STYLES = {
+  width: '24px',
+  height: '12px',
+  color: 'black',
+};
+const STYLES1 = {
+  width: '24px',
+  height: '12px',
+  color: 'black',
+};
 
 function NewBook() {
   const [data, setData] = useState([]);
@@ -34,17 +44,16 @@ function NewBook() {
           새롭게 소개하는 도서를 여기서 만나보세요!
         </strong>
         <div className="w-[1200px] mx-auto">
-          <div className="flex justify-center gap-4 my-10">
+          <div className="flex justify-center gap-6 my-10">
             <Swiper
               slidesPerView={4}
               spaceBetween={30}
               pagination={{
                 type: 'progressbar',
-        
               }}
               navigation={{
-                nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
               }}
               modules={[Pagination, Navigation]}
               className="mySwiper h-[450px]"
@@ -60,8 +69,20 @@ function NewBook() {
                   />
                 </SwiperSlide>
               ))}
-            <div className="swiper-button-next"></div>
-            <div className="swiper-button-prev"></div>
+              <div
+                className="swiper-button-prev "
+                style={STYLES}
+                role="button"
+                tabIndex={0}
+                title="왼쪽"
+              ></div>
+              <div
+                className="swiper-button-next "
+                style={STYLES1}
+                role="button"
+                tabIndex={0 }
+                title="오른쪽"
+              ></div>
             </Swiper>
           </div>
         </div>
