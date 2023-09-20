@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import TabButton from "../common/TabButton"
+import PropTypes from 'prop-types';
 
-function TabButtonList() {
+function TabButtonList({cssClick,htmlClick,allClick,reactClick,javascriptClick}) {
+  
   const [activeCategory, setActiveCategory] = useState(null);
 
   const handleButtonClick = (category) => {
@@ -14,7 +16,7 @@ function TabButtonList() {
         <li>
           <TabButton 
             category="전체"
-            onClick={() => handleButtonClick('전체')}
+            onClick={allClick}
             bgColor={activeCategory === '전체' ? 'bg-primary' : 'bg-transparent'}
             textColor={activeCategory === '전체' ? 'text-white' : 'text-infoCategory'}
             borderColor={activeCategory === '전체' ? 'border-transparent' : 'border-infoCategory'}
@@ -23,7 +25,7 @@ function TabButtonList() {
         <li>
           <TabButton 
               category="HTML"
-              onClick={() => handleButtonClick('HTML')}
+              onClick={htmlClick}
               bgColor={activeCategory === 'HTML' ? 'bg-primary' : 'bg-transparent'}
               textColor={activeCategory === 'HTML' ? 'text-white' : 'text-infoCategory'}
               borderColor={activeCategory === 'HTML' ? 'border-transparent' : 'border-infoCategory'}
@@ -32,7 +34,7 @@ function TabButtonList() {
         <li>
           <TabButton 
               category="CSS"
-              onClick={() => handleButtonClick('CSS')}
+              onClick={cssClick}
               bgColor={activeCategory === 'CSS' ? 'bg-primary' : 'bg-transparent'}
               textColor={activeCategory === 'CSS' ? 'text-white' : 'text-infoCategory'}
               borderColor={activeCategory === 'CSS' ? 'border-transparent' : 'border-infoCategory'}
@@ -41,7 +43,7 @@ function TabButtonList() {
         <li>
           <TabButton 
               category="Javascript"
-              onClick={() => handleButtonClick('Javascript')}
+              onClick={javascriptClick}
               bgColor={activeCategory === 'Javascript' ? 'bg-primary' : 'bg-transparent'}
               textColor={activeCategory === 'Javascript' ? 'text-white' : 'text-infoCategory'}
               borderColor={activeCategory === 'Javascript' ? 'border-transparent' : 'border-infoCategory'}
@@ -50,7 +52,7 @@ function TabButtonList() {
         <li>
           <TabButton 
               category="React"
-              onClick={() => handleButtonClick('React')}
+              onClick={reactClick}
               bgColor={activeCategory === 'React' ? 'bg-primary' : 'bg-transparent'}
               textColor={activeCategory === 'React' ? 'text-white' : 'text-infoCategory'}
               borderColor={activeCategory === 'React' ? 'border-transparent' : 'border-infoCategory'}
@@ -62,3 +64,11 @@ function TabButtonList() {
 }
 
 export default TabButtonList
+
+TabButtonList.propTypes = {
+  reactClick: PropTypes.func.isRequired,
+  javascriptClick: PropTypes.func.isRequired,
+  cssClick: PropTypes.func.isRequired,
+  htmlClick: PropTypes.func.isRequired,
+  allClick: PropTypes.func.isRequired,
+};
