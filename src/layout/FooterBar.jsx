@@ -24,7 +24,7 @@ function FooterBar() {
             aria-hidden
           >
             <motion.div
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.3 }}
               className="flex flex-col items-center justify-center"
             >
@@ -55,7 +55,7 @@ function FooterBar() {
             aria-hidden
           >
             <motion.div
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.3 }}
               className="flex flex-col items-center justify-center"
             >
@@ -83,7 +83,7 @@ function FooterBar() {
             aria-hidden
           >
             <motion.div
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.3 }}
               className="flex flex-col items-center justify-center"
             >
@@ -111,7 +111,7 @@ function FooterBar() {
             aria-hidden
           >
             <motion.div
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.3 }}
               className="flex flex-col items-center justify-center"
             >
@@ -140,7 +140,7 @@ function FooterBar() {
           <div className="flex items-center">
             <span className="mr-5">멋쟁이 사자처럼 FE 6기 4조 깃허브</span>
             <motion.img
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.3 }}
               transition={{ duration: 0.3 }}
               src="/github.svg"
               alt="4조 공통 깃허브 주소"
