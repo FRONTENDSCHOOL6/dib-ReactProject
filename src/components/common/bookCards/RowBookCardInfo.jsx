@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-function RowBookCardInfo({ postTitle, bookTitle }) {
+function RowBookCardInfo({ postTitle, bookTitle,nickName }) {
   const [liked, setLiked] = useState(false);
   const handleLikeClick = () => {
     setLiked(!liked);
@@ -18,7 +18,7 @@ function RowBookCardInfo({ postTitle, bookTitle }) {
       <div className="flex items-center justify-between w-[217px]">
         <div className="w-[200px] h-[28px] flex items-center mr-10">
           <div className="w-7 h-7 rounded-full bg-slate-300 mr-[5px]"></div>
-          <span className="text-sm">한글여덜글자가자</span>
+          <span className="text-sm">{nickName}</span>
         </div>
         <div>
           <form>
@@ -49,4 +49,5 @@ export default RowBookCardInfo;
 RowBookCardInfo.propTypes = {
   postTitle: PropTypes.string.isRequired,
   bookTitle: PropTypes.string.isRequired,
+  nickName: PropTypes.string.isRequired,
 };

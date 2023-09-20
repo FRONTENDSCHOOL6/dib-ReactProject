@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-function ColBookCardInfo({ postTitle, bookTitle, nickName }) {
+function ColBookCardInfo({ postTitle, bookTitle,nickName }) {
   const [liked, setLiked] = useState(false);
   const handleLikeClick = () => {
     setLiked(!liked);
@@ -42,10 +42,10 @@ function ColBookCardInfo({ postTitle, bookTitle, nickName }) {
   );
 }
 
-export default ColBookCardInfo;
 
 ColBookCardInfo.propTypes = {
   postTitle: PropTypes.string.isRequired,
   bookTitle: PropTypes.string.isRequired,
   nickName: PropTypes.string.isRequired,
 };
+export default ColBookCardInfo;

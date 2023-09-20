@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-function BookCardImage({imgSrc,imgAlt}) {
+function BookCardImage({ imgSrc, imgAlt }) {
   const [isPressed, setIsPressed] = useState(false);
 
   const handlePressedBtn = () => {
@@ -25,13 +25,20 @@ function BookCardImage({imgSrc,imgAlt}) {
         />
         <label
           htmlFor="bookMark"
-          className={`bg-no-repeat absolute top-[-3px] right-[300px] w-[46px] h-[98px] 
-     ${isPressed ? 'bg-checkedBookMark' : 'bg-bookMark'}`}
+          className={`bg-no-repeat absolute top-[-3px] right-[300px]
+           w-[46px]
+           h-[98px]
+           ${isPressed ? 'bg-checkedBookMark' : 'bg-bookMark'}`}
         ></label>
       </form>
     </div>
   );
 }
+
+BookCardImage.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+};
 
 export default BookCardImage;
 
