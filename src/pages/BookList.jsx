@@ -18,7 +18,6 @@ function BookList() {
         const allRecord = await pb.collection('posts').getFullList({
           expand : 'user_id',
         });
-        console.log(allRecord);
         setData(allRecord);
         setFilteredData(allRecord);
       } catch (error) {
