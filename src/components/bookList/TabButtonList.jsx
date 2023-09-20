@@ -1,14 +1,8 @@
-import { useState } from 'react';
 import TabButton from "../common/TabButton"
 import PropTypes from 'prop-types';
 
-function TabButtonList({cssClick,htmlClick,allClick,reactClick,javascriptClick}) {
+function TabButtonList({cssClick,htmlClick,allClick,reactClick,javascriptClick,selected}) {
   
-  const [activeCategory, setActiveCategory] = useState(null);
-
-  const handleButtonClick = (category) => {
-  setActiveCategory(category);
-  };
 
   return (
     <div className="w-[1920px] m-auto">
@@ -17,45 +11,45 @@ function TabButtonList({cssClick,htmlClick,allClick,reactClick,javascriptClick})
           <TabButton 
             category="전체"
             onClick={allClick}
-            bgColor={activeCategory === '전체' ? 'bg-primary' : 'bg-transparent'}
-            textColor={activeCategory === '전체' ? 'text-white' : 'text-infoCategory'}
-            borderColor={activeCategory === '전체' ? 'border-transparent' : 'border-infoCategory'}
+            bgColor={selected === 'all' ? 'bg-primary' : 'bg-transparent'}
+            textColor={selected === 'all' ? 'text-white' : 'text-infoCategory'}
+            borderColor={selected === 'all' ? 'border-transparent' : 'border-infoCategory'}
           /> 
         </li>
         <li>
           <TabButton 
               category="HTML"
               onClick={htmlClick}
-              bgColor={activeCategory === 'HTML' ? 'bg-primary' : 'bg-transparent'}
-              textColor={activeCategory === 'HTML' ? 'text-white' : 'text-infoCategory'}
-              borderColor={activeCategory === 'HTML' ? 'border-transparent' : 'border-infoCategory'}
+              bgColor={selected === 'HTML' ? 'bg-primary' : 'bg-transparent'}
+              textColor={selected === 'HTML' ? 'text-white' : 'text-infoCategory'}
+              borderColor={selected === 'HTML' ? 'border-transparent' : 'border-infoCategory'}
             />
         </li>
         <li>
           <TabButton 
               category="CSS"
               onClick={cssClick}
-              bgColor={activeCategory === 'CSS' ? 'bg-primary' : 'bg-transparent'}
-              textColor={activeCategory === 'CSS' ? 'text-white' : 'text-infoCategory'}
-              borderColor={activeCategory === 'CSS' ? 'border-transparent' : 'border-infoCategory'}
+              bgColor={selected === 'CSS' ? 'bg-primary' : 'bg-transparent'}
+              textColor={selected === 'CSS' ? 'text-white' : 'text-infoCategory'}
+              borderColor={selected === 'CSS' ? 'border-transparent' : 'border-infoCategory'}
             />
         </li>
         <li>
           <TabButton 
               category="Javascript"
               onClick={javascriptClick}
-              bgColor={activeCategory === 'Javascript' ? 'bg-primary' : 'bg-transparent'}
-              textColor={activeCategory === 'Javascript' ? 'text-white' : 'text-infoCategory'}
-              borderColor={activeCategory === 'Javascript' ? 'border-transparent' : 'border-infoCategory'}
+              bgColor={selected === 'JavaScript' ? 'bg-primary' : 'bg-transparent'}
+              textColor={selected === 'JavaScript' ? 'text-white' : 'text-infoCategory'}
+              borderColor={selected === 'JavaScript' ? 'border-transparent' : 'border-infoCategory'}
             />
         </li>
         <li>
           <TabButton 
               category="React"
               onClick={reactClick}
-              bgColor={activeCategory === 'React' ? 'bg-primary' : 'bg-transparent'}
-              textColor={activeCategory === 'React' ? 'text-white' : 'text-infoCategory'}
-              borderColor={activeCategory === 'React' ? 'border-transparent' : 'border-infoCategory'}
+              bgColor={selected === 'React' ? 'bg-primary' : 'bg-transparent'}
+              textColor={selected === 'React' ? 'text-white' : 'text-infoCategory'}
+              borderColor={selected === 'React' ? 'border-transparent' : 'border-infoCategory'}
             />
         </li>
       </ul>
@@ -71,4 +65,5 @@ TabButtonList.propTypes = {
   cssClick: PropTypes.func.isRequired,
   htmlClick: PropTypes.func.isRequired,
   allClick: PropTypes.func.isRequired,
+  selected: PropTypes.string,
 };

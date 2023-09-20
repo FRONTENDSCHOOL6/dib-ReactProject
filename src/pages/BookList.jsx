@@ -1,4 +1,5 @@
 import { pb } from '@/api/pocketbase';
+import Spinner from '@/components/bookList/Spinner';
 import TabButtonList from '@/components/bookList/TabButtonList';
 import ColBookCard from '@/components/common/bookCards/ColBookCard';
 import SubVisualBanner from '@/components/common/SubVisualBanner';
@@ -7,17 +8,23 @@ import { useEffect, useState } from 'react';
 function BookList() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     pb.autoCancellation(false);
     async function fetchBooksList() {
+      setIsLoading(true); 
       try {
-        const allRecord = await pb.collection('posts').getFullList();
+        const allRecord = await pb.collection('posts').getFullList({
+          expand : 'user_id',
+        });
+        console.log(allRecord);
         setData(allRecord);
         setFilteredData(allRecord);
       } catch (error) {
         console.error(error);
       }
+      setIsLoading(false);
     }
     fetchBooksList();
   }, []);
@@ -32,18 +39,22 @@ function BookList() {
 
   const handleHTMLCategory = (e) => {
     handleSelectCategory(e, "HTML");
+    setSelectedCategory("HTML");
   };
 
   const handleCSSCategory = (e) => {
     handleSelectCategory(e, "CSS");
+    setSelectedCategory("CSS");
   };
 
   const handleReactCategory = (e) => {
     handleSelectCategory(e, "React");
+    setSelectedCategory("React");
   };
 
   const handleJsCategory = (e) => {
     handleSelectCategory(e, "JavaScript");
+    setSelectedCategory("JavaScript");
   };
 
   
@@ -51,9 +62,12 @@ function BookList() {
   return (
     <>
       <SubVisualBanner title="도서목록" />
-      <TabButtonList htmlClick={handleHTMLCategory} cssClick={handleCSSCategory} reactClick={handleReactCategory} javascriptClick={handleJsCategory} allClick={() => setFilteredData(data)} />
+      <TabButtonList selected={selectedCategory} htmlClick={handleHTMLCategory} cssClick={handleCSSCategory} reactClick={handleReactCategory} javascriptClick={handleJsCategory} allClick={() => {setFilteredData(data);setSelectedCategory("all");}} />
 
       <div className="w-[1920px] m-auto">
+      {isLoading ? (
+          <Spinner/>
+      ) : (
         <ul
           id="tab-panel-1"
           aria-labelledby="tab-1"
@@ -61,10 +75,11 @@ function BookList() {
         >
           {filteredData.map((item) => (
             <li key={item.id}>
-              <ColBookCard imgSrc={item.book_image_link} imgAlt={item.book_title} nickName={item.user_id[0]} postTitle={item.post_title}bookTitle={item.book_title}/>
+              <ColBookCard imgSrc={item.book_image_link} imgAlt={item.book_title} nickName={item.expand.user_id[0].nickname} postTitle={item.post_title}bookTitle={item.book_title}/>
             </li>
           ))}
         </ul>
+        )}
       </div>
     </>
   );
