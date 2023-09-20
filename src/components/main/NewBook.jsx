@@ -42,9 +42,6 @@ function NewBook() {
               ))}
             </ul>
           </div>
-          <div>
-            <ScrollButton />
-          </div>
         </section>
       </>
     );
