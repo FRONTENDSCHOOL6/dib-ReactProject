@@ -1,16 +1,26 @@
 import BookCardImage from './BookCardImage';
 import ColBookCardInfo from './ColBookCardInfo';
+import PropTypes from 'prop-types';
 
-function ColBookCard() {
+function ColBookCard({imgSrc,imgAlt,nickName,postTitle,bookTitle}) {
   return (
     <div className="shadow-[5px_5px_10px_0px_rgba(0,0,0,0.25)]">
-      <BookCardImage />
+      <BookCardImage imgSrc={imgSrc} imgAlt={imgAlt}/>
       <ColBookCardInfo
-        postTitle={'코드를 깔끔하게 쓰고 싶다면?'}
-        bookTitle={'Clean Code(클린코드)'}
+        nickName={nickName}
+        postTitle={postTitle}
+        bookTitle={bookTitle}
       />
     </div>
   );
 }
 
 export default ColBookCard;
+
+ColBookCard.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+  nickName: PropTypes.string.isRequired,
+  bookTitle: PropTypes.string.isRequired,
+  postTitle: PropTypes.string.isRequired,
+}
