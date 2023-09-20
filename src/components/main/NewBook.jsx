@@ -1,15 +1,15 @@
 import ScrollButton from '../common/ScrollButton';
-import { useRef,useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { pb } from '@/api/pocketbase';
 import ColBookCard from '../common/bookCards/ColBookCard';
-import { Navigation, Scrollbar } from 'swiper/modules';
-import { Swiper } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import 'swiper/css/scrollbar';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 function NewBook() {
-  const swiperRef = useRef(null);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -23,48 +23,54 @@ function NewBook() {
     }
     fetchNewBooks();
   }, []);
-  {
-    return (
-      <>
-        <section className="text-center relative w-[1920px] h-[670px] m-auto">
-          <h2 className="text-dibBlack text-[32px] not-italic font-normal leading-[normal] tracking-[-1.5px] m-5">
-            신규 도서
-          </h2>
-          <strong className="text-dibBlack text-[20px] not-italic font-normal">
-            새롭게 소개하는 도서를 여기서 만나보세요!
-          </strong>
-          <div className="w-[1200px] mx-auto">
-            <div className="flex justify-center gap-6 my-10">
-              <Swiper
-                rewind={true}
-                navigation={true}
-                modules={[Navigation, Scrollbar]}
-                scrollbar={{
-                  hide: true,
-                }}
-                className="mySwiper"
-              >
-                {data.map((item) => (
-                  <li key={item.id}>
-                    <ColBookCard
-                      imgSrc={item.book_image_link}
-                      imgAlt={item.book_title}
-                      nickName={item.user_id[0]}
-                      postTitle={item.post_title}
-                      bookTitle={item.book_title}
-                    />
-                  </li>
-                ))}
-              </Swiper>
-            </div>
+
+  return (
+    <>
+      <section className="text-center relative w-[1920px] h-[670px] m-auto">
+        <h2 className="text-dibBlack text-[32px] not-italic font-normal leading-[normal] tracking-[-1.5px] m-5">
+          신규 도서
+        </h2>
+        <strong className="text-dibBlack text-[20px] not-italic font-normal">
+          새롭게 소개하는 도서를 여기서 만나보세요!
+        </strong>
+        <div className="w-[1200px] mx-auto">
+          <div className="flex justify-center gap-4 my-10">
+            <Swiper
+              slidesPerView={4}
+              spaceBetween={30}
+              pagination={{
+                type: 'progressbar',
+        
+              }}
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              modules={[Pagination, Navigation]}
+              className="mySwiper h-[450px]"
+            >
+              {data.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <ColBookCard
+                    imgSrc={item.book_image_link}
+                    imgAlt={item.book_title}
+                    nickName={item.user_id[0]}
+                    postTitle={item.post_title}
+                    bookTitle={item.book_title}
+                  />
+                </SwiperSlide>
+              ))}
+            <div className="swiper-button-next"></div>
+            <div className="swiper-button-prev"></div>
+            </Swiper>
           </div>
-          <div>
-            <ScrollButton />
-          </div>
-        </section>
-      </>
-    );
-  }
+        </div>
+        <div>
+          <ScrollButton />
+        </div>
+      </section>
+    </>
+  );
 }
 
 export default NewBook;
