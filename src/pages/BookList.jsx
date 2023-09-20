@@ -7,6 +7,9 @@ import { useEffect, useState } from 'react';
 function BookList() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+
 
   useEffect(() => {
     pb.autoCancellation(false);
@@ -32,18 +35,22 @@ function BookList() {
 
   const handleHTMLCategory = (e) => {
     handleSelectCategory(e, "HTML");
+    setSelectedCategory("HTML");
   };
 
   const handleCSSCategory = (e) => {
     handleSelectCategory(e, "CSS");
+    setSelectedCategory("CSS");
   };
 
   const handleReactCategory = (e) => {
     handleSelectCategory(e, "React");
+    setSelectedCategory("React");
   };
 
   const handleJsCategory = (e) => {
     handleSelectCategory(e, "JavaScript");
+    setSelectedCategory("JavaScript");
   };
 
   
@@ -51,7 +58,7 @@ function BookList() {
   return (
     <>
       <SubVisualBanner title="도서목록" />
-      <TabButtonList htmlClick={handleHTMLCategory} cssClick={handleCSSCategory} reactClick={handleReactCategory} javascriptClick={handleJsCategory} allClick={() => setFilteredData(data)} />
+      <TabButtonList selected={selectedCategory} htmlClick={handleHTMLCategory} cssClick={handleCSSCategory} reactClick={handleReactCategory} javascriptClick={handleJsCategory} allClick={() => {setFilteredData(data);setSelectedCategory("all");}} />
 
       <div className="w-[1920px] m-auto">
         <ul
