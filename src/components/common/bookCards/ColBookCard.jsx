@@ -24,3 +24,11 @@ ColBookCard.propTypes = {
 };
 
 export default ColBookCard;
+
+ColBookCard.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+  nickName: PropTypes.string.isRequired,
+  bookTitle: PropTypes.string.isRequired,
+  postTitle: PropTypes.string.isRequired,
+}
