@@ -10,6 +10,7 @@ function BookList() {
   const [filteredData, setFilteredData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
+  
   useEffect(() => {
     pb.autoCancellation(false);
     async function fetchBooksList() {
@@ -34,34 +35,20 @@ function BookList() {
       item.category.includes(selectedCategory)
     );
     setFilteredData(newFilteredData);
+    setSelectedCategory(selectedCategory);
   };
-
-  const handleHTMLCategory = (e) => {
-    handleSelectCategory(e, "HTML");
-    setSelectedCategory("HTML");
-  };
-
-  const handleCSSCategory = (e) => {
-    handleSelectCategory(e, "CSS");
-    setSelectedCategory("CSS");
-  };
-
-  const handleReactCategory = (e) => {
-    handleSelectCategory(e, "React");
-    setSelectedCategory("React");
-  };
-
-  const handleJsCategory = (e) => {
-    handleSelectCategory(e, "JavaScript");
-    setSelectedCategory("JavaScript");
-  };
-
-  
 
   return (
     <>
       <SubVisualBanner title="도서목록" />
-      <TabButtonList selected={selectedCategory} htmlClick={handleHTMLCategory} cssClick={handleCSSCategory} reactClick={handleReactCategory} javascriptClick={handleJsCategory} allClick={() => {setFilteredData(data);setSelectedCategory("all");}} />
+      <TabButtonList 
+        selected={selectedCategory} 
+        htmlClick={(e) => handleSelectCategory(e, "HTML")} 
+        cssClick={(e) => handleSelectCategory(e,"CSS")} 
+        reactClick={(e) => handleSelectCategory(e,"React")} 
+        javascriptClick={(e) => handleSelectCategory(e,"JavaScript")} 
+        allClick={() => {setFilteredData(data);setSelectedCategory("all");}} 
+      />
 
       <div className="w-[1920px] m-auto">
       {isLoading ? (
