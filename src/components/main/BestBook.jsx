@@ -10,6 +10,7 @@ function BestBook() {
     async function fetchBestBooks() {
       const bestRecord = await pb.collection('posts').getFullList({
         sort: '-like_count',
+        expand : 'user_id',
       });
       // 상위 4개의 데이터만 필터링
       const filteredData = bestRecord.slice(0, 4);
@@ -32,9 +33,10 @@ function BestBook() {
             {data.map((item) => (
               <li key={item.id}>
                 <ColBookCard
+                  id={item.id}
                   imgSrc={item.book_image_link}
                   imgAlt={item.book_title}
-                  nickName={item.user_id[0]}
+                  nickName={item.expand.user_id[0].nickname}
                   postTitle={item.post_title}
                   bookTitle={item.book_title}
                 />
