@@ -15,6 +15,7 @@ function PbDataProvider({ children }) {
     async function getPbData() {
       try {
         const allRecord = await pb.collection('posts').getFullList({
+          sort: '-created',
           expand: 'user_id',
         });
         setBookData(allRecord);
