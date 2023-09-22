@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-function BookCardImage({ imgSrc, imgAlt }) {
+function BookCardImage({ imgSrc, imgAlt, bookID }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
 
@@ -20,18 +21,21 @@ function BookCardImage({ imgSrc, imgAlt }) {
 
   return (
     <div className="relative">
-      <div className="bg-[#DCDCDC] w-[280px] h-[284px] flex justify-center items-center">
-        <motion.img
-          src={imgSrc}
-          alt={imgAlt}
-          draggable="false"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          whileHover={{ scale: isHovered ? 1.1 : 1, cursor: 'zoom-in' }}
-          whileTap={{ scale: isHovered ? 0.9 : 1 }}
-          className="w-[161px] h-[220px]"
-        />
-      </div>
+      <Link to={`/bookDescription/${bookID}`}>
+        <div className="bg-[#DCDCDC] w-[280px] h-[284px] flex justify-center items-center">
+          <motion.img
+            src={imgSrc}
+            alt={imgAlt}
+            draggable="false"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            whileHover={{ scale: isHovered ? 1.1 : 1, cursor: 'zoom-in' }}
+            whileTap={{ scale: isHovered ? 0.9 : 1 }}
+            className="w-[161px] h-[220px]"
+          />
+        </div>
+      </Link>
+
       <form className="absolute top-[2px] right-[-302px]">
         <input
           type="checkbox"
@@ -50,6 +54,7 @@ function BookCardImage({ imgSrc, imgAlt }) {
               ${isPressed ? 'bg-checkedBookMark' : 'bg-bookMark'}`}
         ></label>
       </form>
+
     </div>
    );
 }
@@ -57,6 +62,7 @@ function BookCardImage({ imgSrc, imgAlt }) {
 BookCardImage.propTypes = {
    imgSrc: PropTypes.string.isRequired,
    imgAlt: PropTypes.string.isRequired,
+   bookID: PropTypes.string.isRequired,
 };
 
 export default BookCardImage;

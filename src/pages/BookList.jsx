@@ -61,7 +61,14 @@ function BookList() {
         >
           {filteredData.map((item) => (
             <li key={item.id}>
-              <ColBookCard imgSrc={item.book_image_link} imgAlt={item.book_title} nickName={item.expand.user_id[0].nickname} postTitle={item.post_title}bookTitle={item.book_title}/>
+              <ColBookCard
+                bookID={item}
+                imgSrc={item.book_image_link}
+                imgAlt={item.book_title}
+                nickName={item.expand.user_id[0].nickname}
+                postTitle={item.post_title}
+                bookTitle={item.book_title}
+              />
             </li>
           ))}
         </ul>

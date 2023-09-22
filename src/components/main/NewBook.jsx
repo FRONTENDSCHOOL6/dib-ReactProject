@@ -77,6 +77,7 @@ function NewBook() {
               {data.map((item) => (
                 <SwiperSlide key={item.id}>
                   <ColBookCard
+                    bookID={item.id}
                     imgSrc={item.book_image_link}
                     imgAlt={item.book_title}
                     nickName={item.expand.user_id[0].nickname}
