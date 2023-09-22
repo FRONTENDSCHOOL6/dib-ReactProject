@@ -6,11 +6,11 @@ import { useEffect, useState } from 'react';
 
 function HeaderBar() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
+      const currentScrollPos = window.scrollY;
       setIsHeaderVisible(prevScrollPos > currentScrollPos || currentScrollPos < 100);
       setPrevScrollPos(currentScrollPos);
     };
@@ -31,9 +31,13 @@ function HeaderBar() {
     >
       <div className="w-[1200px] h-20 m-auto flex justify-between items-center relative">
         <motion.h1
-        initial={{ opacity: 0,y:-600 }}
-        animate={{ opacity: 4,y:0 }}
-        whileHover={{ scale: 1.2 }}>
+        initial={{ opacity: 0,x:-100}}
+        animate={{ opacity: 1,x:0,rotate:360 }}
+        whileHover={{ scale: 1.2 }}
+        transition={{
+          duration :1.5,
+          ease : "easeInOut"
+        }}>
           <Link to="/">
             <img src="/logoBlack.png" alt="개발자의 도서리뷰 dib" />
           </Link>
