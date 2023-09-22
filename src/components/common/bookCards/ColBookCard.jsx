@@ -1,7 +1,6 @@
 import BookCardImage from './BookCardImage';
 import ColBookCardInfo from './ColBookCardInfo';
 import PropTypes from 'prop-types';
-import { useBookmark } from '@/hooks/bookmarkContext';
 
 function ColBookCard({
   postTitle,
@@ -10,27 +9,27 @@ function ColBookCard({
   imgSrc,
   imgAlt,
   onClick,
+  postId,
+  isLender,
+  bookID,
 }) {
-  const { bookmarks, addBookmark, removeBookmark } = useBookmark();
-
-  const toggleBookmark = () => {
-    if (bookmarks.includes(imgSrc)) {
-      removeBookmark(imgSrc); // 북마크가 있으면 제거
-    } else {
-      addBookmark(imgSrc); // 북마크가 없으면 추가
-    }
-  };
-
   return (
     <div className="shadow-[5px_5px_10px_0px_rgba(0,0,0,0.25)]">
-      <BookCardImage imgSrc={imgSrc} imgAlt={imgAlt} onClick={onClick} />
-      <button onClick={toggleBookmark}>
-        {bookmarks.includes(imgSrc) ? 'Remove Bookmark' : 'Add Bookmark'}
-      </button>
+      <BookCardImage
+        imgSrc={imgSrc}
+        imgAlt={imgAlt}
+        onClick={onClick}
+        bookID={bookID}
+      />
+
       <ColBookCardInfo
         nickName={nickName}
         postTitle={postTitle}
         bookTitle={bookTitle}
+        onClick={onClick}
+        isLender={isLender}
+        postId={postId}
+        bookID={bookID}
       />
     </div>
   );
@@ -43,6 +42,8 @@ ColBookCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  isLender: PropTypes.bool,
+  bookID: PropTypes.string,
 };
 
 export default ColBookCard;

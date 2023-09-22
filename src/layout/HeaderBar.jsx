@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Nav from './Nav';
 
 function HeaderBar() {
   return (
@@ -12,22 +13,7 @@ function HeaderBar() {
             <img src="/logoBlack.png" alt="개발자의 도서리뷰 dib" />
           </Link>
         </h1>
-        <nav className="absolute left-52">
-          <ul className="flex gap-24">
-            <li>
-              <Link to="/bookList">도서목록</Link>
-            </li>
-            <li>
-              <Link to="/postListPage">게시글</Link>
-            </li>
-            <li>
-              <Link to="/favoritePage">즐겨찾기</Link>
-            </li>
-          </ul>
-        </nav>
-        <Link to="/login" className="">
-          로그인
-        </Link>
+        <Nav />
       </div>
     </header>
   );

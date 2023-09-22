@@ -5,21 +5,26 @@ import CommentsLayout from '@/components/userPost/CommentsLayout';
 import PocketBase from 'pocketbase';
 import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 function BookDescription() {
+  const { id } = useParams();
+
   const [writeComment, setWriteComment] = useState('');
   const [reviewData, setReviewData] = useState(null);
   const [putHeart, setPutHerart] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+  const [userImage, setUserImage] = useState('');
 
   useEffect(() => {
     async function renderReviewPage() {
       const pb = new PocketBase('https://db-dib.pockethost.io');
       try {
-        const record = await pb.collection('posts').getOne('xd64yi7yecy272v', {
-          expand: 'relField1,relField2.subRelField',
+        const record = await pb.collection('posts').getOne(id, {
+          expand: 'user_id',
         });
         setReviewData(record);
+        console.log(record);
       } catch (error) {
         throw new Error(error.message);
       }
@@ -35,7 +40,7 @@ function BookDescription() {
   const handleClickHeart = async () => {
     const pb = new PocketBase('https://db-dib.pockethost.io');
     const data = {
-      user_id: [reviewData.user_id],
+      user_id: [reviewData.user_id.nickname],
       book_title: reviewData.book_title,
       author: reviewData.author,
       publisher: reviewData.publisher,
@@ -95,8 +100,9 @@ function BookDescription() {
             publisher={reviewData.publisher}
           />
           <PostTitle
+            userImg={userImage}
             postTitle={reviewData.post_title}
-            userName={reviewData.user_id[0]}
+            userName={reviewData.expand.user_id[0].nickname}
             createDate={reviewData.created}
           />
           <PostMain mainText={reviewData.post_contents} />
