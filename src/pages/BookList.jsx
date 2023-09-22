@@ -4,39 +4,80 @@ import TabButtonList from '@/components/bookList/TabButtonList';
 import ColBookCard from '@/components/common/bookCards/ColBookCard';
 import SubVisualBanner from '@/components/common/SubVisualBanner';
 import { usePbData } from '@/contexts/PbDataContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '@/contexts/AuthContext';
+import PocketBase from 'pocketbase';
 
 function BookList() {
-  const { bookData, isLoading } = usePbData();
-  const perPage = 16;
-
-  const [categories] = useState(['all', 'HTML', 'CSS', 'JavaScript', 'React']);
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [categoryData, setCategoryData] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
-
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [isLoading, setIsLoading] = useState(false);
+  
   useEffect(() => {
-    // 카테고리별 데이터 초기화
-    const dataByCategory = {};
-    for (const category of categories) {
-      dataByCategory[category] = bookData.filter((item) =>
-        category === 'all' ? true : item.category.includes(category)
-      );
+    pb.autoCancellation(false);
+    async function fetchBooksList() {
+      setIsLoading(true); 
+      try {
+        const allRecord = await pb.collection('posts').getFullList({
+          expand : 'user_id',
+        });
+        setData(allRecord);
+        setFilteredData(allRecord);
+      } catch (error) {
+        console.error(error);
+      }
+      setIsLoading(false);
+  const { bookData, isLoading } = usePbData();
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  // 파생상태로 관리한다.
+  const filteredData = bookData?.filter((book) => {
+    if (selectedCategory === 'all') {
+      return book;
+    } else {
+      return book.category.includes(selectedCategory);
     }
-    setCategoryData(dataByCategory);
-    setSelectedCategory('all');
-  }, [bookData, categories]);
+  });
+  const { user } = useAuth();
 
-  const handleSelectCategory = (selectedCategory) => {
-    setSelectedCategory(selectedCategory);
-    setCurrentPage(1); // 카테고리 변경 시 페이지 초기화
+  const handleLikeToggle = async (postId) => {
+    // toggleLike(postId);
+
+    const updatedLikedPosts = [...user.liked_posts];
+    const postIdIndex = updatedLikedPosts.indexOf(postId);
+    if (postIdIndex !== -1) {
+      updatedLikedPosts.splice(postIdIndex, 1);
+    } else {
+      updatedLikedPosts.push(postId);
+    }
+
+    const pb = new PocketBase('https://db-dib.pockethost.io');
+    const updatedUserData = {
+      liked_posts: updatedLikedPosts,
+    };
+
+    try {
+      const record = await pb
+        .collection('users')
+        .update(user.id, updatedUserData);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
+  const handleAllCategory = () => {
+    setSelectedCategory('all');
+  };
+
+  const handleHTMLCategory = () => {
+    setSelectedCategory('HTML');
   };
 
   const handlePageChange = (newPage) => {
     const totalPages = Math.ceil(
       (categoryData[selectedCategory] || []).length / perPage
     );
+    setFilteredData(newFilteredData);
+    setSelectedCategory(selectedCategory);
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
     }
@@ -45,6 +86,37 @@ function BookList() {
   return (
     <>
       <SubVisualBanner title="도서목록" />
+      <TabButtonList 
+        selected={selectedCategory} 
+        htmlClick={(e) => handleSelectCategory(e, "HTML")} 
+        cssClick={(e) => handleSelectCategory(e,"CSS")} 
+        reactClick={(e) => handleSelectCategory(e,"React")} 
+        javascriptClick={(e) => handleSelectCategory(e,"JavaScript")} 
+        allClick={() => {setFilteredData(data);setSelectedCategory("all");}} 
+      />
+
+      <div className="w-[1920px] m-auto">
+      {isLoading ? (
+          <Spinner/>
+      ) : (
+        <ul
+          id="tab-panel-1"
+          aria-labelledby="tab-1"
+          className="w-[1200px] m-auto flex flex-wrap gap-x-6 gap-y-10 justify-start mt-16 mb-20"
+        >
+          {filteredData.map((item) => (
+            <li key={item.id}>
+              <ColBookCard
+                bookID={item}
+                imgSrc={item.book_image_link}
+                imgAlt={item.book_title}
+                nickName={item.expand.user_id[0].nickname}
+                postTitle={item.post_title}
+                bookTitle={item.book_title}
+              />
+            </li>
+          ))}
+        </ul>
       <TabButtonList
         selected={selectedCategory}
         htmlClick={() => handleSelectCategory('HTML')}
@@ -58,47 +130,27 @@ function BookList() {
         {isLoading ? (
           <Spinner />
         ) : (
-          <>
-            <ul
-              id="tab-panel-1"
-              aria-labelledby="tab-1"
-              className="w-[1200px] m-auto flex flex-wrap gap-x-6 gap-y-10 justify-start mt-16 mb-20"
-            >
-              {(categoryData[selectedCategory] || [])
-                .slice(
-                  (currentPage - 1) * perPage,
-                  currentPage * perPage
-                )
-                .map((item) => (
-                  <li key={item.id}>
-                    <ColBookCard
-                      imgSrc={item.book_image_link}
-                      imgAlt={item.book_title}
-                      nickName={item.expand.user_id[0].nickname}
-                      postTitle={item.post_title}
-                      bookTitle={item.book_title}
-                    />
-                  </li>
-                ))}
-            </ul>
-            <div className="flex justify-center mt-4">
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-              >
-                <FontAwesomeIcon icon={faAngleLeft} />
-              </button>
-              <span className="mx-2">
-                {currentPage} / {Math.ceil((categoryData[selectedCategory] || []).length / perPage)}
-              </span>
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage >= Math.ceil((categoryData[selectedCategory] || []).length / perPage)}
-              >
-                <FontAwesomeIcon icon={faAngleRight} />
-              </button>
-            </div>
-          </>
+          <ul
+            id="tab-panel-1"
+            aria-labelledby="tab-1"
+            className="w-[1200px] m-auto flex flex-wrap gap-x-6 gap-y-10 justify-start mt-16 mb-20"
+          >
+            {filteredData &&
+              filteredData.map((item) => (
+                <li key={item.id}>
+                  <ColBookCard
+                    imgSrc={item.book_image_link}
+                    imgAlt={item.book_title}
+                    nickName={item.expand.user_id[0].nickname}
+                    postTitle={item.post_title}
+                    bookTitle={item.book_title}
+                    onClick={() => handleLikeToggle(item.id)}
+                    isLender={user.liked_posts.includes(item.id)}
+                    bookID={item.id}
+                  />
+                </li>
+              ))}
+          </ul>
         )}
       </div>
     </>

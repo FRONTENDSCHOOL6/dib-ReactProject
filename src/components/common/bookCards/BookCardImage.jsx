@@ -47,22 +47,21 @@ function BookCardImage({ imgSrc, imgAlt, bookID }) {
           hidden
         />
         <label
-            htmlFor={`bookMark-${imgSrc}`}
-            className={`bg-no-repeat absolute top-[-3px] right-[300px]
+          htmlFor={`bookMark-${imgSrc}`}
+          className={`bg-no-repeat absolute top-[-3px] right-[300px]
               w-[46px]
               h-[98px]
               ${isPressed ? 'bg-checkedBookMark' : 'bg-bookMark'}`}
         ></label>
       </form>
-
     </div>
-   );
+  );
 }
 
 BookCardImage.propTypes = {
-   imgSrc: PropTypes.string.isRequired,
-   imgAlt: PropTypes.string.isRequired,
-   bookID: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+  bookID: PropTypes.string,
 };
 
 export default BookCardImage;

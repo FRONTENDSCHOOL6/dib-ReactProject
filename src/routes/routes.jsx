@@ -26,7 +26,7 @@ const router = createBrowserRouter(
       <Route path="join" element={<Join />} />
       <Route path="registerProfile" element={<RegisterProfile />} />
       <Route path="login" element={<Login />} />
-      <Route path="/bookDescription/:id" element={<BookDescription/>} />
+      <Route path="/bookDescription/:id" element={<BookDescription />} />
     </Route>
   )
 );
