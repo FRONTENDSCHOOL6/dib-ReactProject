@@ -1,25 +1,26 @@
-import { useState, useEffect } from 'react';
-import LoginButton from './LoginButton';
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
-import { emailReg, pwReg } from '@/utils/regular';
 import { pb } from '@/api/pocketbase';
-import { Link } from 'react-router-dom';
+import { emailReg, pwReg } from '@/utils/regular';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import EmailInput from './EmailInput';
+import LoginButton from './LoginButton';
+import PasswordInput from './PasswordInput';
+import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 
 function LoginForm() {
+  // 입력 값 상태를 저장하기 위한 상태 변수
   const [values, setValues] = useState({
     email: '',
     password: '',
   });
 
+  // 입력 유효성 검사를 위한 상태 변수
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
-  const [userData, setUserData] = useState(null);
 
   const navigate = useNavigate();
 
+  // 입력 값 변경을 처리하는 함수
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({
@@ -27,69 +28,44 @@ function LoginForm() {
       [name]: value,
     });
 
-    // 이메일 유효성 검사
+    // 이메일 입력 유효성 검사
     if (name === 'email') {
-      setIsValidEmail(emailReg(value));
+      setIsValidEmail(value === '' || emailReg(value));
     }
 
-    // 비밀번호 유효성 검사
+    // 비밀번호 입력 유효성 검사
     if (name === 'password') {
-      setIsValidPassword(pwReg(value));
+      setIsValidPassword(value === '' || pwReg(value));
     }
   };
 
+  // 폼 제출을 처리하는 함수
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 이메일과 비밀번호를 DB와 비교해서 유효성 검사
+ // 이메일과 비밀번호 입력이 모두 유효한지 확인
     if (isValidEmail && isValidPassword) {
       try {
         pb.autoCancellation(false);
 
-        const loginUser = await pb
+        // 이메일과 비밀번호를 사용하여 사용자를 인증
+        await pb
           .collection('users')
           .authWithPassword(values.email, values.password);
 
-        console.log('로그인 성공:', loginUser);
-
-        toast.success('최고의 프론트엔드 개발자님 입장!', {
-          position: 'top-center',
-          duration: 3000,
-          icon: '😎',
-          ariaProps: {
-            role: 'status',
-            'aria-live': 'polite',
-          },
-        });
-        setUserData(loginUser);
+        showSuccessAlert('최고의 프론트엔드 개발자님 입장!','😎');
         navigate('/');
       } catch (error) {
-        toast.error('로그인 실패하셨어요', {
-          position: 'top-center',
-          duration: 3000,
-          icon: '😯',
-          ariaProps: {
-            role: 'status',
-            'aria-live': 'polite',
-          },
-        });
-        setUserData(null);
+        showErrorAlert('로그인 실패하셨어요','😯');
       }
     } else {
-      console.log('유효하지 않은 입력값이 있습니다.');
+      showErrorAlert('다시 한번 제대로 입력해주세요.','🤔');
     }
-  };
-
-  useEffect(() => {
-    if (userData) {
-      // 로그인이 성공한 경우 홈으로 이동
-      <Link to="/home" />;
-    }
-  }, [userData]);
+    };
 
   return (
     <form
-      className="flex flex-col gap-[30px] w-[600px] m-auto"
+      className="flex flex-col gap-[30px] w-[500px] m-auto"
       onSubmit={handleSubmit}
     >
       <EmailInput
