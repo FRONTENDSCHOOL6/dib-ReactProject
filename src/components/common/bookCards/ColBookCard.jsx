@@ -42,7 +42,7 @@ ColBookCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  isLender: PropTypes.bool,
+  isLender: PropTypes.func,
   bookID: PropTypes.string,
 };
 

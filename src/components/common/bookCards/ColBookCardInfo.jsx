@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import { usePbData } from '@/contexts/PbDataContext';
 // import { useAuth } from '@/contexts/AuthContext';
@@ -11,6 +12,8 @@ function ColBookCardInfo({
   isLender,
   bookID,
 }) {
+  const [isClicked, setIsClicked] = useState(isLender); //프롭스로부터 파생된 상태
+
   return (
     <div className="py-5 px-7 w-[280px]">
       <Link to={`/bookDescription/${bookID}`}>
@@ -25,8 +28,14 @@ function ColBookCardInfo({
           <span className="text-sm">{nickName}</span>
         </div>
         <div>
-          <button type="button" onClick={onClick}>
-            <img src={isLender ? 'heart.png' : 'emptyheart.png'} alt="" />
+          <button
+            type="button"
+            onClick={() => {
+              setIsClicked((state) => !state);
+              onClick?.();
+            }}
+          >
+            <img src={isClicked ? 'heart.png' : 'emptyheart.png'} alt="" />
           </button>
           {/* <form>
             <input
@@ -51,7 +60,7 @@ ColBookCardInfo.propTypes = {
   bookTitle: PropTypes.string.isRequired,
   nickName: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  isLender: PropTypes.boolean,
+  isLender: PropTypes.func,
   bookID: PropTypes.string,
 };
 export default ColBookCardInfo;

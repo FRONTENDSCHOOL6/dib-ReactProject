@@ -3,23 +3,28 @@ import Spinner from '@/components/bookList/Spinner';
 import TabButtonList from '@/components/bookList/TabButtonList';
 import ColBookCard from '@/components/common/bookCards/ColBookCard';
 import SubVisualBanner from '@/components/common/SubVisualBanner';
-import { Link } from 'react-router-dom';
 import { usePbData } from '@/contexts/PbDataContext';
 import { useAuth } from '@/contexts/AuthContext';
 import PocketBase from 'pocketbase';
-import { useEffect } from 'react';
 
 function BookList() {
   // const [data, setData] = useState(bookData);
-  const [filteredData, setFilteredData] = useState([]);
+  // const [filteredData, setFilteredData] = useState([]); //useState로 관리 x
+  // const [isLoading, setIsLoading] = useState(false);
+  const { bookData, isLoading } = usePbData();
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [isLoading, setIsLoading] = useState(false);
-
-  const { bookData, toggleLike } = usePbData();
+  // 파생상태로 관리한다.
+  const filteredData = bookData?.filter((book) => {
+    if (selectedCategory === 'all') {
+      return book;
+    } else {
+      return book.category.includes(selectedCategory);
+    }
+  });
   const { user } = useAuth();
 
   const handleLikeToggle = async (postId) => {
-    toggleLike(postId);
+    // toggleLike(postId);
 
     const updatedLikedPosts = [...user.liked_posts];
     const postIdIndex = updatedLikedPosts.indexOf(postId);
@@ -43,32 +48,23 @@ function BookList() {
     }
   };
 
-  const handleSelectCategory = (selectedCategory) => {
-    const newFilteredData = bookData.filter((item) =>
-      item.category.includes(selectedCategory)
-    );
-    console.log(bookData);
-    setFilteredData(newFilteredData);
+  const handleAllCategory = () => {
+    setSelectedCategory('all');
   };
 
   const handleHTMLCategory = () => {
-    handleSelectCategory('HTML');
     setSelectedCategory('HTML');
-    console.log(selectedCategory);
   };
 
-  const handleCSSCategory = (e) => {
-    handleSelectCategory(e, 'CSS');
+  const handleCSSCategory = () => {
     setSelectedCategory('CSS');
   };
 
-  const handleReactCategory = (e) => {
-    handleSelectCategory(e, 'React');
+  const handleReactCategory = () => {
     setSelectedCategory('React');
   };
 
-  const handleJsCategory = (e) => {
-    handleSelectCategory(e, 'JavaScript');
+  const handleJsCategory = () => {
     setSelectedCategory('JavaScript');
   };
 
@@ -77,33 +73,24 @@ function BookList() {
       <SubVisualBanner title="도서목록" />
       <TabButtonList
         selected={selectedCategory}
-        htmlClick={() => {
-          handleHTMLCategory('HTML');
-        }}
-        cssClick={() => {
-          handleCSSCategory('CSS');
-        }}
-        reactClick={() => {
-          handleReactCategory('JavaScript');
-        }}
-        javascriptClick={() => {
-          handleJsCategory('React');
-        }}
-        allClick={() => {
-          setFilteredData(bookData);
-          setSelectedCategory('all');
-        }}
+        htmlClick={handleHTMLCategory}
+        cssClick={handleCSSCategory}
+        reactClick={handleReactCategory}
+        javascriptClick={handleJsCategory}
+        allClick={handleAllCategory}
       />
 
       <div className="w-[1920px] m-auto">
-        {!isLoading && (
+        {isLoading ? (
+          <Spinner />
+        ) : (
           <ul
             id="tab-panel-1"
             aria-labelledby="tab-1"
             className="w-[1200px] m-auto flex flex-wrap gap-x-6 gap-y-10 justify-start mt-16 mb-20"
           >
-            {bookData &&
-              bookData.map((item) => (
+            {filteredData &&
+              filteredData.map((item) => (
                 <li key={item.id}>
                   <ColBookCard
                     imgSrc={item.book_image_link}
