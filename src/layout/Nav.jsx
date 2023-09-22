@@ -1,4 +1,5 @@
 import { useAuth } from '@/contexts/AuthContext';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -9,6 +10,15 @@ function Nav() {
 
   const handlelogOut = async () => {
     await logOut();
+    toast.success('도움이 되셨길 바라며 안녕히가세요.', {
+      position: 'top-center',
+      duration: 3000,
+      icon: '😌',
+      ariaProps: {
+        role: 'status',
+        'aria-live': 'polite',
+      },
+    });
     navigate('/');
   };
 
