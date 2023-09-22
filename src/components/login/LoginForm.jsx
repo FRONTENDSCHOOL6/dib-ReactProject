@@ -1,11 +1,11 @@
 import { pb } from '@/api/pocketbase';
 import { emailReg, pwReg } from '@/utils/regular';
+import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EmailInput from './EmailInput';
 import LoginButton from './LoginButton';
 import PasswordInput from './PasswordInput';
-import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 
 function LoginForm() {
   // 입력 값 상태를 저장하기 위한 상태 변수
@@ -43,7 +43,7 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
- // 이메일과 비밀번호 입력이 모두 유효한지 확인
+    // 이메일과 비밀번호 입력이 모두 유효한지 확인
     if (isValidEmail && isValidPassword) {
       try {
         pb.autoCancellation(false);
@@ -53,15 +53,15 @@ function LoginForm() {
           .collection('users')
           .authWithPassword(values.email, values.password);
 
-        showSuccessAlert('최고의 프론트엔드 개발자님 입장!','😎');
+        showSuccessAlert('최고의 프론트엔드 개발자님 입장!', '😎');
         navigate('/');
       } catch (error) {
-        showErrorAlert('로그인 실패하셨어요','😯');
+        showErrorAlert('로그인 실패하셨어요', '😯');
       }
     } else {
-      showErrorAlert('다시 한번 제대로 입력해주세요.','🤔');
+      showErrorAlert('다시 한번 제대로 입력해주세요.', '🤔');
     }
-    };
+  };
 
   return (
     <form
