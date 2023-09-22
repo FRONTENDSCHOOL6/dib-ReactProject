@@ -47,6 +47,7 @@ function MainBanner() {
     <section className="w-[1920px] h-[490px] m-auto">
       <h2 className="sr-only">광고</h2>
       <Swiper
+        rewind={true}
         slidesPerView={'auto'}
         ref={swiperRef}
         spaceBetween={30}
