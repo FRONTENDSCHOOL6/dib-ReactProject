@@ -1,7 +1,7 @@
 import { useAuth } from '@/contexts/AuthContext';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { showSuccessAlert } from '@/utils/showAlert';
 import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Nav() {
   const { isAuth, logOut } = useAuth();
@@ -9,6 +9,7 @@ function Nav() {
 
   const handlelogOut = async () => {
     await logOut();
+    showSuccessAlert('다음에 또 봐요!','🤗');
     navigate('/');
   };
 
@@ -45,9 +46,11 @@ function Nav() {
           </li>
         )}
         {isAuth && (
-          <button type="button" onClick={handlelogOut}>
-            로그아웃
-          </button>
+          <li>
+            <button type="button" onClick={handlelogOut}>
+              로그아웃
+            </button>
+          </li>
         )}
       </ul>
     </nav>
