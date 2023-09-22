@@ -1,7 +1,7 @@
 import ReviewBtn from '@/components/write/ReviewBtn';
 import ReviewMainText from '@/components/write/ReviewMainText';
 import SearchBooks from '@/components/write/SearchBooks';
-import ReviewInfo from '@/components/write/reviewInfo';
+import ReviewInfo from '@/components/write/ReviewInfo';
 import BookInfo from '@/components/write/BookInfo';
 import SubVisualBanner from '@/components/common/SubVisualBanner';
 import { useState, useEffect } from 'react';
