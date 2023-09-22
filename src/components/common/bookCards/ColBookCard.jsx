@@ -23,13 +23,13 @@ function ColBookCard({
       />
 
       <ColBookCardInfo
+        bookID={bookID}
         nickName={nickName}
         postTitle={postTitle}
         bookTitle={bookTitle}
         onClick={onClick}
         isLender={isLender}
         postId={postId}
-        bookID={bookID}
       />
     </div>
   );
@@ -41,9 +41,10 @@ ColBookCard.propTypes = {
   bookTitle: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  isLender: PropTypes.func,
+  onClick: PropTypes.func,
+  isLender: PropTypes.bool,
   bookID: PropTypes.string,
+  postId: PropTypes.string,
 };
 
 export default ColBookCard;

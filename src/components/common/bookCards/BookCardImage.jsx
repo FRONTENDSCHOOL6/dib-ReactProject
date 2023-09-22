@@ -61,7 +61,7 @@ function BookCardImage({ imgSrc, imgAlt, bookID }) {
 BookCardImage.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired,
-  bookID: PropTypes.string.isRequired,
+  bookID: PropTypes.string,
 };
 
 export default BookCardImage;

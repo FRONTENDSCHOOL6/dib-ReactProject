@@ -5,9 +5,10 @@ import ReviewInfo from '@/components/write/reviewInfo';
 import BookInfo from '@/components/write/BookInfo';
 import SubVisualBanner from '@/components/common/SubVisualBanner';
 import { useState, useEffect } from 'react';
-import PocketBase from 'pocketbase';
-import toast from 'react-hot-toast';
+import { pb } from '@/api/pocketbase';
 import { useCategoryStore } from '@/hooks/categoryStore';
+import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
+import { useAuth } from '@/contexts/AuthContext';
 
 function WritePage() {
   const [searchBook, setSearchBook] = useState('');
@@ -19,6 +20,8 @@ function WritePage() {
   });
   const [inputValues, setInputValues] = useState('');
   const { category, setCategory } = useCategoryStore();
+
+  const { user } = useAuth();
 
   useEffect(() => {
     let timer;
@@ -81,14 +84,14 @@ function WritePage() {
       !selectedBook.author ||
       !selectedBook.publisher ||
       !inputValues ||
-      !reviewMainText ||
-      !category
+      !reviewMainText
     ) {
-      alert('모든 필드를 입력해주세요.');
+      showErrorAlert('모든 필드를 입력해주세요.', '🥹');
+
       return;
     }
     const data = {
-      user_id: ['02jn7lwydw4swze'],
+      user_id: user.id,
       book_title: selectedBook.title,
       author: selectedBook.author,
       publisher: selectedBook.publisher,
@@ -99,13 +102,18 @@ function WritePage() {
       like_count: 22,
     };
 
-    const pb = new PocketBase('https://db-dib.pockethost.io');
     try {
       const record = await pb.collection('posts').create(data);
       if (record) {
-        toast.success('리뷰저장에 성공하였습니다! ✅');
+        const successDataId = record.id;
+
+        await pb.collection('users').update(user.id, successDataId);
+
+        // await pb.collection('user').update(successDataId, { data });
+
+        showSuccessAlert('리뷰저장에 성공하였습니다!', '✅');
       } else {
-        toast.error('서버와의 통신에 문제가 발생하였습니다. ❌');
+        showErrorAlert('서버와의 통신에 문제가 발생하였습니다.', '❌');
       }
     } catch (error) {
       throw new Error(error.message);
@@ -147,8 +155,6 @@ function WritePage() {
         <ReviewMainText onChange={handleReviewMainText} />
         <ReviewBtn onClick={handleSubmitReview} />
       </div>
-
-      <div className="h-[200px]"></div>
     </>
   );
 }

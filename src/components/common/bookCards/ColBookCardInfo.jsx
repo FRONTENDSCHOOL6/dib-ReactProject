@@ -60,7 +60,7 @@ ColBookCardInfo.propTypes = {
   bookTitle: PropTypes.string.isRequired,
   nickName: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  isLender: PropTypes.func,
+  isLender: PropTypes.bool,
   bookID: PropTypes.string,
 };
 export default ColBookCardInfo;

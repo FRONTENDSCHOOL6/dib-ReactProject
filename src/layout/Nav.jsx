@@ -1,6 +1,7 @@
 import { useAuth } from '@/contexts/AuthContext';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { showSuccessAlert } from '@/utils/showAlert';
+import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Nav() {
   const { isAuth, logOut } = useAuth();
@@ -8,6 +9,7 @@ function Nav() {
 
   const handlelogOut = async () => {
     await logOut();
+    showSuccessAlert('다음에 또 봐요!','🤗');
     navigate('/');
   };
 
@@ -15,13 +17,25 @@ function Nav() {
     <nav>
       <ul className="flex gap-24 absolute left-52">
         <li>
-          <Link to="/bookList">도서목록</Link>
+          <motion.div whileHover={{ scale: 1.2 }}>
+            <motion.span fontWeight={900}>
+              <Link to="/bookList">도서목록</Link>
+            </motion.span>
+          </motion.div>
         </li>
         <li>
-          <Link to="/postListPage">게시글</Link>
+          <motion.div whileHover={{ scale: 1.2 }}>
+            <motion.span fontWeight={900}>
+              <Link to="/postListPage">게시글</Link>
+            </motion.span>
+          </motion.div>
         </li>
         <li>
-          <Link to="/favoritePage">즐겨찾기</Link>
+          <motion.div whileHover={{ scale: 1.2 }}>
+            <motion.span fontWeight={900}>
+              <Link to="/favoritePage">즐겨찾기</Link>
+            </motion.span>
+          </motion.div>
         </li>
       </ul>
 
@@ -32,9 +46,11 @@ function Nav() {
           </li>
         )}
         {isAuth && (
-          <button type="button" onClick={handlelogOut}>
-            로그아웃
-          </button>
+          <li>
+            <button type="button" onClick={handlelogOut}>
+              로그아웃
+            </button>
+          </li>
         )}
       </ul>
     </nav>

@@ -1,4 +1,3 @@
-import hori from '@/assets/hori.png';
 import PropTypes from 'prop-types';
 
 function PostTitle({ postTitle, userName, cearteDate, userImg }) {
@@ -31,4 +30,5 @@ PostTitle.propTypes = {
   postTitle: PropTypes.string,
   userName: PropTypes.string,
   cearteDate: PropTypes.string,
+  userImg: PropTypes.string,
 };

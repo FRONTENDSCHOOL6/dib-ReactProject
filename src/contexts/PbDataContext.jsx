@@ -12,9 +12,11 @@ function PbDataProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    pb.autoCancellation(false);
     async function getPbData() {
       try {
         const allRecord = await pb.collection('posts').getFullList({
+          sort: '-created',
           expand: 'user_id',
         });
         setBookData(allRecord);

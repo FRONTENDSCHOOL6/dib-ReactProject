@@ -7,6 +7,7 @@ function BookInfoLayout({ title, bookImage, author, publisher }) {
   const handlePressedBtn = () => {
     setIsPressed(!isPressed);
   };
+
   return (
     <>
       <div className="h-[110px]"></div>
