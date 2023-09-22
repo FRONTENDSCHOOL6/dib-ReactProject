@@ -35,7 +35,7 @@ function BookList() {
 
   const handlePageChange = (newPage) => {
     const totalPages = Math.ceil(
-      categoryData[selectedCategory].length / perPage
+      (categoryData[selectedCategory] || []).length / perPage
     );
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
@@ -64,7 +64,7 @@ function BookList() {
               aria-labelledby="tab-1"
               className="w-[1200px] m-auto flex flex-wrap gap-x-6 gap-y-10 justify-start mt-16 mb-20"
             >
-              {categoryData[selectedCategory]
+              {(categoryData[selectedCategory] || [])
                 .slice(
                   (currentPage - 1) * perPage,
                   currentPage * perPage
@@ -89,11 +89,11 @@ function BookList() {
                 <FontAwesomeIcon icon={faAngleLeft} />
               </button>
               <span className="mx-2">
-                {currentPage} / {Math.ceil(categoryData[selectedCategory].length / perPage)}
+                {currentPage} / {Math.ceil((categoryData[selectedCategory] || []).length / perPage)}
               </span>
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage >= Math.ceil(categoryData[selectedCategory].length / perPage)}
+                disabled={currentPage >= Math.ceil((categoryData[selectedCategory] || []).length / perPage)}
               >
                 <FontAwesomeIcon icon={faAngleRight} />
               </button>
