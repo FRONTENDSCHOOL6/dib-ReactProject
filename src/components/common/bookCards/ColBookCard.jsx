@@ -8,18 +8,21 @@ function ColBookCard({
   nickName,
   imgSrc,
   imgAlt,
-  onClick,
+  heaetClick,
   postId,
-  isLender,
+  bookmarkClick,
+  heartRander,
   bookID,
+  bookmarkRander,
 }) {
   return (
     <div className="shadow-[5px_5px_10px_0px_rgba(0,0,0,0.25)]">
       <BookCardImage
         imgSrc={imgSrc}
         imgAlt={imgAlt}
-        onClick={onClick}
+        bookmarkClick={bookmarkClick}
         bookID={bookID}
+        bookmarkRander={bookmarkRander}
       />
 
       <ColBookCardInfo
@@ -27,8 +30,8 @@ function ColBookCard({
         nickName={nickName}
         postTitle={postTitle}
         bookTitle={bookTitle}
-        onClick={onClick}
-        isLender={isLender}
+        heaetClick={heaetClick}
+        heartRander={heartRander}
         postId={postId}
       />
     </div>
@@ -41,8 +44,10 @@ ColBookCard.propTypes = {
   bookTitle: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  isLender: PropTypes.bool,
+  heaetClick: PropTypes.func,
+  bookmarkClick: PropTypes.func,
+  bookmarkRander: PropTypes.bool,
+  heartRander: PropTypes.bool,
   bookID: PropTypes.string,
   postId: PropTypes.string,
 };

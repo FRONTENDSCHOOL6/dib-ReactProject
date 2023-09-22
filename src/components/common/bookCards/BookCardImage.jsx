@@ -3,9 +3,15 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-function BookCardImage({ imgSrc, imgAlt, bookID }) {
+function BookCardImage({
+  imgSrc,
+  imgAlt,
+  bookID,
+  bookmarkClick,
+  bookmarkRander,
+}) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isPressed, setIsPressed] = useState(false);
+  const [isClickBookmark, setIsClickBookMark] = useState(bookmarkRander);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -13,10 +19,6 @@ function BookCardImage({ imgSrc, imgAlt, bookID }) {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-  };
-
-  const handleCheckboxClick = () => {
-    setIsPressed((prevIsPressed) => !prevIsPressed);
   };
 
   return (
@@ -35,13 +37,28 @@ function BookCardImage({ imgSrc, imgAlt, bookID }) {
           />
         </div>
       </Link>
-
+      <div></div>
+      {/* <button
+        type="button"
+        onClick={() => {
+          setIsClickBookMark((state) => !state);
+          bookmarkClick?.();
+        }}
+      >
+        <img
+          src={isClickBookmark ? 'checkedBookMark.png' : 'bookMark.png'}
+          alt=""
+        />
+      </button> */}
       <form className="absolute top-[2px] right-[-302px]">
         <input
           type="checkbox"
-          onClick={handleCheckboxClick}
-          aria-pressed={isPressed}
-          aria-label={isPressed ? '선택됨' : '선택 안 됨'}
+          onClick={() => {
+            setIsClickBookMark((state) => !state);
+            bookmarkClick?.();
+          }}
+          aria-pressed={isClickBookmark}
+          aria-label={isClickBookmark ? '선택됨' : '선택 안 됨'}
           id={`bookMark-${imgSrc}`}
           name={`bookMark-${imgSrc}`}
           hidden
@@ -51,7 +68,7 @@ function BookCardImage({ imgSrc, imgAlt, bookID }) {
           className={`bg-no-repeat absolute top-[-3px] right-[300px]
               w-[46px]
               h-[98px]
-              ${isPressed ? 'bg-checkedBookMark' : 'bg-bookMark'}`}
+              ${isClickBookmark ? 'bg-checkedBookMark' : 'bg-bookMark'}`}
         ></label>
       </form>
     </div>
@@ -62,6 +79,8 @@ BookCardImage.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired,
   bookID: PropTypes.string,
+  bookmarkClick: PropTypes.func,
+  bookmarkRander: PropTypes.bool,
 };
 
 export default BookCardImage;
