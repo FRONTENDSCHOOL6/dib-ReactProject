@@ -8,11 +8,11 @@ function ColBookCardInfo({
   postTitle,
   bookTitle,
   nickName,
-  onClick,
-  isLender,
+  heaetClick,
+  heartRander,
   bookID,
 }) {
-  const [isClicked, setIsClicked] = useState(isLender); //프롭스로부터 파생된 상태
+  const [isClicked, setIsClicked] = useState(heartRander); //프롭스로부터 파생된 상태
 
   return (
     <div className="py-5 px-7 w-[280px]">
@@ -32,7 +32,7 @@ function ColBookCardInfo({
             type="button"
             onClick={() => {
               setIsClicked((state) => !state);
-              onClick?.();
+              heaetClick?.();
             }}
           >
             <img src={isClicked ? 'heart.png' : 'emptyheart.png'} alt="" />
@@ -59,8 +59,8 @@ ColBookCardInfo.propTypes = {
   postTitle: PropTypes.string.isRequired,
   bookTitle: PropTypes.string.isRequired,
   nickName: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  isLender: PropTypes.bool,
+  heaetClick: PropTypes.func,
+  heartRander: PropTypes.bool,
   bookID: PropTypes.string,
 };
 export default ColBookCardInfo;
