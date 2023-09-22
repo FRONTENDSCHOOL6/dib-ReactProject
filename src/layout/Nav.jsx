@@ -1,6 +1,5 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { showSuccessAlert } from '@/utils/showAlert';
-import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Nav() {
@@ -17,25 +16,13 @@ function Nav() {
     <nav>
       <ul className="flex gap-24 absolute left-52">
         <li>
-          <motion.div whileHover={{ scale: 1.2 }}>
-            <motion.span fontWeight={900}>
-              <Link to="/bookList">도서목록</Link>
-            </motion.span>
-          </motion.div>
+          <Link to="/bookList" className='hover:font-bold nav-link'>도서목록</Link>
         </li>
         <li>
-          <motion.div whileHover={{ scale: 1.2 }}>
-            <motion.span fontWeight={900}>
-              <Link to="/postListPage">게시글</Link>
-            </motion.span>
-          </motion.div>
+          <Link to="/postListPage" className='hover:font-bold nav-link'>내 게시글</Link>
         </li>
         <li>
-          <motion.div whileHover={{ scale: 1.2 }}>
-            <motion.span fontWeight={900}>
-              <Link to="/favoritePage">즐겨찾기</Link>
-            </motion.span>
-          </motion.div>
+          <Link to="/favoritePage" className='hover:font-bold nav-link'>즐겨찾기</Link>
         </li>
       </ul>
 
