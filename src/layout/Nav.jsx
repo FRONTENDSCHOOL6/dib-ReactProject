@@ -45,9 +45,11 @@ function Nav() {
           </li>
         )}
         {isAuth && (
-          <button type="button" onClick={handlelogOut}>
-            로그아웃
-          </button>
+          <li>
+            <button type="button" onClick={handlelogOut}>
+              로그아웃
+            </button>
+          </li>
         )}
       </ul>
     </nav>
