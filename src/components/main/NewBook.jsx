@@ -58,6 +58,7 @@ function NewBook() {
         <div className="w-[1200px] mx-auto">
           <div className="flex justify-center gap-6 my-10">
             <Swiper
+              loop={true}
               slidesPerView={4}
               spaceBetween={30}
               pagination={{
