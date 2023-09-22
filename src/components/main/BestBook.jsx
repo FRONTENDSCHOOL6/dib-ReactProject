@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { pb } from '@/api/pocketbase';
 import ColBookCard from '../common/bookCards/ColBookCard';
+import Spinner from '../bookList/Spinner';
+import PropTypes from 'prop-types';
 
-function BestBook() {
+function BestBook({isLoading,setIsLoading}) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -15,6 +17,7 @@ function BestBook() {
       // 상위 4개의 데이터만 필터링
       const filteredData = bestRecord.slice(0, 4);
       setData(filteredData);
+      setIsLoading(false);
     }
     fetchBestBooks();
   }, []);
@@ -29,10 +32,14 @@ function BestBook() {
           dib에서 가장 인기있는 책을 소개합니다!!
         </strong>
         <div className="w-[1200px] mx-auto">
+        {isLoading ? (
+          <Spinner/>
+          ) : (
           <ul className="flex justify-center gap-6 my-10">
             {data.map((item) => (
               <li key={item.id}>
                 <ColBookCard
+                  bookID={item.id}
                   id={item.id}
                   imgSrc={item.book_image_link}
                   imgAlt={item.book_title}
@@ -43,6 +50,7 @@ function BestBook() {
               </li>
             ))}
           </ul>
+          )}
         </div>
       </section>
     </>
@@ -50,3 +58,8 @@ function BestBook() {
 }
 
 export default BestBook;
+
+BestBook.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  setIsLoading: PropTypes.func.isRequired,
+};

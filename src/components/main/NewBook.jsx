@@ -1,4 +1,3 @@
-import ScrollButton from '../common/ScrollButton';
 import { useEffect, useState } from 'react';
 import { pb } from '@/api/pocketbase';
 import ColBookCard from '../common/bookCards/ColBookCard';
@@ -78,6 +77,7 @@ function NewBook() {
               {data.map((item) => (
                 <SwiperSlide key={item.id}>
                   <ColBookCard
+                    bookID={item.id}
                     imgSrc={item.book_image_link}
                     imgAlt={item.book_title}
                     nickName={item.expand.user_id[0].nickname}
@@ -103,9 +103,6 @@ function NewBook() {
               <div className="progressbar" style={STYLES2}></div>
             </Swiper>
           </div>
-        </div>
-        <div>
-          <ScrollButton />
         </div>
       </section>
     </>

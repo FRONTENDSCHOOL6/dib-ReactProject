@@ -1,12 +1,12 @@
-import { useState } from "react"
-import Button from "../common/Button"
-import FormInput from "../common/FormInput"
-import InputValidation from "../common/InputValidation"
+import { pb } from "@/api/pocketbase";
 import debounce from "@/utils/debounce";
 import { emailReg, nameReg, pwReg } from "@/utils/regular";
-import { pb } from "@/api/pocketbase";
-import toast from "react-hot-toast";
+import { showSuccessAlert } from "@/utils/showAlert";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../common/Button";
+import FormInput from "../common/FormInput";
+import InputValidation from "../common/InputValidation";
 
 function JoinForm() {
   const navigate = useNavigate();
@@ -66,16 +66,7 @@ function JoinForm() {
     };
 
     await pb.collection('users').create(userData);
-
-    toast.success('프로필 등록 후 회원가입이 완료됩니다.',{
-      position: 'top-center',
-      duration: 3000,
-      icon: '💌',
-      ariaProps: {
-        role: 'status',
-        'aria-live': 'polite',
-      },
-    });
+    showSuccessAlert('프로필 등록 후 회원가입이 완료됩니다.','💌')
     setTimeout(() => {
       navigate('/registerProfile');
     }, 1000);

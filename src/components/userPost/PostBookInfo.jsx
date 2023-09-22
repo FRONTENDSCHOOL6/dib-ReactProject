@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import react from '@/assets/reactBook.png';
+import PropTypes from 'prop-types';
 
-function BookInfoLayout() {
+function BookInfoLayout({src,bookTitle,author,publisher}) {
   const [isPressed, setIsPressed] = useState(false);
 
   const handlePressedBtn = () => {
     setIsPressed(!isPressed);
   };
+
   return (
     <>
       <div className="h-[110px]"></div>
@@ -15,8 +16,8 @@ function BookInfoLayout() {
           <dt className="sr-only">도서 이미지</dt>
           <dd className="mr-[100px]">
             <img
-              src={react}
-              alt="도서 러닝리액트"
+              src={src}
+              alt={bookTitle}
               className="w-[330px] h-[454px] min-w-[400px]"
             />
           </dd>
@@ -28,14 +29,14 @@ function BookInfoLayout() {
               </button>
             </dd>
             <dt className="sr-only">도서 제목</dt>
-            <dd className="text-3xl mb-[100px]">Learning React 러닝 리액트</dd>
+            <dd className="text-3xl mb-[100px]">{bookTitle}</dd>
             <dt className="sr-only ">저자</dt>
             <dd className="text-lg mb-8 border-b border-horizontal w-[384px] h-[50px] flex items-center">
-              김아무개
+              {author}
             </dd>
             <dt className="sr-only">출판사</dt>
             <dd className="text-lg mb-8 border-b border-horizontal w-[384px] h-[50px] flex items-center">
-              한빛 출판사
+              {publisher}
             </dd>
           </dt>
         </dl>
@@ -62,3 +63,10 @@ function BookInfoLayout() {
 }
 
 export default BookInfoLayout;
+
+BookInfoLayout.propTypes = {
+  src: PropTypes.object.isRequired,
+  bookTitle: PropTypes.object.isRequired,
+  author: PropTypes.object.isRequired,
+  publisher: PropTypes.object.isRequired,
+};

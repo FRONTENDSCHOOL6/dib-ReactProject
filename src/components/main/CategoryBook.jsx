@@ -5,8 +5,10 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import { pb } from '@/api/pocketbase';
 import CategoryTabButtonList from './../category/CategoryTabButton';
+import Spinner from '../bookList/Spinner';
+import PropTypes from 'prop-types';
 
-function CategoryBook() {
+function CategoryBook({isLoading,setIsLoading}) {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
@@ -20,6 +22,7 @@ function CategoryBook() {
       });
       setData(CategoryRecords);
       setFilteredData(CategoryRecords.slice(0, 4));
+      setIsLoading(false);
     }
     fetchCategory();
   }, []);
@@ -73,6 +76,9 @@ function CategoryBook() {
          <CategoryTabButtonList selected={selectedCategory} htmlClick={handleHTMLCategory} cssClick={handleCSSCategory} reactClick={handleReactCategory} javascriptClick={handleJsCategory} allClick={() => {setFilteredData(data);setSelectedCategory("all");}} />
 
           <div className="w-[1140px] my-10 mx-auto">
+          {isLoading ? (
+          <Spinner/>
+          ) : (
             <ul
               id="tab-panel-1"
               aria-labelledby="tab-1"
@@ -81,6 +87,7 @@ function CategoryBook() {
               {filteredData.map((item) => (
                 <li key={item.id}>
                   <RowBookCard
+                    bookID={item.id}
                     imgSrc={item.book_image_link}
                     imgAlt={item.book_title}
                     nickName={item.expand.user_id[0].nickname}
@@ -90,6 +97,7 @@ function CategoryBook() {
                 </li>
               ))}
             </ul>
+            )}
           </div>
         </section>
       </>
@@ -97,3 +105,8 @@ function CategoryBook() {
 }
 
 export default CategoryBook;
+
+CategoryBook.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  setIsLoading: PropTypes.func.isRequired,
+};

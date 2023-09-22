@@ -1,11 +1,11 @@
 import { pb } from '@/api/pocketbase';
 import { emailReg, pwReg } from '@/utils/regular';
+import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EmailInput from './EmailInput';
 import LoginButton from './LoginButton';
 import PasswordInput from './PasswordInput';
-import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 
 function LoginForm() {
   // 입력 값 상태를 저장하기 위한 상태 변수
