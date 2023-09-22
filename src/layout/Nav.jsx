@@ -19,7 +19,7 @@ function Nav() {
           <Link to="/bookList" className='hover:font-bold nav-link'>도서목록</Link>
         </li>
         <li>
-          <Link to="/postListPage" className='hover:font-bold nav-link'>게시글</Link>
+          <Link to="/postListPage" className='hover:font-bold nav-link'>내 게시글</Link>
         </li>
         <li>
           <Link to="/favoritePage" className='hover:font-bold nav-link'>즐겨찾기</Link>
