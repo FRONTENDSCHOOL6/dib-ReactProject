@@ -4,20 +4,21 @@ import PostOptions from './PostOptions';
 import RullsOfComment from './RullsOfComment';
 import PropTypes from 'prop-types';
 
-function CommentsLayout({ onClick, onChange, handleHeart, putHeart, reviewData }) {
+function CommentsLayout({ onClick, onChange, handleHeart, putHeart, reviewData,writeComment }) {
 
   const comments = reviewData?.expand?.comments || [];
+  console.log(reviewData);
   console.log(comments);
 
   return (
     <>
       <PostOptions onClick={handleHeart} putHeart={putHeart} />
       <RullsOfComment />
-      <InputComment onClick={onClick} onChange={onChange} />
+      <InputComment onClick={onClick} onChange={onChange} writeComment={writeComment} />
 
       {comments.length > 0 ? (
-        comments.map((comment,index)=>(
-          <Comments key={index} text={comment.comment_contents} date={comment.created} nickName={comment.user_id}
+         [...comments].reverse().map((comment,index)=>(
+          <Comments key={index} text={comment.comment_contents} date={comment.created.slice(0,-8)} nickName={comment.user_id}
           />
         ))
       ) : (
@@ -36,4 +37,5 @@ CommentsLayout.propTypes = {
   putHeart: PropTypes.bool,
   reviewData: PropTypes.object,
   date: PropTypes.string,
+  writeComment: PropTypes.string,
 };

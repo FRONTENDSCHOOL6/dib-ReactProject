@@ -20,7 +20,6 @@ function BookDescription() {
   const [putHeart, setPutHerart] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [userImage, setUserImage] = useState('');
-
   useEffect(() => {
     async function renderReviewPage() {
       try {
@@ -43,19 +42,29 @@ function BookDescription() {
   const handleClickPostComment = async (event) => {
     event.preventDefault();
     const data = {
-      user_id: user.id,//현재 로그인되어있는 사용고유아디값
-      comment_contents: writeComment, //방금쓴 댓글
+      user_id: user.id,
+      comment_contents: writeComment,
     };
-    
+
     try {
-      const record = await pb.collection('comments').create(data);//commet데이터생성
+      const record = await pb.collection('comments').create(data);
 
       if (record) {
         showSuccessAlert('댓글 저장에 성공하였습니다! 🚀');
-        const postRecord = await pb.collection('posts').getOne(id);//포스트데이터가져와
-        const updatedComments = [...postRecord.comments, record.id];//포스트데이터 댓글배열에 방금 생성된 데이터아이디 넣어
-        await pb.collection('posts').update(id, { comments: updatedComments });
-        
+        const postRecord = await pb.collection('posts').getOne(id);
+        const updatedComments = [...postRecord.comments, record.id];
+        const commentRegist = await pb
+          .collection('posts')
+          .update(id, { comments: updatedComments });
+
+        console.log(commentRegist);
+        // 데이터를 다시 가져오고 싶을 때 reviewData를 업데이트합니다.
+        setReviewData(
+          await pb
+            .collection('posts')
+            .getOne(id, { expand: 'user_id ,comments' })
+        );
+        setWriteComment('');
       } else {
         showErrorAlert('서버와의 통신에 문제가 발생하였습니다. ❌');
       }
@@ -63,6 +72,7 @@ function BookDescription() {
       throw new Error(error.message);
     }
   };
+
 
   const handleClickHeart = async () => {
     const pb = new PocketBase('https://db-dib.pockethost.io');
@@ -115,10 +125,11 @@ function BookDescription() {
           <PostMain mainText={reviewData.post_contents} />
 
           <CommentsLayout
-            // nickname={user.nickname}
+            writeComment={writeComment}
+            nickname={user.nickname}
             reviewData={reviewData}
             onClick={handleClickPostComment}
-            onChange={handleDebounceWriteComment}
+            onChange={handleWriteComment}
             handleHeart={handleClickHeart}
             putHeart={putHeart}
           />
