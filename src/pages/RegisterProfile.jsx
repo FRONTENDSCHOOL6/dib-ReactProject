@@ -40,10 +40,10 @@ function RegisterProfile() {
     const formData = new FormData();
 
     if (selectedFile) {
-      formData.append('profile', selectedFile);
+      formData.append('profileImage', selectedFile);
     } else {
       const defaultImage = await getDefaultImage();
-      formData.append('profile', defaultImage);
+      formData.append('profileImage', defaultImage);
     }
     formData.append('nickname', nickname);
 
