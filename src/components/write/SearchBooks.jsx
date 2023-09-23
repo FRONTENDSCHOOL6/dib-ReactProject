@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-import { useBooleanStore } from '@/hooks/booleanStore';
+import { useBooleanStore } from '@/hooks/useStore';
 
 function SearchBooks({ onChange, children, value }) {
   const { isVisible, setIsVisible } = useBooleanStore();
