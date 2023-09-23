@@ -1,64 +1,88 @@
-import { useEffect, useState } from 'react';
 import { pb } from '@/api/pocketbase';
 import ColBookCard from '../common/bookCards/ColBookCard';
 import Spinner from '../bookList/Spinner';
 import PropTypes from 'prop-types';
 import { useAuth } from '@/contexts/AuthContext';
+import { usePbData } from '@/contexts/PbDataContext';
+import { useEffect, useState } from 'react';
 
-function BestBook({ isLoading, setIsLoading }) {
+function BestBook({ isLoading }) {
+  const { bookData } = usePbData();
   const [data, setData] = useState([]);
   const { user } = useAuth();
 
+  // useEffect(() => {
+  //   pb.autoCancellation(false);
+  //   async function fetchBestBooks() {
+  //     const bestRecord = await pb.collection('posts').getFullList({
+  //       sort: '-like_count',
+  //       expand: 'user_id',
+  //     });
+  //     // 상위 4개의 데이터만 필터링
+  //     const filteredData = bestRecord.slice(0, 4);
+  //     setData(filteredData);
+  //     setIsLoading(false);
+  //   }
+
+  //   fetchBestBooks();
+  // }, []);
+
   useEffect(() => {
     pb.autoCancellation(false);
-    async function fetchBestBooks() {
-      const bestRecord = await pb.collection('posts').getFullList({
-        sort: '-like_count',
+    async function fetchNewBooks() {
+      const newRecords = await pb.collection('posts').getFullList({
+        sort: '-created',
         expand: 'user_id',
       });
-      // 상위 4개의 데이터만 필터링
-      const filteredData = bestRecord.slice(0, 4);
+      const filteredData = newRecords.slice(0, 4);
       setData(filteredData);
-      setIsLoading(false);
     }
-    fetchBestBooks();
+    fetchNewBooks();
   }, []);
 
   const handleBookmarkToggle = async (postId) => {
-    const updataBookmarkPosts = [...user.bookmark_posts];
-    const postIdIndex = updataBookmarkPosts.indexOf(postId);
-    if (postIdIndex !== -1) {
-      updataBookmarkPosts.splice(postIdIndex, 1);
+    if (!user) {
+      return;
     } else {
-      updataBookmarkPosts.push(postId);
-    }
-    const updateUserBookmarkData = {
-      bookmark_posts: updataBookmarkPosts,
-    };
+      const updataBookmarkPosts = [...user.bookmark_posts];
+      const postIdIndex = updataBookmarkPosts.indexOf(postId);
+      if (postIdIndex !== -1) {
+        updataBookmarkPosts.splice(postIdIndex, 1);
+      } else {
+        updataBookmarkPosts.push(postId);
+      }
+      const updateUserBookmarkData = {
+        bookmark_posts: updataBookmarkPosts,
+      };
 
-    try {
-      await pb.collection('users').update(user.id, updateUserBookmarkData);
-    } catch (error) {
-      throw new Error(error.message);
+      try {
+        await pb.collection('users').update(user.id, updateUserBookmarkData);
+      } catch (error) {
+        throw new Error(error.message);
+      }
     }
   };
 
   const handleLikeToggle = async (postId) => {
-    const updatedLikedPosts = [...user.liked_posts];
-    const postIdIndex = updatedLikedPosts.indexOf(postId);
-    if (postIdIndex !== -1) {
-      updatedLikedPosts.splice(postIdIndex, 1);
+    if (!user) {
+      return;
     } else {
-      updatedLikedPosts.push(postId);
-    }
-    const updatedUserData = {
-      liked_posts: updatedLikedPosts,
-    };
+      const updatedLikedPosts = [...user.liked_posts];
+      const postIdIndex = updatedLikedPosts.indexOf(postId);
+      if (postIdIndex !== -1) {
+        updatedLikedPosts.splice(postIdIndex, 1);
+      } else {
+        updatedLikedPosts.push(postId);
+      }
+      const updatedUserData = {
+        liked_posts: updatedLikedPosts,
+      };
 
-    try {
-      await pb.collection('users').update(user.id, updatedUserData);
-    } catch (error) {
-      throw new Error(error.message);
+      try {
+        await pb.collection('users').update(user.id, updatedUserData);
+      } catch (error) {
+        throw new Error(error.message);
+      }
     }
   };
 
@@ -85,10 +109,14 @@ function BestBook({ isLoading, setIsLoading }) {
                       nickName={item.expand.user_id[0].nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
-                      bookmarkClick={() => handleBookmarkToggle(item.id)}
-                      bookmarkRander={user.bookmark_posts.includes(item.id)}
+                      bookmarkClick={() => handleBookmarkToggle(item)}
+                      bookmarkRander={
+                        user ? user.bookmark_posts.includes(item.id) : false
+                      }
                       heaetClick={() => handleLikeToggle(item.id)}
-                      heartRander={user.liked_posts.includes(item.id)}
+                      heartRander={
+                        user ? user.liked_posts.includes(item.id) : false
+                      }
                       bookID={item.id}
                     />
                   </li>

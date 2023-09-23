@@ -21,6 +21,13 @@ function TabButton({
         rounded-full 
         border
         text-lg
+        transition-all
+        duration-200 
+        ease-in-out
+        transform 
+        hover:scale-95
+        shadow-lg 
+        hover:shadow-sm
         ${borderColor}
         ${textColor}
         ${bgColor}
