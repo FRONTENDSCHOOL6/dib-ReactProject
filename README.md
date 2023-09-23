@@ -60,8 +60,12 @@
 
 
 
+<<<<<<< HEAD
 ## 🎨디자인
  [Figma](https://www.figma.com/file/6SE7VmNnymvGRP1aqx2K0A/dib?type=design&node-id=206%3A1080&mode=design&t=Vv39hWcGU9PU5OUM-1)
+=======
+## 🎨[Figma](https://www.figma.com/file/6SE7VmNnymvGRP1aqx2K0A/dib?type=design&node-id=206%3A1080&mode=design&t=Vv39hWcGU9PU5OUM-1)
+>>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
  ![image](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/4bb64b4e-b826-406c-98fe-ef76b7861371)
 
  ## userFlow
@@ -75,6 +79,30 @@
 
 ## 🔧Tech Stack
 
+<<<<<<< HEAD
+=======
+#### HTML & CSS
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white" /> <img src="https://camo.githubusercontent.com/36c57305fd24736542e2e327286081def4c4e6afb15f77cd5acdb9276947fbce/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5461696c77696e642d3036423644342e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d7461696c77696e64435353266c6f676f436f6c6f723d7768697465" />
+
+#### Language
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+
+
+#### Package Manager
+<img src="https://img.shields.io/badge/pnpm-FB5137?style=for-the-badge&logo=pnpm&logoColor=white" /> <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=JSON&logoColor=white" />
+
+#### Git
+<img src="https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=Git&logoColor=white" /> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" />
+
+#### Tools
+<img src="https://img.shields.io/badge/pocketbase-FF5675?style=for-the-badge&logo=pocketbase&logoColor=white"> <img src="https://img.shields.io/badge/FramerMotion-0055FF?style=for-the-badge&logo=framer&logoColor=white"> <img src="https://img.shields.io/badge/vite-ACF3FF?style=for-the-badge&logo=vite&logoColor=black"> <img src="https://img.shields.io/badge/reactrouter-000069?style=for-the-badge&logo=reactrouter&logoColor=white">
+
+#### Setting
+<img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=white" /> <img src="https://img.shields.io/badge/Prettier-20B2AA?style=for-the-badge&logo=Prettier&logoColor=white" />
+
+#### Design & Communication
+<img src="https://img.shields.io/badge/Figma-FF1493?style=for-the-badge&logo=Figma&logoColor=white"/> <img src="https://img.shields.io/badge/Discord-5B61EE?style=for-the-badge&logo=Discord&logoColor=white" /> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
+>>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
 
 ## 👨‍👨‍👦‍👦 **dib 팀원 소개**
 
@@ -91,6 +119,7 @@
 |🙋🏻‍♀️ 양정아 |       |
 |🙋🏻‍♀️ 강예나 |                                  |
 
+<<<<<<< HEAD
 
 
 ### 📂 **프로젝트 폴더 구조**
@@ -98,6 +127,130 @@
 
 
 ## ✴️**Commit Convention**
+=======
+## ✴️ **주요 기능 소개**
+
+### 📂 **프로젝트 폴더 구조**
+```
+📦src
+ ┣ 📂api
+ ┃ ┣ 📜pocketbase.js
+ ┃ ┗ 📜useProducts.js
+ ┣ 📂assets
+ ┃ ┣ 📜cleanCode.png
+ ┃ ┣ 📜hori.png
+ ┃ ┣ 📜mainBanner1.png
+ ┃ ┣ 📜mainBanner2.png
+ ┃ ┗ 📜reactBook.png
+ ┣ 📂components
+ ┃ ┣ 📂bookList
+ ┃ ┃ ┣ 📜Spinner.jsx
+ ┃ ┃ ┗ 📜TabButtonList.jsx
+ ┃ ┣ 📂category
+ ┃ ┃ ┗ 📜CategoryTabButton.jsx
+ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📂bookCards
+ ┃ ┃ ┃ ┣ 📜BookCardImage.jsx
+ ┃ ┃ ┃ ┣ 📜ColBookCard.jsx
+ ┃ ┃ ┃ ┣ 📜ColBookCardInfo.jsx
+ ┃ ┃ ┃ ┣ 📜RowBookCard.jsx
+ ┃ ┃ ┃ ┗ 📜RowBookCardInfo.jsx
+ ┃ ┃ ┣ 📜Button.jsx
+ ┃ ┃ ┣ 📜FormInput.jsx
+ ┃ ┃ ┣ 📜Heart.jsx
+ ┃ ┃ ┣ 📜Heartbutton.jsx
+ ┃ ┃ ┣ 📜InputValidation.jsx
+ ┃ ┃ ┣ 📜ScrollButton.jsx
+ ┃ ┃ ┣ 📜SignPageTitle.jsx
+ ┃ ┃ ┣ 📜SubVisualBanner.jsx
+ ┃ ┃ ┗ 📜TabButton.jsx
+ ┃ ┣ 📂favorite
+ ┃ ┃ ┗ 📜FavoriteTitle.jsx
+ ┃ ┣ 📂join
+ ┃ ┃ ┣ 📜JoinForm.jsx
+ ┃ ┃ ┗ 📜JoinTitle.jsx
+ ┃ ┣ 📂login
+ ┃ ┃ ┣ 📜EmailInput.jsx
+ ┃ ┃ ┣ 📜JoinButton.jsx
+ ┃ ┃ ┣ 📜LoginButton.jsx
+ ┃ ┃ ┣ 📜LoginForm.jsx
+ ┃ ┃ ┣ 📜LoginTitle.jsx
+ ┃ ┃ ┗ 📜PasswordInput.jsx
+ ┃ ┣ 📂main
+ ┃ ┃ ┣ 📜BestBook.jsx
+ ┃ ┃ ┣ 📜CategoryBook.jsx
+ ┃ ┃ ┣ 📜MainBanner.jsx
+ ┃ ┃ ┗ 📜NewBook.jsx
+ ┃ ┣ 📂postList
+ ┃ ┃ ┣ 📜PostListTitle.jsx
+ ┃ ┃ ┗ 📜PostWriteButton.jsx
+ ┃ ┣ 📂profile
+ ┃ ┃ ┣ 📜ImageUpload.jsx
+ ┃ ┃ ┣ 📜NicknameInput.jsx
+ ┃ ┃ ┣ 📜ProfileTitle.jsx
+ ┃ ┃ ┗ 📜RegistrationButton.jsx
+ ┃ ┣ 📂userPost
+ ┃ ┃ ┣ 📜Comments.jsx
+ ┃ ┃ ┣ 📜CommentsLayout.jsx
+ ┃ ┃ ┣ 📜InputComment.jsx
+ ┃ ┃ ┣ 📜PostBookInfo.jsx
+ ┃ ┃ ┣ 📜PostMain.jsx
+ ┃ ┃ ┣ 📜PostOptions.jsx
+ ┃ ┃ ┣ 📜PostTitle.jsx
+ ┃ ┃ ┗ 📜RullsOfComment.jsx
+ ┃ ┗ 📂write
+ ┃ ┃ ┣ 📜BookImage.jsx
+ ┃ ┃ ┣ 📜BookInfo.jsx
+ ┃ ┃ ┣ 📜Category.jsx
+ ┃ ┃ ┣ 📜ReviewBtn.jsx
+ ┃ ┃ ┣ 📜ReviewInfo.jsx
+ ┃ ┃ ┣ 📜ReviewMainText.jsx
+ ┃ ┃ ┗ 📜SearchBooks.jsx
+ ┣ 📂contexts
+ ┃ ┣ 📜AuthContext.jsx
+ ┃ ┣ 📜BookmarkContext.jsx
+ ┃ ┣ 📜PbDataContext.jsx
+ ┃ ┗ 📜PrivateRoute.jsx
+ ┣ 📂hooks
+ ┃ ┣ 📜booleanStore.js
+ ┃ ┣ 📜categoryStore.js
+ ┃ ┣ 📜commentStore.js
+ ┃ ┣ 📜setupProxy.js
+ ┃ ┗ 📜useStorage.js
+ ┣ 📂layout
+ ┃ ┣ 📜FooterBar.jsx
+ ┃ ┣ 📜HeaderBar.jsx
+ ┃ ┣ 📜Layout.jsx
+ ┃ ┗ 📜Nav.jsx
+ ┣ 📂pages
+ ┃ ┣ 📜BookDescription.jsx
+ ┃ ┣ 📜BookList.jsx
+ ┃ ┣ 📜FavoritePage.jsx
+ ┃ ┣ 📜Home.jsx
+ ┃ ┣ 📜Join.jsx
+ ┃ ┣ 📜Login.jsx
+ ┃ ┣ 📜PostListPage.jsx
+ ┃ ┣ 📜RegisterProfile.jsx
+ ┃ ┗ 📜WritePage.jsx
+ ┣ 📂routes
+ ┃ ┗ 📜routes.jsx
+ ┣ 📂store
+ ┣ 📂styles
+ ┃ ┗ 📜tailwind.css
+ ┣ 📂utils
+ ┃ ┣ 📜debounce.js
+ ┃ ┣ 📜getPbImageURL.js
+ ┃ ┣ 📜regular.js
+ ┃ ┗ 📜showAlert.js
+ ┣ 📜App.jsx
+ ┗ 📜main.jsx
+```
+
+### 성능 검사
+
+
+### ✴️**Commit Convention**
+>>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
 
 |Type 키워드|사용 시점|
 |------|---|
@@ -112,8 +265,12 @@
 |Setting|Eslint, dependency, config 파일 등의 환경설정 수정 사항 |
 |Merge|다른 브랜치와 병합할때|
 
+<<<<<<< HEAD
 ## ✴️**Coding Convention**
 ## ✴️ **주요 기능 소개**
+=======
+### ✴️**Coding Convention**
+>>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
 
 
 
@@ -121,8 +278,18 @@
 
 
 
+<<<<<<< HEAD
 ## ✴️ **리팩토링할 부분**
 
 
 
 ## ✴️ **느낀점**
+=======
+
+
+### ✴️ **리팩토링할 부분**
+
+
+
+### ✴️ **느낀점**
+>>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
