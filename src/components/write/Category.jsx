@@ -1,10 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-import { useBooleanStore } from '@/hooks/booleanStore';
+import { useState } from 'react';
 
-function Category({ onClick }) {
-  const { isClicked, setIsClicked } = useBooleanStore();
+function Category({ onCategorySelect }) {
+  const [isClicked, setIsClicked] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const categories = ['HTML', 'CSS', 'JavaScript', 'React'];
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    setIsClicked(false);
+    onCategorySelect(category);
+  };
 
   return (
     <div className="flex flex-col items-center self-end  mb-[140px] relative">
@@ -16,10 +25,10 @@ function Category({ onClick }) {
         <button
           className="text-dibCategory text-lg font-semibold flex justify-between items-center w-[260px] "
           onClick={() => {
-            setIsClicked();
+            setIsClicked(!isClicked);
           }}
         >
-          <p>카테고리</p>
+          <p>{selectedCategory || '카테고리'}</p>
           <FontAwesomeIcon icon={faAngleDown} className="text-dibCategory" />
         </button>
       </div>
@@ -28,26 +37,16 @@ function Category({ onClick }) {
           isClicked ? 'block' : 'hidden'
         } absolute block w-[220px] bg-slate-200  h-auto rounded-b-[15px] bottom-[-150px] py-5 px-8`}
       >
-        <li className="hover:bg-slate-300 py-1">
-          <button type="button" onClick={onClick}>
-            HTML
-          </button>
-        </li>
-        <li className="hover:bg-slate-300 py-1">
-          <button type="button" onClick={onClick}>
-            CSS
-          </button>
-        </li>
-        <li className="hover:bg-slate-300 py-1">
-          <button type="button" onClick={onClick}>
-            JavaScript
-          </button>
-        </li>
-        <li className="hover:bg-slate-300 py-1">
-          <button type="button" onClick={onClick}>
-            React
-          </button>
-        </li>
+        {categories.map((category, index) => (
+          <li className="hover:bg-slate-300 py-1" key={index}>
+            <button
+              type="button"
+              onClick={() => handleCategoryClick(category)}
+            >
+              {category}
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );
@@ -56,5 +55,5 @@ function Category({ onClick }) {
 export default Category;
 
 Category.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onCategorySelect: PropTypes.func.isRequired,
 };
