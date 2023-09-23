@@ -31,7 +31,7 @@ function BestBook({ isLoading }) {
     pb.autoCancellation(false);
     async function fetchNewBooks() {
       const newRecords = await pb.collection('posts').getFullList({
-        sort: '-created',
+        sort: '-like_count',
         expand: 'user_id',
       });
       const filteredData = newRecords.slice(0, 4);
@@ -109,7 +109,7 @@ function BestBook({ isLoading }) {
                       nickName={item.expand.user_id[0].nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
-                      bookmarkClick={() => handleBookmarkToggle(item)}
+                      bookmarkClick={() => handleBookmarkToggle(item.id)}
                       bookmarkRander={
                         user ? user.bookmark_posts.includes(item.id) : false
                       }
