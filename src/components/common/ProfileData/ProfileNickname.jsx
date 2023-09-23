@@ -1,13 +1,13 @@
 import { useAuth } from '@/contexts/AuthContext';
 import PropTypes from 'prop-types';
 
-function Nickname({ textSize = 'text-base' }) {
+function ProfileNickname({ textSize = 'text-base' }) {
   const { user } = useAuth();
   return <span className={`${textSize}`}>{user.nickname}</span>;
 }
 
-export default Nickname;
+export default ProfileNickname;
 
-Nickname.propTypes = {
+ProfileNickname.propTypes = {
   textSize: PropTypes.string,
 };
