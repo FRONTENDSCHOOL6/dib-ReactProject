@@ -15,6 +15,7 @@ function FavoritePage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleBookmarkToggle = async (postId) => {
+    console.log(user);
     const updatedBookmarkPosts = [...user.bookmark_posts];
     const postIdIndex = updatedBookmarkPosts.indexOf(postId);
     if (postIdIndex !== -1) {
@@ -34,8 +35,10 @@ function FavoritePage() {
   };
 
   const handleLikeToggle = async (postId) => {
+    console.log(user);
     const updatedLikedPosts = [...user.liked_posts];
     const postIdIndex = updatedLikedPosts.indexOf(postId);
+
     if (postIdIndex !== -1) {
       updatedLikedPosts.splice(postIdIndex, 1);
     } else {
@@ -52,32 +55,72 @@ function FavoritePage() {
     }
   };
 
+  // useEffect(() => {
+  //   async function getUserData() {
+  //     setIsLoading(true);
+  //     if (user) {
+  //       try {
+  //         const userIdData = await pb.collection('users').getOne(user.id, {
+  //           fields: ['bookmark_posts'],
+  //         });
+
+  //         const bookmarkIds = userIdData.bookmark_posts;
+
+  //         let filter = '';
+  //         let seperator = ' || id=';
+  //         if (bookmarkIds.length > 0) {
+  //           filter = bookmarkIds.reduce((filter, id) => {
+  //             if (bookmarkIds.length === 1) {
+  //               return `${filter}'${id}'`;
+  //             } else {
+  //               return `${filter}'${id}'${seperator}`;
+  //             }
+  //           }, 'id=');
+
+  //           if (bookmarkIds.length > 1) {
+  //             filter = `(${filter.slice(0, seperator.length * -1)})`;
+  //           }
+  //         }
+
+  //         const bookmarkedPosts = await pb.collection('posts').getFullList({
+  //           expand: 'user_id',
+  //           filter,
+  //         });
+
+  //         setBookmarks(filter !== '' ? bookmarkedPosts : []);
+  //       } catch (error) {
+  //         console.error('사용자 데이터 불러오기 오류:', error);
+  //       }
+  //     }
+  //     setIsLoading(false);
+  //     console.log(bookmarks);
+  //     console.log(user);
+  //   }
+
+  //   getUserData();
+  // }, [user]);
+
   useEffect(() => {
     async function getUserData() {
       setIsLoading(true);
       if (user) {
-        try {
-          const userIdData = await pb.collection('users').getOne(user.id, {
-            fields: ['bookmark_posts'],
-          });
+        const userIdData = await pb.collection('users').getOne(user.id, {
+          expand: 'bookmark_posts',
+        });
 
-          const bookmarkIds = userIdData.bookmark_posts;
-          const allPosts = await pb.collection('posts').getFullList({
-            expand: 'user_id',
-          });
+        const writtenPosts = userIdData.bookmark_posts;
 
-          const bookmarkedPosts = allPosts.filter((post) =>
-            bookmarkIds.includes(post.id)
-          );
+        const reviewData = await pb.collection('posts').getFullList({
+          expand: 'user_id',
+        });
 
-          setBookmarks(bookmarkedPosts);
-        } catch (error) {
-          console.error('사용자 데이터 불러오기 오류:', error);
-        }
+        const myWrittenReviews = reviewData.filter((review) =>
+          writtenPosts.includes(review.id)
+        );
+        setBookmarks(myWrittenReviews);
       }
       setIsLoading(false);
     }
-
     getUserData();
   }, [user]);
 
@@ -119,15 +162,16 @@ function FavoritePage() {
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}
-                      bookmarkRender={user.bookmark_posts.includes(item.id)}
-                      heartClick={() => handleLikeToggle(item.id)}
-                      heartRender={user.liked_posts.includes(item.id)}
+                      bookmarkRander={user.bookmark_posts.includes(item.id)}
+                      heaetClick={() => handleLikeToggle(item.id)}
+                      heartRander={user.liked_posts.includes(item.id)}
+                      bookID={item.id}
                     />
                   </li>
                 ))
               )}
             </ul>
-            {currentItems.length > 0 && (
+            {currentPage.length > 0 && (
               <div className="flex justify-center mt-4">
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
@@ -141,8 +185,7 @@ function FavoritePage() {
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={
-                    currentPage >=
-                    Math.ceil(bookmarks.length / perPage)
+                    currentPage >= Math.ceil(bookmarks.length / perPage)
                   }
                 >
                   <FontAwesomeIcon icon={faAngleRight} />
