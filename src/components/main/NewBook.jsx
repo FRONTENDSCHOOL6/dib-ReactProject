@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { pb } from '@/api/pocketbase';
+import { useAuth } from '@/contexts/AuthContext';
 import ColBookCard from '../common/bookCards/ColBookCard';
 import { Pagination } from 'swiper/modules';
 import { Navigation } from 'swiper/modules';
@@ -31,6 +32,7 @@ const STYLES2 = {
 };
 
 function NewBook() {
+  const { user } = useAuth();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -38,13 +40,59 @@ function NewBook() {
     async function fetchNewBooks() {
       const newRecords = await pb.collection('posts').getFullList({
         sort: '-created',
-        expand : 'user_id',
+        expand: 'user_id',
       });
-      const filteredData = newRecords.slice(0, 8);
+      const filteredData = newRecords.slice(0, 4);
       setData(filteredData);
     }
     fetchNewBooks();
   }, []);
+
+  const handleLikeToggle = async (postId) => {
+    if (!user) {
+      return;
+    } else {
+      const updatedLikedPosts = [...user.liked_posts];
+      const postIdIndex = updatedLikedPosts.indexOf(postId);
+      if (postIdIndex !== -1) {
+        updatedLikedPosts.splice(postIdIndex, 1);
+      } else {
+        updatedLikedPosts.push(postId);
+      }
+      const updatedUserData = {
+        liked_posts: updatedLikedPosts,
+      };
+
+      try {
+        await pb.collection('users').update(user.id, updatedUserData);
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    }
+  };
+
+  const handleBookmarkToggle = async (postId) => {
+    if (!user) {
+      return;
+    } else {
+      const updataBookmarkPosts = [...user.bookmark_posts];
+      const postIdIndex = updataBookmarkPosts.indexOf(postId);
+      if (postIdIndex !== -1) {
+        updataBookmarkPosts.splice(postIdIndex, 1);
+      } else {
+        updataBookmarkPosts.push(postId);
+      }
+      const updateUserBookmarkData = {
+        bookmark_posts: updataBookmarkPosts,
+      };
+
+      try {
+        await pb.collection('users').update(user.id, updateUserBookmarkData);
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    }
+  };
 
   return (
     <>
@@ -63,7 +111,7 @@ function NewBook() {
               spaceBetween={30}
               pagination={{
                 type: 'progressbar',
-                el:'.progressbar',
+                el: '.progressbar',
                 renderProgressbar(progressbarFillClass) {
                   return `<span class="${progressbarFillClass}" style="background-color: #627D59;"></span>`;
                 },
@@ -75,18 +123,27 @@ function NewBook() {
               modules={[Pagination, Navigation]}
               className="mySwiper h-[600px] relative"
             >
-              {data.map((item) => (
-                <SwiperSlide key={item.id}>
-                  <ColBookCard
-                    bookID={item.id}
-                    imgSrc={item.book_image_link}
-                    imgAlt={item.book_title}
-                    nickName={item.expand.user_id[0].nickname}
-                    postTitle={item.post_title}
-                    bookTitle={item.book_title}
-                  />
-                </SwiperSlide>
-              ))}
+              {data &&
+                data.map((item) => (
+                  <SwiperSlide key={item.id}>
+                    <ColBookCard
+                      imgSrc={item.book_image_link}
+                      imgAlt={item.book_title}
+                      nickName={item.expand.user_id[0].nickname}
+                      postTitle={item.post_title}
+                      bookTitle={item.book_title}
+                      bookmarkClick={() => handleBookmarkToggle(item.id)}
+                      bookmarkRander={
+                        user ? user.bookmark_posts.includes(item.id) : false
+                      }
+                      heaetClick={() => handleLikeToggle(item.id)}
+                      heartRander={
+                        user ? user.liked_posts.includes(item.id) : false
+                      }
+                      bookID={item.id}
+                    />
+                  </SwiperSlide>
+                ))}
               <div
                 className="swiper-button-prev "
                 style={STYLES}
@@ -98,7 +155,7 @@ function NewBook() {
                 className="swiper-button-next "
                 style={STYLES1}
                 role="button"
-                tabIndex={0 }
+                tabIndex={0}
                 title="오른쪽"
               ></div>
               <div className="progressbar" style={STYLES2}></div>
