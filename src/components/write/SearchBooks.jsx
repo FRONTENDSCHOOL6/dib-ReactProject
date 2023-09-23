@@ -1,13 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-import { useBooleanStore } from '@/hooks/booleanStore';
+import { useBooleanStore } from '@/hooks/useStore';
 
 function SearchBooks({ onChange, children, value }) {
   const { isVisible, setIsVisible } = useBooleanStore();
 
   const handleSearchBook = (event) => {
     event.preventDefault;
+  };
+
+  const handleEnterkeyBlock = (event) => {
+    if (event.code === 'Enter') {
+      event.preventDefault();
+    }
   };
 
   return (
@@ -26,19 +32,20 @@ function SearchBooks({ onChange, children, value }) {
               value={value}
               placeholder="등록하고 싶은 도서를 입력해주세요"
               onChange={onChange}
+              onKeyDown={handleEnterkeyBlock}
               onClick={() => {
                 setIsVisible();
               }}
               // onFocus={toggleUlVisibility}
               // onBlur={toggleUlVisibility}
-              className="w-[900px] h-[50px] text-xl bg-slate-200 focus:outline-none"
+              className="w-[870px] h-[50px] text-xl bg-slate-200 focus:outline-none"
             ></input>
             <ul
               className={`${
                 isVisible ? 'block' : 'hidden'
               } w-[986px] h-auto borderflex flex-col absolute bg-slate-200 left-[-1px] rounded-b-2xl px-10`}
             >
-              <li className="w-[900px] h-[1px] bg-horizontal my-2"></li>
+              <li className="w-[850px] h-[1px] bg-horizontal my-2"></li>
               {children}
             </ul>
           </label>

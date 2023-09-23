@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { usePbData } from '@/contexts/PbDataContext';
-// import { useAuth } from '@/contexts/AuthContext';
 
 function ColBookCardInfo({
   postTitle,
