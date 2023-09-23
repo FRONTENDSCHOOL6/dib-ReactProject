@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
+import { useBooleanStore } from '@/hooks/booleanStore';
 import { useState } from 'react';
 
-function Category({ onCategorySelect }) {
-  const [isClicked, setIsClicked] = useState(false);
+function Category({ onClick }) {
+  const { isClicked, setIsClicked } = useBooleanStore();
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const categories = ['HTML', 'CSS', 'JavaScript', 'React'];
@@ -12,7 +13,7 @@ function Category({ onCategorySelect }) {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setIsClicked(false);
-    onCategorySelect(category);
+    onClick(category);
   };
 
   return (
@@ -55,5 +56,5 @@ function Category({ onCategorySelect }) {
 export default Category;
 
 Category.propTypes = {
-  onCategorySelect: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
