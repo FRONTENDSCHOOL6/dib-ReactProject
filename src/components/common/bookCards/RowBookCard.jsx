@@ -2,11 +2,30 @@ import BookCardImage from './BookCardImage';
 import RowBookCardInfo from './RowBookCardInfo';
 import PropTypes from 'prop-types';
 
-function RowBookCard({ postTitle, bookTitle, nickName, imgSrc, imgAlt, bookID }) {
+function RowBookCard({
+  postTitle,
+  bookTitle,
+  nickName,
+  imgSrc,
+  imgAlt,
+  bookID,
+  bookmarkClick,
+  bookmarkRander,
+  heaetClick,
+  heartRander,
+}) {
   return (
     <div className="flex w-[560px] h-[284px] ">
-      <BookCardImage imgSrc={imgSrc} imgAlt={imgAlt} bookID={bookID} />
+      <BookCardImage
+        imgSrc={imgSrc}
+        imgAlt={imgAlt}
+        bookID={bookID}
+        bookmarkClick={bookmarkClick}
+        bookmarkRander={bookmarkRander}
+      />
       <RowBookCardInfo
+        heaetClick={heaetClick}
+        heartRander={heartRander}
         nickName={nickName}
         postTitle={postTitle}
         bookTitle={bookTitle}
@@ -22,6 +41,10 @@ RowBookCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired,
   bookID: PropTypes.string.isRequired,
+  heaetClick: PropTypes.func,
+  bookmarkClick: PropTypes.func,
+  bookmarkRander: PropTypes.bool,
+  heartRander: PropTypes.bool,
 };
 
 export default RowBookCard;

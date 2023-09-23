@@ -107,9 +107,11 @@ function WritePage() {
       if (record) {
         const successDataId = record.id;
 
-        await pb.collection('users').update(user.id, successDataId);
-
-        // await pb.collection('user').update(successDataId, { data });
+        await pb
+          .collection('users')
+          .update(user.id, {
+            written_posts: [...user.written_posts, successDataId],
+          });
 
         showSuccessAlert('리뷰저장에 성공하였습니다!', '✅');
       } else {
