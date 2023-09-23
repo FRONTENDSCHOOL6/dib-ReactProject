@@ -17,7 +17,6 @@ function BookDescription() {
   const [reviewData, setReviewData] = useState(null); //리뷰
   const [writeComment, setWriteComment] = useState('');
   const [userImage, setUserImage] = useState('');
-
   useEffect(() => {
     async function renderReviewPage() {
       try {
@@ -54,14 +53,18 @@ function BookDescription() {
         showSuccessAlert('댓글 저장에 성공하였습니다! 🚀');
         const postRecord = await pb.collection('posts').getOne(id);
         const updatedComments = [...postRecord.comments, record.id];
-        await pb.collection('posts').update(id, { comments: updatedComments });
+        const commentRegist = await pb
+          .collection('posts')
+          .update(id, { comments: updatedComments });
 
+        console.log(commentRegist);
         // 데이터를 다시 가져오고 싶을 때 reviewData를 업데이트합니다.
         setReviewData(
           await pb
             .collection('posts')
             .getOne(id, { expand: 'user_id ,comments' })
         );
+        setWriteComment('');
       } else {
         showErrorAlert('서버와의 통신에 문제가 발생하였습니다. ❌');
       }
@@ -139,10 +142,11 @@ function BookDescription() {
           <PostMain mainText={reviewData.post_contents} />
 
           <CommentsLayout
+            writeComment={writeComment}
             nickname={user.nickname}
             reviewData={reviewData}
             onClick={handleClickPostComment}
-            onChange={handleDebounceWriteComment}
+            onChange={handleWriteComment}
             heaetClick={() => handleLikeToggle(reviewData.id)}
             heartRander={
               user ? user.liked_posts.includes(reviewData.id) : false

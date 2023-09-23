@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ProfileImage from '../common/ProfileData/ProfileImage';
 
-function InputComment({ onClick, onChange }) {
+function InputComment({ onClick, onChange, writeComment }) {
   return (
     <div className="flex m-auto w-[1200px] h-[130px] justify-between px-2">
       <ProfileImage width="w-[50px]" height="h-[50px]" />
@@ -16,6 +16,7 @@ function InputComment({ onClick, onChange }) {
               id="comment"
               placeholder="글자 수 50자 제한"
               onChange={onChange}
+              value={writeComment}
               className="w-[1050px] h-[32px] focus:outline-none"
             />
           </div>
@@ -37,4 +38,5 @@ export default InputComment;
 InputComment.propTypes = {
   onClick: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  writeComment: PropTypes.string,
 };

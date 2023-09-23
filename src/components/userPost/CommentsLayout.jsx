@@ -10,6 +10,7 @@ function CommentsLayout({
   heaetClick,
   reviewData,
   heartRander,
+  writeComment,
 }) {
   const comments = reviewData?.expand?.comments || [];
 
@@ -17,14 +18,14 @@ function CommentsLayout({
     <>
       <PostOptions heaetClick={heaetClick} heartRander={heartRander} />
       <RullsOfComment />
-      <InputComment onClick={onClick} onChange={onChange} />
+      <InputComment onClick={onClick} onChange={onChange} writeComment={writeComment} />
 
       {comments.length > 0 ? (
-        comments.map((comment, index) => (
-          <Comments
-            key={index}
-            text={comment.comment_contents}
-            date={comment.created}
+         [...comments].reverse().map((comment,index)=>(
+          <Comments 
+            key={index} 
+            text={comment.comment_contents} 
+            date={comment.created.slice(0,-8)} 
             nickName={comment.user_id}
           />
         ))
@@ -46,5 +47,6 @@ CommentsLayout.propTypes = {
   putHeart: PropTypes.bool,
   reviewData: PropTypes.object,
   date: PropTypes.string,
+  writeComment: PropTypes.string,
   heartRander: PropTypes.bool,
 };
