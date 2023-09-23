@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import ProfileView from './ProfileView';
 
 function Nav() {
   const { isAuth, logOut } = useAuth();
@@ -23,8 +24,8 @@ function Nav() {
   };
 
   return (
-    <nav>
-      <ul className="flex gap-24 absolute left-52">
+    <nav className="flex items-center">
+      <ul className="flex gap-24 absolute left-52 ">
         <li>
           <motion.div whileHover={{ scale: 1.2 }}>
             <motion.span fontWeight={900}>
@@ -48,14 +49,15 @@ function Nav() {
         </li>
       </ul>
 
-      <ul>
+      <ul className="flex gap-24 absolute right-52">
         {!isAuth && (
           <li>
             <Link to="/logIn"> 로그인 </Link>
           </li>
         )}
         {isAuth && (
-          <li>
+          <li className="flex flex-row items-center gap-3">
+            <ProfileView />
             <button type="button" onClick={handlelogOut}>
               로그아웃
             </button>
