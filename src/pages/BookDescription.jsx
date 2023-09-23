@@ -2,7 +2,6 @@ import PostBookInfo from '@/components/userPost/PostBookInfo';
 import PostTitle from '@/components/userPost/PostTitle';
 import PostMain from '@/components/userPost/PostMain';
 import CommentsLayout from '@/components/userPost/CommentsLayout';
-import PocketBase from 'pocketbase';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import debounce from '@/utils/debounce';
@@ -15,10 +14,8 @@ function BookDescription() {
   //특정게시물의 아이디
   const { user } = useAuth();
 
-  const [reviewData, setReviewData] = useState(null);//리뷰
+  const [reviewData, setReviewData] = useState(null); //리뷰
   const [writeComment, setWriteComment] = useState('');
-  const [putHeart, setPutHerart] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
   const [userImage, setUserImage] = useState('');
   useEffect(() => {
     async function renderReviewPage() {
@@ -26,7 +23,9 @@ function BookDescription() {
         const record = await pb.collection('posts').getOne(id, {
           expand: 'user_id ,comments',
         });
+
         setReviewData(record);
+        return record;
       } catch (error) {
         throw new Error(error.message);
       }
@@ -37,6 +36,7 @@ function BookDescription() {
   const handleWriteComment = (e) => {
     setWriteComment(e.target.value);
   };
+
   const handleDebounceWriteComment = debounce(handleWriteComment, 500);
 
   const handleClickPostComment = async (event) => {
@@ -73,36 +73,49 @@ function BookDescription() {
     }
   };
 
-
-  const handleClickHeart = async () => {
-    const pb = new PocketBase('https://db-dib.pockethost.io');
-    const data = {
-      user_id: [reviewData.user_id.nickname],
-      book_title: reviewData.book_title,
-      author: reviewData.author,
-      publisher: reviewData.publisher,
-      post_title: reviewData.post_title,
-      post_contents: reviewData.post_contents,
-      category: [...reviewData.category],
-      like_count: likeCount,
-      book_image_link: reviewData.book_image_link,
-    };
-
-    if (!putHeart) {
-      data.like_count += 1;
+  const handleBookmarkToggle = async (postId) => {
+    if (!user) {
+      return;
     } else {
-      data.like_count -= 1;
-    }
+      const updataBookmarkPosts = [...user.bookmark_posts];
+      const postIdIndex = updataBookmarkPosts.indexOf(postId);
+      if (postIdIndex !== -1) {
+        updataBookmarkPosts.splice(postIdIndex, 1);
+      } else {
+        updataBookmarkPosts.push(postId);
+      }
+      const updateUserBookmarkData = {
+        bookmark_posts: updataBookmarkPosts,
+      };
 
-    try {
-      const record = await pb
-        .collection('posts')
-        .update('xd64yi7yecy272v', data);
-      console.log(record);
-      setLikeCount(data.like_count);
-      setPutHerart(!putHeart);
-    } catch (error) {
-      throw new Error(error.message);
+      try {
+        await pb.collection('users').update(user.id, updateUserBookmarkData);
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    }
+  };
+
+  const handleLikeToggle = async (postId) => {
+    if (!user) {
+      return;
+    } else {
+      const updatedLikedPosts = [...user.liked_posts];
+      const postIdIndex = updatedLikedPosts.indexOf(postId);
+      if (postIdIndex !== -1) {
+        updatedLikedPosts.splice(postIdIndex, 1);
+      } else {
+        updatedLikedPosts.push(postId);
+      }
+      const updatedUserData = {
+        liked_posts: updatedLikedPosts,
+      };
+
+      try {
+        await pb.collection('users').update(user.id, updatedUserData);
+      } catch (error) {
+        throw new Error(error.message);
+      }
     }
   };
 
@@ -115,6 +128,10 @@ function BookDescription() {
             title={reviewData.book_title}
             bookImage={reviewData.book_image_link}
             publisher={reviewData.publisher}
+            bookmarkClick={() => handleBookmarkToggle(reviewData.id)}
+            bookmarkRander={
+              user ? user.bookmark_posts.includes(reviewData.id) : false
+            }
           />
           <PostTitle
             userImg={userImage}
@@ -130,8 +147,10 @@ function BookDescription() {
             reviewData={reviewData}
             onClick={handleClickPostComment}
             onChange={handleWriteComment}
-            handleHeart={handleClickHeart}
-            putHeart={putHeart}
+            heaetClick={() => handleLikeToggle(reviewData.id)}
+            heartRander={
+              user ? user.liked_posts.includes(reviewData.id) : false
+            }
           />
         </>
       )}
