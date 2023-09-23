@@ -3,38 +3,65 @@ import PostTitle from '@/components/userPost/PostTitle';
 import PostMain from '@/components/userPost/PostMain';
 import CommentsLayout from '@/components/userPost/CommentsLayout';
 import PocketBase from 'pocketbase';
-import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import debounce from '@/utils/debounce';
+import { pb } from '@/api/pocketbase';
+import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
+import { useAuth } from '@/contexts/AuthContext';
 
 function BookDescription() {
   const { id } = useParams();
+  //특정게시물의 아이디
+  const { user } = useAuth();
 
+  const [reviewData, setReviewData] = useState(null);//리뷰
   const [writeComment, setWriteComment] = useState('');
-  const [reviewData, setReviewData] = useState(null);
   const [putHeart, setPutHerart] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [userImage, setUserImage] = useState('');
 
   useEffect(() => {
     async function renderReviewPage() {
-      const pb = new PocketBase('https://db-dib.pockethost.io');
       try {
         const record = await pb.collection('posts').getOne(id, {
-          expand: 'user_id',
+          expand: 'user_id ,comments',
         });
         setReviewData(record);
-        console.log(record);
       } catch (error) {
         throw new Error(error.message);
       }
     }
-
     renderReviewPage();
   }, []);
 
-  const handleWriteComment = (event) => {
-    setWriteComment(event.target.value);
+  const handleWriteComment = (e) => {
+    setWriteComment(e.target.value);
+  };
+  const handleDebounceWriteComment = debounce(handleWriteComment, 500);
+
+  const handleClickPostComment = async (event) => {
+    event.preventDefault();
+    const data = {
+      user_id: user.id,//현재 로그인되어있는 사용고유아디값
+      comment_contents: writeComment, //방금쓴 댓글
+    };
+    
+    try {
+      const record = await pb.collection('comments').create(data);//commet데이터생성
+
+      if (record) {
+        showSuccessAlert('댓글 저장에 성공하였습니다! 🚀');
+        const postRecord = await pb.collection('posts').getOne(id);//포스트데이터가져와
+        const updatedComments = [...postRecord.comments, record.id];//포스트데이터 댓글배열에 방금 생성된 데이터아이디 넣어
+        await pb.collection('posts').update(id, { comments: updatedComments });
+        
+      } else {
+        showErrorAlert('서버와의 통신에 문제가 발생하였습니다. ❌');
+      }
+    } catch (error) {
+      throw new Error(error.message);
+    }
   };
 
   const handleClickHeart = async () => {
@@ -69,26 +96,6 @@ function BookDescription() {
     }
   };
 
-  const handleClickPostComment = async (event) => {
-    event.preventDefault();
-    const data = {
-      user_id: ['1u8j85zmyjckzwl'],
-      comment_contents: writeComment,
-    };
-
-    const pb = new PocketBase('https://db-dib.pockethost.io');
-    try {
-      const record = await pb.collection('comments').create(data);
-      if (record) {
-        toast.success('댓글 저장에 성공하였습니다! 🚀');
-      } else {
-        toast.error('서버와의 통신에 문제가 발생하였습니다. ❌');
-      }
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  };
-
   return (
     <>
       {reviewData && (
@@ -106,9 +113,12 @@ function BookDescription() {
             createDate={reviewData.created}
           />
           <PostMain mainText={reviewData.post_contents} />
+
           <CommentsLayout
+            // nickname={user.nickname}
+            reviewData={reviewData}
             onClick={handleClickPostComment}
-            onChange={handleWriteComment}
+            onChange={handleDebounceWriteComment}
             handleHeart={handleClickHeart}
             putHeart={putHeart}
           />

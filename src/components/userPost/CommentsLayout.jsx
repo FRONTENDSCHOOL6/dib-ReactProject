@@ -4,20 +4,25 @@ import PostOptions from './PostOptions';
 import RullsOfComment from './RullsOfComment';
 import PropTypes from 'prop-types';
 
-function CommentsLayout({ onClick, onChange, handleHeart, putHeart }) {
-  const comment1 = '님 근데 이 책 거품 심하다던데...  언블리버블';
-  const comment2 = '이 책 읽어봤는데 진짜 좋아습니다!! 저도 강추해요!!';
-  const comment3 = '진짜 책읽다 진짜 벽느낌...   완벽';
+function CommentsLayout({ onClick, onChange, handleHeart, putHeart, reviewData }) {
+
+  const comments = reviewData?.expand?.comments || [];
+  console.log(comments);
 
   return (
     <>
       <PostOptions onClick={handleHeart} putHeart={putHeart} />
       <RullsOfComment />
       <InputComment onClick={onClick} onChange={onChange} />
-      <Comments text={comment1} />
-      <Comments text={comment2} />
-      <Comments text={comment3} />
-      <div className="h-[300px]"></div>
+
+      {comments.length > 0 ? (
+        comments.map((comment,index)=>(
+          <Comments key={index} text={comment.comment_contents} date={comment.created} nickName={comment.user_id}
+          />
+        ))
+      ) : (
+        <p className='m-auto w-[1200px] text-center mt-10'>아직 댓글이 없습니다.</p>
+      )}
     </>
   );
 }
@@ -28,5 +33,7 @@ CommentsLayout.propTypes = {
   onClick: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   handleHeart: PropTypes.func.isRequired,
-  putHeart: PropTypes.boolean,
+  putHeart: PropTypes.bool,
+  reviewData: PropTypes.object,
+  date: PropTypes.string,
 };
