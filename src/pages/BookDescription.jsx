@@ -37,12 +37,15 @@ function BookDescription() {
     setWriteComment(e.target.value);
   };
 
-  const handleDebounceWriteComment = debounce(handleWriteComment, 500);
+  // const handleDebounceWriteComment = debounce(handleWriteComment, 500);
 
   const handleClickPostComment = async (event) => {
     event.preventDefault();
+    // 댓글쓰고 DB에 넘어가는 정보들
     const data = {
       user_id: user.id,
+      nickName: user.nickname,
+      profileImage: user.profileImage,
       comment_contents: writeComment,
     };
 
