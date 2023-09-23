@@ -60,12 +60,8 @@
 
 
 
-<<<<<<< HEAD
-## 🎨디자인
- [Figma](https://www.figma.com/file/6SE7VmNnymvGRP1aqx2K0A/dib?type=design&node-id=206%3A1080&mode=design&t=Vv39hWcGU9PU5OUM-1)
-=======
+
 ## 🎨[Figma](https://www.figma.com/file/6SE7VmNnymvGRP1aqx2K0A/dib?type=design&node-id=206%3A1080&mode=design&t=Vv39hWcGU9PU5OUM-1)
->>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
  ![image](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/4bb64b4e-b826-406c-98fe-ef76b7861371)
 
  ## userFlow
@@ -78,9 +74,6 @@
 <img width="1562" alt="DB_dib" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/1753e2b3-95c5-4fb1-bb76-2e9147bd36b6">
 
 ## 🔧Tech Stack
-
-<<<<<<< HEAD
-=======
 #### HTML & CSS
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white" /> <img src="https://camo.githubusercontent.com/36c57305fd24736542e2e327286081def4c4e6afb15f77cd5acdb9276947fbce/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5461696c77696e642d3036423644342e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d7461696c77696e64435353266c6f676f436f6c6f723d7768697465" />
 
@@ -102,7 +95,6 @@
 
 #### Design & Communication
 <img src="https://img.shields.io/badge/Figma-FF1493?style=for-the-badge&logo=Figma&logoColor=white"/> <img src="https://img.shields.io/badge/Discord-5B61EE?style=for-the-badge&logo=Discord&logoColor=white" /> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
->>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
 
 ## 👨‍👨‍👦‍👦 **dib 팀원 소개**
 
@@ -119,15 +111,6 @@
 |🙋🏻‍♀️ 양정아 |       |
 |🙋🏻‍♀️ 강예나 |                                  |
 
-<<<<<<< HEAD
-
-
-### 📂 **프로젝트 폴더 구조**
-
-
-
-## ✴️**Commit Convention**
-=======
 ## ✴️ **주요 기능 소개**
 
 ### 📂 **프로젝트 폴더 구조**
@@ -246,11 +229,10 @@
  ┗ 📜main.jsx
 ```
 
-### 성능 검사
 
 
 ### ✴️**Commit Convention**
->>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
+
 
 |Type 키워드|사용 시점|
 |------|---|
@@ -265,26 +247,16 @@
 |Setting|Eslint, dependency, config 파일 등의 환경설정 수정 사항 |
 |Merge|다른 브랜치와 병합할때|
 
-<<<<<<< HEAD
-## ✴️**Coding Convention**
-## ✴️ **주요 기능 소개**
-=======
 ### ✴️**Coding Convention**
->>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
 
 
 
 
 
-
-
-<<<<<<< HEAD
-## ✴️ **리팩토링할 부분**
+### ✴️ 성능 검사
 
 
 
-## ✴️ **느낀점**
-=======
 
 
 ### ✴️ **리팩토링할 부분**
@@ -292,4 +264,4 @@
 
 
 ### ✴️ **느낀점**
->>>>>>> 21a1db3019b67b95d3910efb5f76633c2453441c
+
