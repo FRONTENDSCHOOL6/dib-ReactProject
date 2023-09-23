@@ -1,35 +1,158 @@
-import { useState } from 'react';
-import SubVisualBanner from '@/components/common/SubVisualBanner';
+import { useEffect, useState } from 'react';
+import ColBookCard from '@/components/common/bookCards/ColBookCard';
+import { useAuth } from '@/contexts/AuthContext';
+import { pb } from '@/api/pocketbase';
+import FavoriteTitle from '@/components/favorite/FavoriteTitle';
+import Spinner from '@/components/bookList/Spinner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function FavoritePage() {
   const [bookmarks, setBookmarks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const { user } = useAuth();
+  const perPage = 16;
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // 북마크 추가 함수
-  const addBookmark = (bookmark) => {
-    setBookmarks((prevBookmarks) => [...prevBookmarks, bookmark]);
+  const handleBookmarkToggle = async (postId) => {
+    const updatedBookmarkPosts = [...user.bookmark_posts];
+    const postIdIndex = updatedBookmarkPosts.indexOf(postId);
+    if (postIdIndex !== -1) {
+      updatedBookmarkPosts.splice(postIdIndex, 1);
+    } else {
+      updatedBookmarkPosts.push(postId);
+    }
+    const updateUserBookmarkData = {
+      bookmark_posts: updatedBookmarkPosts,
+    };
+
+    try {
+      await pb.collection('users').update(user.id, updateUserBookmarkData);
+    } catch (error) {
+      throw new Error(error.message);
+    }
   };
 
-  // 북마크 제거 함수
-  const removeBookmark = (bookmark) => {
-    setBookmarks((prevBookmarks) =>
-      prevBookmarks.filter((item) => item.id !== bookmark.id)
-    );
+  const handleLikeToggle = async (postId) => {
+    const updatedLikedPosts = [...user.liked_posts];
+    const postIdIndex = updatedLikedPosts.indexOf(postId);
+    if (postIdIndex !== -1) {
+      updatedLikedPosts.splice(postIdIndex, 1);
+    } else {
+      updatedLikedPosts.push(postId);
+    }
+    const updatedUserData = {
+      liked_posts: updatedLikedPosts,
+    };
+
+    try {
+      await pb.collection('users').update(user.id, updatedUserData);
+    } catch (error) {
+      throw new Error(error.message);
+    }
   };
+
+  useEffect(() => {
+    async function getUserData() {
+      setIsLoading(true);
+      if (user) {
+        try {
+          const userIdData = await pb.collection('users').getOne(user.id, {
+            fields: ['bookmark_posts'],
+          });
+
+          const bookmarkIds = userIdData.bookmark_posts;
+          const allPosts = await pb.collection('posts').getFullList({
+            expand: 'user_id',
+          });
+
+          const bookmarkedPosts = allPosts.filter((post) =>
+            bookmarkIds.includes(post.id)
+          );
+
+          setBookmarks(bookmarkedPosts);
+        } catch (error) {
+          console.error('사용자 데이터 불러오기 오류:', error);
+        }
+      }
+      setIsLoading(false);
+    }
+
+    getUserData();
+  }, [user]);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= Math.ceil(bookmarks.length / perPage)) {
+      setCurrentPage(newPage);
+    }
+  };
+
+  const startIndex = (currentPage - 1) * perPage;
+  const endIndex = startIndex + perPage;
+  const currentItems = bookmarks.slice(startIndex, endIndex);
 
   return (
-    <>
-      <SubVisualBanner title={'즐겨 찾기'} />
-      <div className="flex justify-center items-center h-64">
-        {bookmarks.length === 0 ? (
-          <p className="text-dibGray text-center font-Pretendard text-[20px] font-normal leading-normal tracking-tighter">
-            즐겨찾는 글이 없습니다! <br/> 책갈피를 누르고 즐겨찾기에 넣어보세요!
-          </p>
+    <div className="w-[1920px] m-auto mb-[100px]">
+      <FavoriteTitle />
+      <div>
+        {isLoading ? (
+          <Spinner />
         ) : (
-          /* 북마크 목록을 렌더링하는 컴포넌트나 UI를 추가하세요 */
-          <p>북마크 목록이 있을 때의 UI</p>
+          <>
+            <ul
+              id="tab-panel-1"
+              aria-labelledby="tab-1"
+              className="w-[1200px] m-auto flex flex-wrap gap-x-6 gap-y-10 justify-start mt-16 mb-20"
+            >
+              {currentItems.length === 0 ? (
+                <p className="w-[1920px] m-auto text-dibGray text-center font-Pretendard text-[20px] font-normal leading-normal tracking-tighter pt-14 pb-14">
+                  즐겨찾는 글이 없습니다! <br /> 책갈피를 누르고 즐겨찾기에
+                  넣어보세요!
+                </p>
+              ) : (
+                currentItems.map((item) => (
+                  <li key={item.id}>
+                    <ColBookCard
+                      imgSrc={item.book_image_link}
+                      imgAlt={item.book_title}
+                      nickName={item.expand.user_id[0].nickname}
+                      postTitle={item.post_title}
+                      bookTitle={item.book_title}
+                      bookmarkClick={() => handleBookmarkToggle(item.id)}
+                      bookmarkRender={user.bookmark_posts.includes(item.id)}
+                      heartClick={() => handleLikeToggle(item.id)}
+                      heartRender={user.liked_posts.includes(item.id)}
+                    />
+                  </li>
+                ))
+              )}
+            </ul>
+            {currentItems.length > 0 && (
+              <div className="flex justify-center mt-4">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  <FontAwesomeIcon icon={faAngleLeft} />
+                </button>
+                <span className="mx-2">
+                  {currentPage} / {Math.ceil(bookmarks.length / perPage)}
+                </span>
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={
+                    currentPage >=
+                    Math.ceil(bookmarks.length / perPage)
+                  }
+                >
+                  <FontAwesomeIcon icon={faAngleRight} />
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
