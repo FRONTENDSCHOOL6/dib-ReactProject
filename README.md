@@ -5,16 +5,20 @@
 		<h3><b>개발자가 개발자에게 소개하는 책🍀</b></h3>
 		<br/>
 
+
 ![React](https://badgen.net/badge/React/v18.2.0/cyan?)
 ![React-Router-dom](https://badgen.net/badge/React-Router/v6.15.0/CA4245?)
 ![React-Query](https://badgen.net/badge/React-Query/v3.39.3/FF4154?)
 ![tailwindcss](https://badgen.net/badge/tailwindcss/v3.3.3/cyan?)
 ![framer-motion](https://badgen.net/badge/framer-motion/v10.16.4/FF4154?)
 
-![zustand](https://badgen.net/badge/zustand/v4.4.1/FF4154?)
+
 ![vite](https://badgen.net/badge/vite/v4.4.5/FF4154?)
 ![Eslint](https://badgen.net/badge/Eslint/v8.48.0/4B32C3?)
 ![Prettier](https://badgen.net/badge/Prettier/v3.0.3/F7B93E?)
+
+![project_start](https://img.shields.io/badge/Project%20start-2023--09--02-blue)
+![project_end](https://img.shields.io/badge/Project%20end-2023--09--25-red) 
 
 </div>
 
@@ -22,66 +26,78 @@
 
 > 🗝️ **dib 배포 링크**
 
-👉 [dib]()
-
-
-<br />
-
-> 📑 **프로젝트 발표자료**
-
-👉 [PPT](https://www.canva.com/design/DAFtcb4gtWg/oGFckQDlPf9db2Lfc2QLWg/view?utm_content=DAFtcb4gtWg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+🔗 [Netlify](https://dbdbdib.netlify.app/)
+🔗 [Vercel](https://dbdbdib.vercel.app/)
 
 <br />
 
-## 📢 **1. 서비스 소개**
+> 📑 **프로젝트 자료**
+
+📋 [기획PPT](https://www.canva.com/design/DAFtcb4gtWg/oGFckQDlPf9db2Lfc2QLWg/view?utm_content=DAFtcb4gtWg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+📋 [dib Wiki](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/wiki)
+📋[개발 노션](https://www.notion.so/4-0d213ec1b4e843f8b04ac4fac7a74068)
+📋[최종발표]()
+
+<br />
+
+
+## 📅 개발 기간 및 작업 관리
+- **Sprint1(9/2 ~ 9/8) : 기획 단계**
+- **Sprint2(9/9 ~ 9/17):**
+- **Sprint3(9/20 ~ 9/24):**
+- **Sprint4(9/23 ~ 9/25): 발표자료 준비 및 demoday**
+
+---
+
+## 💡 기획 의도
 
 <br />
 <br />
 
-## 🐈 **2. dib 팀원 소개**
+## 🚩 프로젝트 목표
+
+
+
+
+
+## 🎨디자인
+ [Figma](https://www.figma.com/file/6SE7VmNnymvGRP1aqx2K0A/dib?type=design&node-id=206%3A1080&mode=design&t=Vv39hWcGU9PU5OUM-1)
+ ![image](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/4bb64b4e-b826-406c-98fe-ef76b7861371)
+
+ ## userFlow
+
+<img width="1528" alt="스크린샷 2023-09-05 오전 2 13 11" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/0fbca8f7-4519-40f2-a7c6-7a15a3e613a6">
+
+
+
+## DataBase
+<img width="1562" alt="DB_dib" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/1753e2b3-95c5-4fb1-bb76-2e9147bd36b6">
+
+## 🔧Tech Stack
+
+
+## 👨‍👨‍👦‍👦 **dib 팀원 소개**
 
 | [이호(SM)](https://github.com/bomlang)                |                 [전진승](https://github.com/wlstmd1004v)                  |         [양정아(L)](https://github.com/jjang-aaa)         |         [강예나](https://github.com/yenaf)        |
 | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
 | ![이호의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/40b7515a-ee3e-43de-ac1a-569292cdfbd9) | ![전진승의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/ab8a2d06-9a58-4781-a8ab-5e0f4355e6f4) | ![양정아의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/ed331cc0-f268-44a7-b27e-041456dd50e8) | ![강예나의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/dbe4add9-0e65-4e2d-b33c-ae59cc00e187) |
 
 
-
-
-## ✴️ **3. 역할 분담**
-
-
-
-
-
-## 📅 **4. 개발 일정**
-
+## ✴️ **역할 분담**
+| 이름   | 담당 기능                                          |
+| ------ | ----------------------------------------------- |
+|🙋🏼‍♂️ 이호 |                            |
+|🙋🏼‍♂️ 전진승 |                             |
+|🙋🏻‍♀️ 양정아 |       |
+|🙋🏻‍♀️ 강예나 |                                  |
 
 
 
-
-## ⚙️ **5. 개발 환경 및 기술 스택**
-
+### 📂 **프로젝트 폴더 구조**
 
 
 
-
-
-### **컨벤션**
-
-#### **eslint**
-
-
-#### **prettier**
-
-
-
-
-
-
-
-
-
-#### **커밋 컨벤션**
+## ✴️**Commit Convention**
 
 |Type 키워드|사용 시점|
 |------|---|
@@ -96,85 +112,17 @@
 |Setting|Eslint, dependency, config 파일 등의 환경설정 수정 사항 |
 |Merge|다른 브랜치와 병합할때|
 
-## 📂 **6. 프로젝트 폴더 구조**
-
-
-## ✴️ **7. Git Branch 전략 - Github Flow**
-
-
-
-## 🤗 **8. dib에서는 이렇게 협업해요**
-
-### **코드리뷰**
-
-
-
-### **협업툴**
-
-
-### **소통**
-
-
-
-## ✴️ **9. 주요 기능 소개**
-
-
-## ✴️ **10. 상세 담당 업무**
-
-### 🖤 공통
+## ✴️**Coding Convention**
+## ✴️ **주요 기능 소개**
 
 
 
 
-**🖥️ 화면 개발**
 
 
 
-**⚡ 기능 개발**
+## ✴️ **리팩토링할 부분**
 
 
 
-**🖥️ 화면 개발**
-
-
-
-**⚡ 기능 개발**
-
-
-**📜 프로젝트 총괄 및 문서화**
-
-
-
-<br/>
-
-**🖥️ 화면 개발**
-
--
-
-**⚡ 기능 개발**
-
-
-
-**♻️ 컴포넌트 리팩토링 및 중복 제거**
-
-
-**🖥️ 화면 개발**
-
-
-**⚡ 기능 개발**
-
-- 
-## ✴️ **11. 핵심 코드**
-
-
-## ✴️ **12. 트러블 슈팅**
-
-
-
-## ✴️ **13. 리팩토링할 부분**
-
-
-
-## ✴️ **14. 느낀점**
-
-
+## ✴️ **느낀점**
