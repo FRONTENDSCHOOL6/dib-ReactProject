@@ -65,9 +65,9 @@ function BookCardImage({
         />
         <label
           htmlFor={`bookMark-${imgSrc}`}
-          className={`bg-no-repeat absolute top-[-3px] right-[300px]
-              w-[46px]
-              h-[98px]
+          className={`bg-no-repeat absolute top-[-3px] right-[315px] cursor-pointer
+              w-[28px]
+              h-[48px]
               ${isClickBookmark ? 'bg-checkedBookMark' : 'bg-bookMark'}`}
         ></label>
       </form>
