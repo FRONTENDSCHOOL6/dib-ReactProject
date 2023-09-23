@@ -1,7 +1,7 @@
 import hori from '@/assets/hori.png';
 import PropTypes from 'prop-types';
 
-function Comments({ text }) {
+function Comments({ text , date, nickName }) {
   return (
     <div className="flex m-auto w-[1200px] justify-between px-2 my-[30px]">
       <img
@@ -11,8 +11,8 @@ function Comments({ text }) {
       />
       <div className="flex flex-col border justify-center px-[30px] border-commentBox rounded-[25px] w-[1100px] min-h-[110px]">
         <div className="mb-4">
-          <span className="text-lg font-semibold mr-3">HORI</span>
-          <span className="text-dateColor text-sm">2023.09.13</span>
+          <span className="text-lg font-semibold mr-3">{nickName}</span>
+          <span className="text-dateColor text-sm">{date}</span>
         </div>
         <div>
           <p>{text}</p>
@@ -26,4 +26,6 @@ export default Comments;
 
 Comments.propTypes = {
   text: PropTypes.string,
+  date: PropTypes.string,
+  nickName: PropTypes.array,
 };
