@@ -53,51 +53,6 @@ function FavoritePage() {
     }
   };
 
-  // useEffect(() => {
-  //   async function getUserData() {
-  //     setIsLoading(true);
-  //     if (user) {
-  //       try {
-  //         const userIdData = await pb.collection('users').getOne(user.id, {
-  //           fields: ['bookmark_posts'],
-  //         });
-
-  //         const bookmarkIds = userIdData.bookmark_posts;
-
-  //         let filter = '';
-  //         let seperator = ' || id=';
-  //         if (bookmarkIds.length > 0) {
-  //           filter = bookmarkIds.reduce((filter, id) => {
-  //             if (bookmarkIds.length === 1) {
-  //               return `${filter}'${id}'`;
-  //             } else {
-  //               return `${filter}'${id}'${seperator}`;
-  //             }
-  //           }, 'id=');
-
-  //           if (bookmarkIds.length > 1) {
-  //             filter = `(${filter.slice(0, seperator.length * -1)})`;
-  //           }
-  //         }
-
-  //         const bookmarkedPosts = await pb.collection('posts').getFullList({
-  //           expand: 'user_id',
-  //           filter,
-  //         });
-
-  //         setBookmarks(filter !== '' ? bookmarkedPosts : []);
-  //       } catch (error) {
-  //         console.error('사용자 데이터 불러오기 오류:', error);
-  //       }
-  //     }
-  //     setIsLoading(false);
-  //     console.log(bookmarks);
-  //     console.log(user);
-  //   }
-
-  //   getUserData();
-  // }, [user]);
-
   useEffect(() => {
     async function getUserData() {
       setIsLoading(true);
