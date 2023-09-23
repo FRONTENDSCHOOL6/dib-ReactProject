@@ -38,7 +38,6 @@ function BookList() {
     }
   };
 
-  // 좋아요 토글 함수
   const handleLikeToggle = async (postId) => {
     const updatedLikedPosts = [...user.liked_posts];
     const postIdIndex = updatedLikedPosts.indexOf(postId);
