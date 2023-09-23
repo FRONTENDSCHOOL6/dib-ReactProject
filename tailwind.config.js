@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         subVisual: 'url("/subVisual.png")',
-        bookMarkTrue: 'url("/bookMarkTrue.png")',
-        bookMarkFalse: 'url("/bookMarkFalse.png")',
+        bookMarkTrue: 'url("/bmkTrue.png")',
+        bookMarkFalse: 'url("/bmkFalse.png")',
         mainVisual: 'url("/mainBanner1.png")',
         mainVisual1: 'url("/mainBanner2.png")',
         mainBanner1: 'url("@/assets/mainBanner1.png")',

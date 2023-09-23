@@ -42,7 +42,7 @@ function NewBook() {
         sort: '-created',
         expand: 'user_id',
       });
-      const filteredData = newRecords.slice(0, 4);
+      const filteredData = newRecords.slice(0, 8);
       setData(filteredData);
     }
     fetchNewBooks();
