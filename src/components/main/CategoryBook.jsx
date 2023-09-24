@@ -123,6 +123,7 @@ function CategoryBook({ isLoading, setIsLoading }) {
           to="/bookList"
           className="absolute top-[185px] right-[410px]"
           title="도서목록 더보기"
+          onClick={() => window.scrollTo(0, 0)}
         >
           <FontAwesomeIcon icon={faPlus} className="w-[28px] h-[28px]" />
         </Link>
