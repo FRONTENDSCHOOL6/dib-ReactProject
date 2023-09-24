@@ -1,18 +1,12 @@
-  [[headers]]
+[[redirects]]
+  from = "/pathx"
+  to = "<cross-origin-url>"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+[[headers]]
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
-    Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept"
-
-
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-
-[[redirects]]
-  from = "/api/*"
-  to = "https://openapi.naver.com/v1/search/book.json/"
-  status = 200
-  
+    Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept, Authorization"
