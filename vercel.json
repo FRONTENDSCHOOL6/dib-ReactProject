@@ -1,4 +1,11 @@
 {
+  "routes": [
+    {
+      "src": "/api/v1/search/book.json",
+      "dest": "https://openapi.naver.com/v1/search/book.json"
+    }
+  ],
+
   "headers": [
     {
       "source": "/api/(.*)",
