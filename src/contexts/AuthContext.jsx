@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState, useContext } from 'react';
 import { string, node } from 'prop-types';
 import { pb } from '@/api/pocketbase';
-import useStorage from '@/hooks/useStorage';
 
 // createContext얘로 AuthContext 상태를 담아주는 아이를 만듦
 const AuthContext = createContext();
@@ -14,40 +13,24 @@ const initialAuthState = {
 };
 // Context.Provider 래퍼 컴포넌트 작성
 function AuthProvider({ displayName = 'AuthProvider', children }) {
-  // 로컬스토리지에 있는 데이터를 가져옴
-  const { storageData, setStorageData } = useStorage('pocketbase_auth');
-
   // 인증 상태를 담아두는 스테이트
   const [authState, setAuthState] = useState(initialAuthState);
 
   // 로컬스토리지의 값이 있으면 넣어주고 없으면 안넣어줌
   useEffect(() => {
-    if (storageData) {
-      const { token, model } = storageData;
+    if (pb.authStore.isValid) {
+      const { token, model } = pb.authStore;
       setAuthState({
         isAuth: !!model,
         user: model,
         token,
       });
-    } else {
-      // 로컬스토리지에 값이 없으면 데이터베이스에서 가져와서 저장
-      pb.authStore.get().then(({ token, model }) => {
-        if (model) {
-          setStorageData({ token, model });
-          setAuthState({
-            isAuth: true,
-            user: model,
-            token,
-          });
-        }
-      });
     }
-  }, [storageData]);
+  }, []);
 
   useEffect(() => {
     // 이건 자세히 모르겠지만 처음에 랜더링 될때 한번 실행되는데 상태값이 변하면 다시 넣어주는 아이인듯
     const unsub = pb.authStore.onChange((token, model) => {
-      setStorageData({ token, model });
       setAuthState((state) => ({
         ...state,
         isAuth: !!model,
