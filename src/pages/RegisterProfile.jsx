@@ -15,8 +15,6 @@ function RegisterProfile() {
   const [nickname, setNickname] = useState('');
   const [redirectToLogin, setRedirectToLogin] = useState(false);
 
-  console.log(location.state.userId);
-
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -46,6 +44,12 @@ function RegisterProfile() {
       formData.append('profileImage', defaultImage);
     }
     formData.append('nickname', nickname);
+
+    const regex = /^[ㄱ-힣]{1,8}$/;
+    if (!regex.test(nickname)) {
+      console.log('입력이 올바르지 않습니다.');
+      return;
+    }
 
     try {
       await pb.collection('users').update(location.state.userId, formData);

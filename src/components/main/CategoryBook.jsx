@@ -8,7 +8,7 @@ import CategoryTabButtonList from './../category/CategoryTabButton';
 import Spinner from '../bookList/Spinner';
 import PropTypes from 'prop-types';
 import { useAuth } from '@/contexts/AuthContext';
-import toast from 'react-hot-toast';
+import { showErrorAlert } from '@/utils/showAlert';
 
 function CategoryBook({ isLoading, setIsLoading }) {
   const [data, setData] = useState([]);
@@ -32,9 +32,7 @@ function CategoryBook({ isLoading, setIsLoading }) {
 
   const handleBookmarkToggle = async (postId) => {
     if (!user) {
-      toast('북마크 기능은 로그인 사용자만 가능합니다.', {
-        icon: '🙏🏻',
-      });
+      showErrorAlert('북마크 기능은 로그인 사용자만 가능합니다.', '🙏🏻');
       return;
     } else {
       const updataBookmarkPosts = [...user.bookmark_posts];
@@ -58,9 +56,7 @@ function CategoryBook({ isLoading, setIsLoading }) {
 
   const handleLikeToggle = async (postId) => {
     if (!user) {
-      toast('하트 기능은 로그인 사용자만 가능합니다.', {
-        icon: '🙏🏻',
-      });
+      showErrorAlert('하트 기능은 로그인 사용자만 가능합니다.', '🙏🏻');
       return;
     } else {
       const updatedLikedPosts = [...user.liked_posts];
@@ -155,7 +151,9 @@ function CategoryBook({ isLoading, setIsLoading }) {
                       bookID={item.id}
                       imgSrc={item.book_image_link}
                       imgAlt={item.book_title}
-                      nickName={item.expand.user_id[0].nickname}
+                      userId={item?.expand?.user_id[0]?.id}
+                      profileImage={item?.expand?.user_id[0]?.profileImage}
+                      nickName={item?.expand?.user_id[0]?.nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}
