@@ -1,12 +1,4 @@
 {
-  "version": 2,
-  "routes": [
-    {
-      "src": "/v1/(.*)",
-      "methods": ["GET", "POST", "PUT", "DELETE"],
-      "dest": "/api/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/api/(.*)",
