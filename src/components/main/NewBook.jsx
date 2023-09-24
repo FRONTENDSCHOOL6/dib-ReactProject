@@ -12,24 +12,22 @@ import toast from 'react-hot-toast';
 
 const STYLES = {
   position: 'absolute',
-  width: '2100px',
-  height: '40px',
-  top: '80%',
-  color: '#222222',
+  height: '20px',
+  top: '82%',
+  left:'90%',
+  color: '#d6d6d6',
 };
 const STYLES1 = {
-  width: '14px',
-  height: '40px',
-  top: '80%',
-  color: '#222222',
+  height: '20px',
+  top: '82%',
+  color: '#d6d6d6',
 };
 const STYLES2 = {
   position: 'absolute',
   background: '#d6d6d6',
-  width: '1000px',
+  width: '1030px',
   height: '2px',
   top: '80%',
-  color: 'red',
   zIndex: '50',
 };
 
