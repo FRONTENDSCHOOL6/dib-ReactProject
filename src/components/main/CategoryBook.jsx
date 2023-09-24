@@ -14,7 +14,7 @@ function CategoryBook({ isLoading, setIsLoading }) {
   const [data, setData] = useState([]);
   const { user } = useAuth();
   const [filteredData, setFilteredData] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedCategory, setSelectedCategory] = useState('HTML');
 
   useEffect(() => {
     pb.autoCancellation(false);
