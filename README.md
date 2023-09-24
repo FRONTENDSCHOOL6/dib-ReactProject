@@ -88,7 +88,8 @@
 
 
 ## DataBase
-<img width="1562" alt="DB_dib" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/1753e2b3-95c5-4fb1-bb76-2e9147bd36b6">
+<img width="1273" alt="db" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/57a74622-25de-428f-9bd2-1da0c819861a">
+
 
 <br />
 <br />
