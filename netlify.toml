@@ -5,5 +5,5 @@ status = 200
 
 [[redirects]]
   from = "/api/*"
-  to = "https://openapi.naver.com/v1/search/book.json/:splat"
+  to = "https://openapi.naver.com/v1/search/book.json/"
   status = 200
