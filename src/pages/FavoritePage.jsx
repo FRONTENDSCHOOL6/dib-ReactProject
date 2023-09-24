@@ -15,6 +15,7 @@ function FavoritePage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleBookmarkToggle = async (postId) => {
+    console.log(user);
     const updatedBookmarkPosts = [...user.bookmark_posts];
     const postIdIndex = updatedBookmarkPosts.indexOf(postId);
     if (postIdIndex !== -1) {
@@ -34,6 +35,7 @@ function FavoritePage() {
   };
 
   const handleLikeToggle = async (postId) => {
+    console.log(user);
     const updatedLikedPosts = [...user.liked_posts];
     const postIdIndex = updatedLikedPosts.indexOf(postId);
 

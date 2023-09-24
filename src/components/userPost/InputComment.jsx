@@ -1,14 +1,10 @@
-import hori from '@/assets/hori.png';
 import PropTypes from 'prop-types';
+import ProfileImage from '../common/ProfileData/ProfileImage';
 
 function InputComment({ onClick, onChange, writeComment }) {
   return (
     <div className="flex m-auto w-[1200px] h-[130px] justify-between px-2">
-      <img
-        src={hori}
-        alt="유저 아이콘"
-        className="w-[50px] h-[50px] rounded-full"
-      />
+      <ProfileImage width="w-[50px]" height="h-[50px]" />
       <div>
         <form method="POST" autoComplete="off" className="flex flex-col">
           <div className="w-[1100px] h-[55px] border flex justify-center items-center border-commentBox rounded-[25px] mb-[13px]">

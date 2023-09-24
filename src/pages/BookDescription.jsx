@@ -10,13 +10,15 @@ import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 import { useAuth } from '@/contexts/AuthContext';
 
 function BookDescription() {
-  const { id } = useParams();
   //특정게시물의 아이디
+  const { id } = useParams();
   const { user } = useAuth();
 
-  const [reviewData, setReviewData] = useState(null); //리뷰
+  // 작성한 내용 상태변수
+  const [reviewData, setReviewData] = useState(null);
   const [writeComment, setWriteComment] = useState('');
   const [userImage, setUserImage] = useState('');
+
   useEffect(() => {
     async function renderReviewPage() {
       try {
@@ -39,21 +41,26 @@ function BookDescription() {
 
   // const handleDebounceWriteComment = debounce(handleWriteComment, 500);
 
+  // 댓글 남긴다고 누르면 실행되는 부분
   const handleClickPostComment = async (event) => {
     event.preventDefault();
     // 댓글쓰고 DB에 넘어가는 정보들
     const data = {
       user_id: user.id,
+      userId: user.id,
       nickName: user.nickname,
       profileImage: user.profileImage,
       comment_contents: writeComment,
     };
+
+    console.log(data);
 
     try {
       const record = await pb.collection('comments').create(data);
 
       if (record) {
         showSuccessAlert('댓글 저장에 성공하였습니다! 🚀');
+
         const postRecord = await pb.collection('posts').getOne(id);
         const updatedComments = [...postRecord.comments, record.id];
         const commentRegist = await pb
@@ -146,7 +153,6 @@ function BookDescription() {
 
           <CommentsLayout
             writeComment={writeComment}
-            nickname={user.nickname}
             reviewData={reviewData}
             onClick={handleClickPostComment}
             onChange={handleWriteComment}
