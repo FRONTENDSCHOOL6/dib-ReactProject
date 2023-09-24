@@ -1,9 +1,12 @@
-const express = require('express');
-const app = express();
-const fetch = require('node-fetch');
+import express from 'express';
+import fetch from 'node-fetch';
 
+const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.use(express.json());
+
+// CORS 설정
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*'); // 모든 도메인에서 요청 허용 (*)
   res.header(
@@ -13,10 +16,22 @@ app.use((req, res, next) => {
   next();
 });
 
+// 클라이언트에서의 요청을 처리할 엔드포인트
 app.get('/api/v1/search/book.json', async (req, res) => {
+  const { query } = req.query;
+
   try {
+    // Naver API에 대한 요청
     const naverResponse = await fetch(
-      'https://openapi.naver.com/v1/search/book.json' + req.url
+      `https://openapi.naver.com/v1/search/book.json?query=${query}&display=4`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Naver-Client-Id': 'YOUR_NAVER_CLIENT_ID', // 여기에 Naver API 클라이언트 ID를 넣어야 합니다.
+          'X-Naver-Client-Secret': 'YOUR_NAVER_CLIENT_SECRET', // 여기에 Naver API 클라이언트 시크릿을 넣어야 합니다.
+        },
+      }
     );
 
     if (naverResponse.ok) {
@@ -28,6 +43,7 @@ app.get('/api/v1/search/book.json', async (req, res) => {
       });
     }
   } catch (error) {
+    console.error(error);
     res.status(500).json({
       message: '서버 오류가 발생했습니다.',
     });
