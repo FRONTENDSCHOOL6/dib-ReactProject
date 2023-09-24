@@ -32,15 +32,20 @@ function WritePage() {
       timer = setTimeout(() => {
         async function searchBookInfo() {
           const keyword = searchBook;
-          const response = await fetch(`${URL}?query=${keyword}&display=4`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-Naver-Client-Id': import.meta.env.VITE_NAVER_CLIENT_ID,
-              'X-Naver-Client-Secret': import.meta.env.VITE_NAVER_CLIENT_SECRET,
-              'Access-Control-Allow-Origin': '*',
-            },
-          });
+          const response = await fetch(
+            `${
+              import.meta.env.VITE_NAVER_BOOK_SEARCH_API
+            }?query=${keyword}&display=4`,
+            {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-Naver-Client-Id': import.meta.env.VITE_NAVER_CLIENT_ID,
+                'X-Naver-Client-Secret': import.meta.env
+                  .VITE_NAVER_CLIENT_SECRET,
+              },
+            }
+          );
           const data = await response.json();
           setBooks(data.items);
         }
