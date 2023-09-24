@@ -18,17 +18,25 @@ function CommentsLayout({
     <>
       <PostOptions heaetClick={heaetClick} heartRander={heartRander} />
       <RullsOfComment />
-      <InputComment onClick={onClick} onChange={onChange} writeComment={writeComment} />
+      <InputComment
+        onClick={onClick}
+        onChange={onChange}
+        writeComment={writeComment}
+      />
 
       {comments.length > 0 ? (
-         [...comments].reverse().map((comment,index)=>(
-          <Comments 
-            key={index} 
-            text={comment.comment_contents} 
-            date={comment.created.slice(0,-8)} 
-            nickName={comment.user_id}
-          />
-        ))
+        [...comments]
+          .reverse()
+          .map((comment, index) => (
+            <Comments
+              key={index}
+              userId={comment.userId}
+              text={comment.comment_contents}
+              date={comment.created.slice(0, -8)}
+              nickName={comment.nickName}
+              profileImage={comment.profileImage}
+            />
+          ))
       ) : (
         <p className="m-auto w-[1200px] text-center mt-10">
           아직 댓글이 없습니다.

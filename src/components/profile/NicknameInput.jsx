@@ -1,21 +1,19 @@
 import { useState } from 'react';
 import FormInput from '../common/FormInput';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-function NicknameInput() {
-  const [nickname, setNickname] = useState('');
+function NicknameInput({ nickname, handleNicknameOnChange }) {
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleNicknameOnChange = (event) => {
-    const newNickname = event.target.value;
-    setNickname(newNickname);
-
+  useEffect(() => {
     const regex = /^[ㄱ-힣]{1,8}$/;
-    if (!regex.test(newNickname)) {
+    if (!regex.test(nickname)) {
       setErrorMessage('한글 8자 이하로 입력해주세요.');
     } else {
       setErrorMessage('');
     }
-  };
+  }, [nickname]);
 
   return (
     <div className="flex flex-col gap-2 text-left text-lg w-[500px] mb-[30px]">
@@ -37,3 +35,8 @@ function NicknameInput() {
 }
 
 export default NicknameInput;
+
+NicknameInput.propTypes = {
+  nickname: PropTypes.string.isRequired,
+  handleNicknameOnChange: PropTypes.func.isRequired,
+};
