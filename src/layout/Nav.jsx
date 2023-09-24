@@ -33,7 +33,7 @@ function Nav() {
         </li>
       </ul>
 
-      <ul className="flex gap-24 absolute right-52">
+      <ul className="flex gap-24 absolute right-12">
         {!isAuth && (
           <li>
             <Link to="/logIn"> 로그인 </Link>
