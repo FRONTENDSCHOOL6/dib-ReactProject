@@ -34,7 +34,7 @@
 
  📑 **프로젝트 자료**
 
-📋 [기획PPT](https://www.canva.com/design/DAFtcb4gtWg/oGFckQDlPf9db2Lfc2QLWg/view?utm_content=DAFtcb4gtWg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)📋 [dib Wiki](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/wiki)📋[개발 노션](https://www.notion.so/4-0d213ec1b4e843f8b04ac4fac7a74068)📋[최종발표]()
+📋 [기획PPT](https://www.canva.com/design/DAFtcb4gtWg/oGFckQDlPf9db2Lfc2QLWg/view?utm_content=DAFtcb4gtWg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)📋 [dib Wiki](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/wiki)📋[개발 노션](https://www.notion.so/4-0d213ec1b4e843f8b04ac4fac7a74068)📋[최종발표](https://www.canva.com/design/DAFvWpC2y_o/F33cb3jElUHS0uFXs9pr4A/view?utm_content=DAFvWpC2y_o&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 <br />
 
