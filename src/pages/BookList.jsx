@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '@/contexts/AuthContext';
 import { pb } from '@/api/pocketbase';
+import toast from 'react-hot-toast';
 
 function BookList() {
   const { bookData, isLoading } = usePbData();
@@ -21,6 +22,9 @@ function BookList() {
 
   const handleBookmarkToggle = async (postId) => {
     if (!user) {
+      toast('북마크 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updataBookmarkPosts = [...user.bookmark_posts];
@@ -44,6 +48,9 @@ function BookList() {
 
   const handleLikeToggle = async (postId) => {
     if (!user) {
+      toast('하트 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updatedLikedPosts = [...user.liked_posts];
@@ -130,7 +137,7 @@ function BookList() {
                     <ColBookCard
                       imgSrc={item.book_image_link}
                       imgAlt={item.book_title}
-                      //nickName={item.expand.user_id[0].nickname}
+                      nickName={item.expand.user_id[0].nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}

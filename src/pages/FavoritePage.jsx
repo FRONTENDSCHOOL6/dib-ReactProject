@@ -113,7 +113,7 @@ function FavoritePage() {
                     <ColBookCard
                       imgSrc={item.book_image_link}
                       imgAlt={item.book_title}
-            //          nickName={item.expand.user_id[0].nickname}
+                      nickName={item.expand.user_id[0].nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}

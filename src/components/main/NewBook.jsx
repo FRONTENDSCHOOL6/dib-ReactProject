@@ -8,6 +8,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import toast from 'react-hot-toast';
+
 const STYLES = {
   position: 'absolute',
   width: '2100px',
@@ -50,6 +52,9 @@ function NewBook() {
 
   const handleLikeToggle = async (postId) => {
     if (!user) {
+      toast('북마크 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updatedLikedPosts = [...user.liked_posts];
@@ -73,6 +78,9 @@ function NewBook() {
 
   const handleBookmarkToggle = async (postId) => {
     if (!user) {
+      toast('하트 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updataBookmarkPosts = [...user.bookmark_posts];
@@ -129,16 +137,16 @@ function NewBook() {
                     <ColBookCard
                       imgSrc={item.book_image_link}
                       imgAlt={item.book_title}
-                      // nickName={item.expand.user_id[0].nickname} // 주석 처리
+                      nickName={item.expand.user_id[0].nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}
                       bookmarkRander={
-                        user ? user.bookmark_posts.includes(item.id) : false
+                        user ? user?.bookmark_posts?.includes(item.id) : false
                       }
                       heaetClick={() => handleLikeToggle(item.id)}
                       heartRander={
-                        user ? user.liked_posts.includes(item.id) : false
+                        user ? user?.liked_posts?.includes(item.id) : false
                       }
                       bookID={item.id}
                     />
