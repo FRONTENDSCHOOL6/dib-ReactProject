@@ -10,10 +10,10 @@ function RullsOfComment() {
         괴롭히세요.
       </p>
       <p className="my-3 opacity-60">
-        저희 웹페이지에선 삭제기능을 제공하지 않습니다. 댓글 작성시 영구박제되니
+        저희 웹페이지에선 수정 및 삭제기능을 제공하지 않습니다. 댓글 작성시 영구박제되니
         주의하여 주십시오.
       </p>
-      <p className="my-3 opacity-60">이쁜말 안쓰면 범쌤이 잡아갑니다!</p>
+      <p className="my-3 opacity-60">예쁜말 안쓰면 범쌤이 잡아갑니다!</p>
     </div>
   );
 }
