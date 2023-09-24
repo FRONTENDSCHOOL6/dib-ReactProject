@@ -12,24 +12,22 @@ import toast from 'react-hot-toast';
 
 const STYLES = {
   position: 'absolute',
-  width: '2100px',
-  height: '40px',
-  top: '80%',
-  color: '#222222',
+  height: '20px',
+  top: '82%',
+  left:'90%',
+  color: '#d6d6d6',
 };
 const STYLES1 = {
-  width: '14px',
-  height: '40px',
-  top: '80%',
-  color: '#222222',
+  height: '20px',
+  top: '82%',
+  color: '#d6d6d6',
 };
 const STYLES2 = {
   position: 'absolute',
   background: '#d6d6d6',
-  width: '1000px',
+  width: '1030px',
   height: '2px',
   top: '80%',
-  color: 'red',
   zIndex: '50',
 };
 
@@ -104,7 +102,7 @@ function NewBook() {
 
   return (
     <>
-      <section className="text-center relative w-[1920px] h-[670px] m-auto">
+      <section className="text-center relative w-[1920px] h-[670px] m-auto pt-10">
         <h2 className="text-dibBlack text-[32px] not-italic font-normal leading-[normal] tracking-[-1.5px] m-5">
           신규 도서
         </h2>
@@ -137,10 +135,12 @@ function NewBook() {
                     <ColBookCard
                       imgSrc={item.book_image_link}
                       imgAlt={item.book_title}
-                      nickName={item.expand.user_id[0].nickname}
+                      userId={item?.expand?.user_id[0]?.id}
+                      profileImage={item?.expand?.user_id[0]?.profileImage}
+                      nickName={item?.expand?.user_id[0]?.nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
-                      bookmarkClick={() => handleBookmarkToggle(item.id)}
+                      bookmarkClick={() => handleBookmarkToggle(item)}
                       bookmarkRander={
                         user ? user?.bookmark_posts?.includes(item.id) : false
                       }

@@ -8,13 +8,13 @@ import CategoryTabButtonList from './../category/CategoryTabButton';
 import Spinner from '../bookList/Spinner';
 import PropTypes from 'prop-types';
 import { useAuth } from '@/contexts/AuthContext';
-import toast from 'react-hot-toast';
+import { showErrorAlert } from '@/utils/showAlert';
 
 function CategoryBook({ isLoading, setIsLoading }) {
   const [data, setData] = useState([]);
   const { user } = useAuth();
   const [filteredData, setFilteredData] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedCategory, setSelectedCategory] = useState('HTML');
 
   useEffect(() => {
     pb.autoCancellation(false);
@@ -32,9 +32,7 @@ function CategoryBook({ isLoading, setIsLoading }) {
 
   const handleBookmarkToggle = async (postId) => {
     if (!user) {
-      toast('북마크 기능은 로그인 사용자만 가능합니다.', {
-        icon: '🙏🏻',
-      });
+      showErrorAlert('북마크 기능은 로그인 사용자만 가능합니다.', '🙏🏻');
       return;
     } else {
       const updataBookmarkPosts = [...user.bookmark_posts];
@@ -58,9 +56,7 @@ function CategoryBook({ isLoading, setIsLoading }) {
 
   const handleLikeToggle = async (postId) => {
     if (!user) {
-      toast('하트 기능은 로그인 사용자만 가능합니다.', {
-        icon: '🙏🏻',
-      });
+      showErrorAlert('하트 기능은 로그인 사용자만 가능합니다.', '🙏🏻');
       return;
     } else {
       const updatedLikedPosts = [...user.liked_posts];
@@ -112,7 +108,7 @@ function CategoryBook({ isLoading, setIsLoading }) {
 
   return (
     <>
-      <section className="bg-dibCategoryBg text-center relative w-[1920px] h-[960px] m-auto flex flex-col">
+      <section className="bg-dibCategoryBg text-center relative w-[1920px] h-[960px] m-auto flex flex-col pb-10">
         <h2 className="text-dibBlack text-[32px] not-italic font-normal leading-[normal] tracking-[-1.5px] mt-[60px] mb-[20px]">
           카테고리별 도서
         </h2>
@@ -121,8 +117,9 @@ function CategoryBook({ isLoading, setIsLoading }) {
         </strong>
         <Link
           to="/bookList"
-          className="absolute top-[190px] right-[410px]"
+          className="absolute top-[185px] right-[410px]"
           title="도서목록 더보기"
+          onClick={() => window.scrollTo(0, 0)}
         >
           <FontAwesomeIcon icon={faPlus} className="w-[28px] h-[28px]" />
         </Link>
@@ -154,7 +151,9 @@ function CategoryBook({ isLoading, setIsLoading }) {
                       bookID={item.id}
                       imgSrc={item.book_image_link}
                       imgAlt={item.book_title}
-                      nickName={item.expand.user_id[0].nickname}
+                      userId={item?.expand?.user_id[0]?.id}
+                      profileImage={item?.expand?.user_id[0]?.profileImage}
+                      nickName={item?.expand?.user_id[0]?.nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}

@@ -9,8 +9,10 @@ import { pb } from '@/api/pocketbase';
 import { useCategoryStore } from '@/hooks/useStore';
 import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function WritePage() {
+  const navigate = useNavigate();
   const [searchBook, setSearchBook] = useState('');
   const [books, setBooks] = useState([]);
   const [reviewMainText, setReviewMainText] = useState('');
@@ -109,6 +111,7 @@ function WritePage() {
         });
 
         showSuccessAlert('리뷰저장에 성공하였습니다!', '✅');
+        navigate('/postListPage');
       } else {
         showErrorAlert('서버와의 통신에 문제가 발생하였습니다.', '❌');
       }

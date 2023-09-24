@@ -36,7 +36,6 @@ function HeaderBar() {
         <motion.h1
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
-          whileHover={{ scale: 1.2 }}
           transition={{
             duration: 1.5,
             ease: 'easeInOut',

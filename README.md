@@ -5,7 +5,6 @@
 		<h3><b>개발자가 개발자에게 소개하는 책🍀</b></h3>
 		<br/>
 
-
 ![React](https://badgen.net/badge/React/v18.2.0/cyan?)
 ![React-Router-dom](https://badgen.net/badge/React-Router/v6.15.0/CA4245?)
 ![React-Query](https://badgen.net/badge/React-Query/v3.39.3/FF4154?)
@@ -23,23 +22,23 @@
 </div>
 
 <br />
+<br />
 
-> 🗝️ **dib 배포 링크**
+<div align='center'>
 
-🔗 [Netlify](https://dbdbdib.netlify.app/)
-🔗 [Vercel](https://dbdbdib.vercel.app/)
+🗝️ **dib 배포 링크**
+
+🔗 [Netlify](https://dbdbdib.netlify.app/)🔗 [Vercel](https://dbdbdib.vercel.app/)
 
 <br />
 
-> 📑 **프로젝트 자료**
+ 📑 **프로젝트 자료**
 
-📋 [기획PPT](https://www.canva.com/design/DAFtcb4gtWg/oGFckQDlPf9db2Lfc2QLWg/view?utm_content=DAFtcb4gtWg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
-📋 [dib Wiki](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/wiki)
-📋[개발 노션](https://www.notion.so/4-0d213ec1b4e843f8b04ac4fac7a74068)
-📋[최종발표]()
+📋 [기획PPT](https://www.canva.com/design/DAFtcb4gtWg/oGFckQDlPf9db2Lfc2QLWg/view?utm_content=DAFtcb4gtWg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)📋 [dib Wiki](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/wiki)📋[개발 노션](https://www.notion.so/4-0d213ec1b4e843f8b04ac4fac7a74068)📋[최종발표](https://www.canva.com/design/DAFvWpC2y_o/F33cb3jElUHS0uFXs9pr4A/view?utm_content=DAFvWpC2y_o&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 <br />
 
+</div>
 
 ## 📅 개발 기간 및 작업 관리
 - **Sprint1(9/2 ~ 9/8) : 기획 단계**
@@ -60,7 +59,6 @@
 > 개발자 커리어 발전: 이 사이트을 통해 개발자들은 더 나은 기술 역량을 갖추고 커리어를 발전시키는데 필요한 지식을 습득할 수 있습니다.
 
 
-<br />
 <br />
 
 ## 🚩 프로젝트 목표
@@ -83,14 +81,18 @@
 ## 🎨[Figma](https://www.figma.com/file/6SE7VmNnymvGRP1aqx2K0A/dib?type=design&node-id=206%3A1080&mode=design&t=Vv39hWcGU9PU5OUM-1)
  ![image](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/4bb64b4e-b826-406c-98fe-ef76b7861371)
 
- ## userFlow
+ ## 🔍 userFlow
 
 <img width="1528" alt="스크린샷 2023-09-05 오전 2 13 11" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/0fbca8f7-4519-40f2-a7c6-7a15a3e613a6">
 
 
 
-## DataBase
-<img width="1562" alt="DB_dib" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/1753e2b3-95c5-4fb1-bb76-2e9147bd36b6">
+## 💾 DataBase
+<img width="1273" alt="db" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/57a74622-25de-428f-9bd2-1da0c819861a">
+
+
+<br />
+<br />
 
 ## 🔧Tech Stack
 #### HTML & CSS
@@ -132,10 +134,12 @@
 
 ## ✴️ **주요 기능 소개**
 > ### 메인 페이지
- 
+
+ ![main](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/620600e9-1b34-41ad-95d5-a823bbe32a6e)
 
 > ### 도서목록 페이지
 
+![booklist](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/7fb8c8f6-cc5e-4bf9-b1e4-cb7df453a940)
 
 > ### 게시글 페이지
 
@@ -144,129 +148,136 @@
 
 > ### 즐겨찾기 페이지
 
+![Favorite](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/361d2946-d2fa-43c2-8365-1d50aeec04fd)
 
-> ### 로그인 페이지
+> ### 로그인 페이지,회원가입, 프로필 등록 페이지
 
-> ### 회원가입, 프로필 등록 페이지
-
-
-### 📂 **프로젝트 폴더 구조**
-```
-📦src
- ┣ 📂api
- ┃ ┣ 📜pocketbase.js
- ┃ ┗ 📜useProducts.js
- ┣ 📂assets
- ┃ ┣ 📜cleanCode.png
- ┃ ┣ 📜hori.png
- ┃ ┣ 📜mainBanner1.png
- ┃ ┣ 📜mainBanner2.png
- ┃ ┗ 📜reactBook.png
- ┣ 📂components
- ┃ ┣ 📂bookList
- ┃ ┃ ┣ 📜Spinner.jsx
- ┃ ┃ ┗ 📜TabButtonList.jsx
- ┃ ┣ 📂category
- ┃ ┃ ┗ 📜CategoryTabButton.jsx
- ┃ ┣ 📂common
- ┃ ┃ ┣ 📂bookCards
- ┃ ┃ ┃ ┣ 📜BookCardImage.jsx
- ┃ ┃ ┃ ┣ 📜ColBookCard.jsx
- ┃ ┃ ┃ ┣ 📜ColBookCardInfo.jsx
- ┃ ┃ ┃ ┣ 📜RowBookCard.jsx
- ┃ ┃ ┃ ┗ 📜RowBookCardInfo.jsx
- ┃ ┃ ┣ 📜Button.jsx
- ┃ ┃ ┣ 📜FormInput.jsx
- ┃ ┃ ┣ 📜Heart.jsx
- ┃ ┃ ┣ 📜Heartbutton.jsx
- ┃ ┃ ┣ 📜InputValidation.jsx
- ┃ ┃ ┣ 📜ScrollButton.jsx
- ┃ ┃ ┣ 📜SignPageTitle.jsx
- ┃ ┃ ┣ 📜SubVisualBanner.jsx
- ┃ ┃ ┗ 📜TabButton.jsx
- ┃ ┣ 📂favorite
- ┃ ┃ ┗ 📜FavoriteTitle.jsx
- ┃ ┣ 📂join
- ┃ ┃ ┣ 📜JoinForm.jsx
- ┃ ┃ ┗ 📜JoinTitle.jsx
- ┃ ┣ 📂login
- ┃ ┃ ┣ 📜EmailInput.jsx
- ┃ ┃ ┣ 📜JoinButton.jsx
- ┃ ┃ ┣ 📜LoginButton.jsx
- ┃ ┃ ┣ 📜LoginForm.jsx
- ┃ ┃ ┣ 📜LoginTitle.jsx
- ┃ ┃ ┗ 📜PasswordInput.jsx
- ┃ ┣ 📂main
- ┃ ┃ ┣ 📜BestBook.jsx
- ┃ ┃ ┣ 📜CategoryBook.jsx
- ┃ ┃ ┣ 📜MainBanner.jsx
- ┃ ┃ ┗ 📜NewBook.jsx
- ┃ ┣ 📂postList
- ┃ ┃ ┣ 📜PostListTitle.jsx
- ┃ ┃ ┗ 📜PostWriteButton.jsx
- ┃ ┣ 📂profile
- ┃ ┃ ┣ 📜ImageUpload.jsx
- ┃ ┃ ┣ 📜NicknameInput.jsx
- ┃ ┃ ┣ 📜ProfileTitle.jsx
- ┃ ┃ ┗ 📜RegistrationButton.jsx
- ┃ ┣ 📂userPost
- ┃ ┃ ┣ 📜Comments.jsx
- ┃ ┃ ┣ 📜CommentsLayout.jsx
- ┃ ┃ ┣ 📜InputComment.jsx
- ┃ ┃ ┣ 📜PostBookInfo.jsx
- ┃ ┃ ┣ 📜PostMain.jsx
- ┃ ┃ ┣ 📜PostOptions.jsx
- ┃ ┃ ┣ 📜PostTitle.jsx
- ┃ ┃ ┗ 📜RullsOfComment.jsx
- ┃ ┗ 📂write
- ┃ ┃ ┣ 📜BookImage.jsx
- ┃ ┃ ┣ 📜BookInfo.jsx
- ┃ ┃ ┣ 📜Category.jsx
- ┃ ┃ ┣ 📜ReviewBtn.jsx
- ┃ ┃ ┣ 📜ReviewInfo.jsx
- ┃ ┃ ┣ 📜ReviewMainText.jsx
- ┃ ┃ ┗ 📜SearchBooks.jsx
- ┣ 📂contexts
- ┃ ┣ 📜AuthContext.jsx
- ┃ ┣ 📜BookmarkContext.jsx
- ┃ ┣ 📜PbDataContext.jsx
- ┃ ┗ 📜PrivateRoute.jsx
- ┣ 📂hooks
- ┃ ┣ 📜booleanStore.js
- ┃ ┣ 📜categoryStore.js
- ┃ ┣ 📜commentStore.js
- ┃ ┣ 📜setupProxy.js
- ┃ ┗ 📜useStorage.js
- ┣ 📂layout
- ┃ ┣ 📜FooterBar.jsx
- ┃ ┣ 📜HeaderBar.jsx
- ┃ ┣ 📜Layout.jsx
- ┃ ┗ 📜Nav.jsx
- ┣ 📂pages
- ┃ ┣ 📜BookDescription.jsx
- ┃ ┣ 📜BookList.jsx
- ┃ ┣ 📜FavoritePage.jsx
- ┃ ┣ 📜Home.jsx
- ┃ ┣ 📜Join.jsx
- ┃ ┣ 📜Login.jsx
- ┃ ┣ 📜PostListPage.jsx
- ┃ ┣ 📜RegisterProfile.jsx
- ┃ ┗ 📜WritePage.jsx
- ┣ 📂routes
- ┃ ┗ 📜routes.jsx
- ┣ 📂store
- ┣ 📂styles
- ┃ ┗ 📜tailwind.css
- ┣ 📂utils
- ┃ ┣ 📜debounce.js
- ┃ ┣ 📜getPbImageURL.js
- ┃ ┣ 📜regular.js
- ┃ ┗ 📜showAlert.js
- ┣ 📜App.jsx
- ┗ 📜main.jsx
-```
+![login](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/e097a91a-e774-4dc2-8795-736dcef64ee9)
 
 
+
+<br />
+
+
+<details>
+<summary><h3>📂 프로젝트 폴더 구조</h3></summary>
+
+	📦src
+	 ┣ 📂api
+	 ┃ ┣ 📜pocketbase.js
+	 ┃ ┗ 📜useProducts.js
+	 ┣ 📂assets
+	 ┃ ┣ 📜cleanCode.png
+	 ┃ ┣ 📜hori.png
+	 ┃ ┣ 📜mainBanner1.png
+	 ┃ ┣ 📜mainBanner2.png
+	 ┃ ┗ 📜reactBook.png
+	 ┣ 📂components
+	 ┃ ┣ 📂bookList
+	 ┃ ┃ ┣ 📜Spinner.jsx
+	 ┃ ┃ ┗ 📜TabButtonList.jsx
+	 ┃ ┣ 📂category
+	 ┃ ┃ ┗ 📜CategoryTabButton.jsx
+	 ┃ ┣ 📂common
+	 ┃ ┃ ┣ 📂bookCards
+	 ┃ ┃ ┃ ┣ 📜BookCardImage.jsx
+	 ┃ ┃ ┃ ┣ 📜ColBookCard.jsx
+	 ┃ ┃ ┃ ┣ 📜ColBookCardInfo.jsx
+	 ┃ ┃ ┃ ┣ 📜RowBookCard.jsx
+	 ┃ ┃ ┃ ┗ 📜RowBookCardInfo.jsx
+	 ┃ ┃ ┣ 📜Button.jsx
+	 ┃ ┃ ┣ 📜FormInput.jsx
+	 ┃ ┃ ┣ 📜Heart.jsx
+	 ┃ ┃ ┣ 📜Heartbutton.jsx
+	 ┃ ┃ ┣ 📜InputValidation.jsx
+	 ┃ ┃ ┣ 📜ScrollButton.jsx
+	 ┃ ┃ ┣ 📜SignPageTitle.jsx
+	 ┃ ┃ ┣ 📜SubVisualBanner.jsx
+	 ┃ ┃ ┗ 📜TabButton.jsx
+	 ┃ ┣ 📂favorite
+	 ┃ ┃ ┗ 📜FavoriteTitle.jsx
+	 ┃ ┣ 📂join
+	 ┃ ┃ ┣ 📜JoinForm.jsx
+	 ┃ ┃ ┗ 📜JoinTitle.jsx
+	 ┃ ┣ 📂login
+	 ┃ ┃ ┣ 📜EmailInput.jsx
+	 ┃ ┃ ┣ 📜JoinButton.jsx
+	 ┃ ┃ ┣ 📜LoginButton.jsx
+	 ┃ ┃ ┣ 📜LoginForm.jsx
+	 ┃ ┃ ┣ 📜LoginTitle.jsx
+	 ┃ ┃ ┗ 📜PasswordInput.jsx
+	 ┃ ┣ 📂main
+	 ┃ ┃ ┣ 📜BestBook.jsx
+	 ┃ ┃ ┣ 📜CategoryBook.jsx
+	 ┃ ┃ ┣ 📜MainBanner.jsx
+	 ┃ ┃ ┗ 📜NewBook.jsx
+	 ┃ ┣ 📂postList
+	 ┃ ┃ ┣ 📜PostListTitle.jsx
+	 ┃ ┃ ┗ 📜PostWriteButton.jsx
+	 ┃ ┣ 📂profile
+	 ┃ ┃ ┣ 📜ImageUpload.jsx
+	 ┃ ┃ ┣ 📜NicknameInput.jsx
+	 ┃ ┃ ┣ 📜ProfileTitle.jsx
+	 ┃ ┃ ┗ 📜RegistrationButton.jsx
+	 ┃ ┣ 📂userPost
+	 ┃ ┃ ┣ 📜Comments.jsx
+	 ┃ ┃ ┣ 📜CommentsLayout.jsx
+	 ┃ ┃ ┣ 📜InputComment.jsx
+	 ┃ ┃ ┣ 📜PostBookInfo.jsx
+	 ┃ ┃ ┣ 📜PostMain.jsx
+	 ┃ ┃ ┣ 📜PostOptions.jsx
+	 ┃ ┃ ┣ 📜PostTitle.jsx
+	 ┃ ┃ ┗ 📜RullsOfComment.jsx
+	 ┃ ┗ 📂write
+	 ┃ ┃ ┣ 📜BookImage.jsx
+	 ┃ ┃ ┣ 📜BookInfo.jsx
+	 ┃ ┃ ┣ 📜Category.jsx
+	 ┃ ┃ ┣ 📜ReviewBtn.jsx
+	 ┃ ┃ ┣ 📜ReviewInfo.jsx
+	 ┃ ┃ ┣ 📜ReviewMainText.jsx
+	 ┃ ┃ ┗ 📜SearchBooks.jsx
+	 ┣ 📂contexts
+	 ┃ ┣ 📜AuthContext.jsx
+	 ┃ ┣ 📜BookmarkContext.jsx
+	 ┃ ┣ 📜PbDataContext.jsx
+	 ┃ ┗ 📜PrivateRoute.jsx
+	 ┣ 📂hooks
+	 ┃ ┣ 📜booleanStore.js
+	 ┃ ┣ 📜categoryStore.js
+	 ┃ ┣ 📜commentStore.js
+	 ┃ ┣ 📜setupProxy.js
+	 ┃ ┗ 📜useStorage.js
+	 ┣ 📂layout
+	 ┃ ┣ 📜FooterBar.jsx
+	 ┃ ┣ 📜HeaderBar.jsx
+	 ┃ ┣ 📜Layout.jsx
+	 ┃ ┗ 📜Nav.jsx
+	 ┣ 📂pages
+	 ┃ ┣ 📜BookDescription.jsx
+	 ┃ ┣ 📜BookList.jsx
+	 ┃ ┣ 📜FavoritePage.jsx
+	 ┃ ┣ 📜Home.jsx
+	 ┃ ┣ 📜Join.jsx
+	 ┃ ┣ 📜Login.jsx
+	 ┃ ┣ 📜PostListPage.jsx
+	 ┃ ┣ 📜RegisterProfile.jsx
+	 ┃ ┗ 📜WritePage.jsx
+	 ┣ 📂routes
+	 ┃ ┗ 📜routes.jsx
+	 ┣ 📂store
+	 ┣ 📂styles
+	 ┃ ┗ 📜tailwind.css
+	 ┣ 📂utils
+	 ┃ ┣ 📜debounce.js
+	 ┃ ┣ 📜getPbImageURL.js
+	 ┃ ┣ 📜regular.js
+	 ┃ ┗ 📜showAlert.js
+	 ┣ 📜App.jsx
+	 ┗ 📜main.jsx
+
+</details>
+
+<br />
 
 ### ✴️ **Commit Convention**
 
@@ -304,13 +315,14 @@
 
 ### ✴️ 성능 검사
 
-
-
-
-
-### ✴️ **리팩토링할 부분**
-
+![image](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/efe7e863-3c37-417c-be2c-89430b046925)
 
 
 ### ✴️ **느낀점**
+> 🧐**이호 :**
 
+> 🤪**전진승 : 아직까지 제가 습득해야 할 내용이 많다고 느끼고, 배운 내용을 제대로 활용하지 못하는 게 아쉬웠습니다. 그래서 기반을 다시 탄탄히 다지고, 코드 리팩토링에 충분한 시간을 할애해야 할 것 같습니다**
+
+> 😍**양정아 :**
+
+> 😍**강예나 :**

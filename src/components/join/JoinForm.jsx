@@ -65,7 +65,6 @@ function JoinForm() {
     };
 
     const joinData = await pb.collection('users').create(userData);
-    console.log(joinData.id);
 
     showSuccessAlert('프로필 등록 후 회원가입이 완료됩니다.', '💌');
     setTimeout(() => {
