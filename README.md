@@ -11,6 +11,7 @@
 ![tailwindcss](https://badgen.net/badge/tailwindcss/v3.3.3/cyan?)
 ![framer-motion](https://badgen.net/badge/framer-motion/v10.16.4/FF4154?)
 
+
 ![vite](https://badgen.net/badge/vite/v4.4.5/FF4154?)
 ![Eslint](https://badgen.net/badge/Eslint/v8.48.0/4B32C3?)
 ![Prettier](https://badgen.net/badge/Prettier/v3.0.3/F7B93E?)
@@ -145,123 +146,123 @@
 > ### 회원가입, 프로필 등록 페이지
 
 
-### 📂 **프로젝트 폴더 구조**
-```
-📦src
- ┣ 📂api
- ┃ ┣ 📜pocketbase.js
- ┃ ┗ 📜useProducts.js
- ┣ 📂assets
- ┃ ┣ 📜cleanCode.png
- ┃ ┣ 📜hori.png
- ┃ ┣ 📜mainBanner1.png
- ┃ ┣ 📜mainBanner2.png
- ┃ ┗ 📜reactBook.png
- ┣ 📂components
- ┃ ┣ 📂bookList
- ┃ ┃ ┣ 📜Spinner.jsx
- ┃ ┃ ┗ 📜TabButtonList.jsx
- ┃ ┣ 📂category
- ┃ ┃ ┗ 📜CategoryTabButton.jsx
- ┃ ┣ 📂common
- ┃ ┃ ┣ 📂bookCards
- ┃ ┃ ┃ ┣ 📜BookCardImage.jsx
- ┃ ┃ ┃ ┣ 📜ColBookCard.jsx
- ┃ ┃ ┃ ┣ 📜ColBookCardInfo.jsx
- ┃ ┃ ┃ ┣ 📜RowBookCard.jsx
- ┃ ┃ ┃ ┗ 📜RowBookCardInfo.jsx
- ┃ ┃ ┣ 📜Button.jsx
- ┃ ┃ ┣ 📜FormInput.jsx
- ┃ ┃ ┣ 📜Heart.jsx
- ┃ ┃ ┣ 📜Heartbutton.jsx
- ┃ ┃ ┣ 📜InputValidation.jsx
- ┃ ┃ ┣ 📜ScrollButton.jsx
- ┃ ┃ ┣ 📜SignPageTitle.jsx
- ┃ ┃ ┣ 📜SubVisualBanner.jsx
- ┃ ┃ ┗ 📜TabButton.jsx
- ┃ ┣ 📂favorite
- ┃ ┃ ┗ 📜FavoriteTitle.jsx
- ┃ ┣ 📂join
- ┃ ┃ ┣ 📜JoinForm.jsx
- ┃ ┃ ┗ 📜JoinTitle.jsx
- ┃ ┣ 📂login
- ┃ ┃ ┣ 📜EmailInput.jsx
- ┃ ┃ ┣ 📜JoinButton.jsx
- ┃ ┃ ┣ 📜LoginButton.jsx
- ┃ ┃ ┣ 📜LoginForm.jsx
- ┃ ┃ ┣ 📜LoginTitle.jsx
- ┃ ┃ ┗ 📜PasswordInput.jsx
- ┃ ┣ 📂main
- ┃ ┃ ┣ 📜BestBook.jsx
- ┃ ┃ ┣ 📜CategoryBook.jsx
- ┃ ┃ ┣ 📜MainBanner.jsx
- ┃ ┃ ┗ 📜NewBook.jsx
- ┃ ┣ 📂postList
- ┃ ┃ ┣ 📜PostListTitle.jsx
- ┃ ┃ ┗ 📜PostWriteButton.jsx
- ┃ ┣ 📂profile
- ┃ ┃ ┣ 📜ImageUpload.jsx
- ┃ ┃ ┣ 📜NicknameInput.jsx
- ┃ ┃ ┣ 📜ProfileTitle.jsx
- ┃ ┃ ┗ 📜RegistrationButton.jsx
- ┃ ┣ 📂userPost
- ┃ ┃ ┣ 📜Comments.jsx
- ┃ ┃ ┣ 📜CommentsLayout.jsx
- ┃ ┃ ┣ 📜InputComment.jsx
- ┃ ┃ ┣ 📜PostBookInfo.jsx
- ┃ ┃ ┣ 📜PostMain.jsx
- ┃ ┃ ┣ 📜PostOptions.jsx
- ┃ ┃ ┣ 📜PostTitle.jsx
- ┃ ┃ ┗ 📜RullsOfComment.jsx
- ┃ ┗ 📂write
- ┃ ┃ ┣ 📜BookImage.jsx
- ┃ ┃ ┣ 📜BookInfo.jsx
- ┃ ┃ ┣ 📜Category.jsx
- ┃ ┃ ┣ 📜ReviewBtn.jsx
- ┃ ┃ ┣ 📜ReviewInfo.jsx
- ┃ ┃ ┣ 📜ReviewMainText.jsx
- ┃ ┃ ┗ 📜SearchBooks.jsx
- ┣ 📂contexts
- ┃ ┣ 📜AuthContext.jsx
- ┃ ┣ 📜BookmarkContext.jsx
- ┃ ┣ 📜PbDataContext.jsx
- ┃ ┗ 📜PrivateRoute.jsx
- ┣ 📂hooks
- ┃ ┣ 📜booleanStore.js
- ┃ ┣ 📜categoryStore.js
- ┃ ┣ 📜commentStore.js
- ┃ ┣ 📜setupProxy.js
- ┃ ┗ 📜useStorage.js
- ┣ 📂layout
- ┃ ┣ 📜FooterBar.jsx
- ┃ ┣ 📜HeaderBar.jsx
- ┃ ┣ 📜Layout.jsx
- ┃ ┗ 📜Nav.jsx
- ┣ 📂pages
- ┃ ┣ 📜BookDescription.jsx
- ┃ ┣ 📜BookList.jsx
- ┃ ┣ 📜FavoritePage.jsx
- ┃ ┣ 📜Home.jsx
- ┃ ┣ 📜Join.jsx
- ┃ ┣ 📜Login.jsx
- ┃ ┣ 📜PostListPage.jsx
- ┃ ┣ 📜RegisterProfile.jsx
- ┃ ┗ 📜WritePage.jsx
- ┣ 📂routes
- ┃ ┗ 📜routes.jsx
- ┣ 📂store
- ┣ 📂styles
- ┃ ┗ 📜tailwind.css
- ┣ 📂utils
- ┃ ┣ 📜debounce.js
- ┃ ┣ 📜getPbImageURL.js
- ┃ ┣ 📜regular.js
- ┃ ┗ 📜showAlert.js
- ┣ 📜App.jsx
- ┗ 📜main.jsx
-```
+<details>
+<summary><h3>📂 프로젝트 폴더 구조</h3></summary>
 
+	📦src
+	 ┣ 📂api
+	 ┃ ┣ 📜pocketbase.js
+	 ┃ ┗ 📜useProducts.js
+	 ┣ 📂assets
+	 ┃ ┣ 📜cleanCode.png
+	 ┃ ┣ 📜hori.png
+	 ┃ ┣ 📜mainBanner1.png
+	 ┃ ┣ 📜mainBanner2.png
+	 ┃ ┗ 📜reactBook.png
+	 ┣ 📂components
+	 ┃ ┣ 📂bookList
+	 ┃ ┃ ┣ 📜Spinner.jsx
+	 ┃ ┃ ┗ 📜TabButtonList.jsx
+	 ┃ ┣ 📂category
+	 ┃ ┃ ┗ 📜CategoryTabButton.jsx
+	 ┃ ┣ 📂common
+	 ┃ ┃ ┣ 📂bookCards
+	 ┃ ┃ ┃ ┣ 📜BookCardImage.jsx
+	 ┃ ┃ ┃ ┣ 📜ColBookCard.jsx
+	 ┃ ┃ ┃ ┣ 📜ColBookCardInfo.jsx
+	 ┃ ┃ ┃ ┣ 📜RowBookCard.jsx
+	 ┃ ┃ ┃ ┗ 📜RowBookCardInfo.jsx
+	 ┃ ┃ ┣ 📜Button.jsx
+	 ┃ ┃ ┣ 📜FormInput.jsx
+	 ┃ ┃ ┣ 📜Heart.jsx
+	 ┃ ┃ ┣ 📜Heartbutton.jsx
+	 ┃ ┃ ┣ 📜InputValidation.jsx
+	 ┃ ┃ ┣ 📜ScrollButton.jsx
+	 ┃ ┃ ┣ 📜SignPageTitle.jsx
+	 ┃ ┃ ┣ 📜SubVisualBanner.jsx
+	 ┃ ┃ ┗ 📜TabButton.jsx
+	 ┃ ┣ 📂favorite
+	 ┃ ┃ ┗ 📜FavoriteTitle.jsx
+	 ┃ ┣ 📂join
+	 ┃ ┃ ┣ 📜JoinForm.jsx
+	 ┃ ┃ ┗ 📜JoinTitle.jsx
+	 ┃ ┣ 📂login
+	 ┃ ┃ ┣ 📜EmailInput.jsx
+	 ┃ ┃ ┣ 📜JoinButton.jsx
+	 ┃ ┃ ┣ 📜LoginButton.jsx
+	 ┃ ┃ ┣ 📜LoginForm.jsx
+	 ┃ ┃ ┣ 📜LoginTitle.jsx
+	 ┃ ┃ ┗ 📜PasswordInput.jsx
+	 ┃ ┣ 📂main
+	 ┃ ┃ ┣ 📜BestBook.jsx
+	 ┃ ┃ ┣ 📜CategoryBook.jsx
+	 ┃ ┃ ┣ 📜MainBanner.jsx
+	 ┃ ┃ ┗ 📜NewBook.jsx
+	 ┃ ┣ 📂postList
+	 ┃ ┃ ┣ 📜PostListTitle.jsx
+	 ┃ ┃ ┗ 📜PostWriteButton.jsx
+	 ┃ ┣ 📂profile
+	 ┃ ┃ ┣ 📜ImageUpload.jsx
+	 ┃ ┃ ┣ 📜NicknameInput.jsx
+	 ┃ ┃ ┣ 📜ProfileTitle.jsx
+	 ┃ ┃ ┗ 📜RegistrationButton.jsx
+	 ┃ ┣ 📂userPost
+	 ┃ ┃ ┣ 📜Comments.jsx
+	 ┃ ┃ ┣ 📜CommentsLayout.jsx
+	 ┃ ┃ ┣ 📜InputComment.jsx
+	 ┃ ┃ ┣ 📜PostBookInfo.jsx
+	 ┃ ┃ ┣ 📜PostMain.jsx
+	 ┃ ┃ ┣ 📜PostOptions.jsx
+	 ┃ ┃ ┣ 📜PostTitle.jsx
+	 ┃ ┃ ┗ 📜RullsOfComment.jsx
+	 ┃ ┗ 📂write
+	 ┃ ┃ ┣ 📜BookImage.jsx
+	 ┃ ┃ ┣ 📜BookInfo.jsx
+	 ┃ ┃ ┣ 📜Category.jsx
+	 ┃ ┃ ┣ 📜ReviewBtn.jsx
+	 ┃ ┃ ┣ 📜ReviewInfo.jsx
+	 ┃ ┃ ┣ 📜ReviewMainText.jsx
+	 ┃ ┃ ┗ 📜SearchBooks.jsx
+	 ┣ 📂contexts
+	 ┃ ┣ 📜AuthContext.jsx
+	 ┃ ┣ 📜BookmarkContext.jsx
+	 ┃ ┣ 📜PbDataContext.jsx
+	 ┃ ┗ 📜PrivateRoute.jsx
+	 ┣ 📂hooks
+	 ┃ ┣ 📜booleanStore.js
+	 ┃ ┣ 📜categoryStore.js
+	 ┃ ┣ 📜commentStore.js
+	 ┃ ┣ 📜setupProxy.js
+	 ┃ ┗ 📜useStorage.js
+	 ┣ 📂layout
+	 ┃ ┣ 📜FooterBar.jsx
+	 ┃ ┣ 📜HeaderBar.jsx
+	 ┃ ┣ 📜Layout.jsx
+	 ┃ ┗ 📜Nav.jsx
+	 ┣ 📂pages
+	 ┃ ┣ 📜BookDescription.jsx
+	 ┃ ┣ 📜BookList.jsx
+	 ┃ ┣ 📜FavoritePage.jsx
+	 ┃ ┣ 📜Home.jsx
+	 ┃ ┣ 📜Join.jsx
+	 ┃ ┣ 📜Login.jsx
+	 ┃ ┣ 📜PostListPage.jsx
+	 ┃ ┣ 📜RegisterProfile.jsx
+	 ┃ ┗ 📜WritePage.jsx
+	 ┣ 📂routes
+	 ┃ ┗ 📜routes.jsx
+	 ┣ 📂store
+	 ┣ 📂styles
+	 ┃ ┗ 📜tailwind.css
+	 ┣ 📂utils
+	 ┃ ┣ 📜debounce.js
+	 ┃ ┣ 📜getPbImageURL.js
+	 ┃ ┣ 📜regular.js
+	 ┃ ┗ 📜showAlert.js
+	 ┣ 📜App.jsx
+	 ┗ 📜main.jsx
 
+</details>
 
 ### ✴️ **Commit Convention**
 
