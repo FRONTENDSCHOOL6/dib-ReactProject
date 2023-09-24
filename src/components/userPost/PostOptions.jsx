@@ -4,7 +4,7 @@ import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-function PostOptions({ heaetClick, heartRander }) {
+function PostOptions({ heaetClick, heartRander, reviewComments }) {
   const [isClicked, setIsClicked] = useState(heartRander);
 
   return (
@@ -12,7 +12,7 @@ function PostOptions({ heaetClick, heartRander }) {
       <div className="flex items-center">
         <button>
           <span className="mr-2">댓글</span>
-          <span>2</span>
+          <span>{reviewComments}</span>
         </button>
 
         <div className="w-[1px] h-[13px] bg-slate-400 mx-3"></div>
@@ -44,6 +44,6 @@ export default PostOptions;
 
 PostOptions.propTypes = {
   heaetClick: PropTypes.func,
-
+  reviewComments: PropTypes.number,
   heartRander: PropTypes.bool,
 };

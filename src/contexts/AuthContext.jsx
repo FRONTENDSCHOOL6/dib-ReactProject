@@ -4,7 +4,6 @@ import { pb } from '@/api/pocketbase';
 
 const AuthContext = createContext();
 
-
 const initialAuthState = {
   isAuth: false,
   user: null,
@@ -40,7 +39,6 @@ function AuthProvider({ displayName = 'AuthProvider', children }) {
     };
   }, []);
 
-  // 회원가입, 로그인, 로그아웃의 값을 데이터베이스에서 가지고와서 사용
   const join = async (registerUser) => {
     return await pb.collection('users').create(registerUser);
   };
