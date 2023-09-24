@@ -12,11 +12,10 @@ const initialAuthState = {
   user: null,
   token: '',
 };
-
 // Context.Provider 래퍼 컴포넌트 작성
 function AuthProvider({ displayName = 'AuthProvider', children }) {
   // 로컬스토리지에 있는 데이터를 가져옴
-  const { storageData } = useStorage('pocketbase_auth');
+  const { storageData, setStorageData } = useStorage('pocketbase_auth');
 
   // 인증 상태를 담아두는 스테이트
   const [authState, setAuthState] = useState(initialAuthState);
@@ -30,12 +29,25 @@ function AuthProvider({ displayName = 'AuthProvider', children }) {
         user: model,
         token,
       });
+    } else {
+      // 로컬스토리지에 값이 없으면 데이터베이스에서 가져와서 저장
+      pb.authStore.get().then(({ token, model }) => {
+        if (model) {
+          setStorageData({ token, model });
+          setAuthState({
+            isAuth: true,
+            user: model,
+            token,
+          });
+        }
+      });
     }
   }, [storageData]);
 
   useEffect(() => {
     // 이건 자세히 모르겠지만 처음에 랜더링 될때 한번 실행되는데 상태값이 변하면 다시 넣어주는 아이인듯
     const unsub = pb.authStore.onChange((token, model) => {
+      setStorageData({ token, model });
       setAuthState((state) => ({
         ...state,
         isAuth: !!model,
@@ -72,7 +84,7 @@ function AuthProvider({ displayName = 'AuthProvider', children }) {
     logOut,
   };
 
-  // children이 이 값을 뿌려줄 페이지, 근데 전체에 로그인 넣을 꺼니까 app을 넣자
+  // children이 이 값을 뿌려줄 페이지, 근데 전체에 로그인 넣을 꺼니까 app에 넣자
   return (
     <AuthContext.Provider value={authValue} displayName={displayName}>
       {children}
@@ -87,8 +99,7 @@ AuthProvider.propTypes = {
 
 export default AuthProvider;
 
-// 인증 정보를 앱 어디서나 손쉽게 주입 받아 쓸 수 있도록 하는 함수
-// 값이 있으면 그 페이지를 사용가능하고 값이 없으면 로그인페이지로 이동하게 만들기(선생님 nav파일 참고)
+// 인증 정보를 앱 어디서나 받아 쓸 수 있도록 하는 함수
 export const useAuth = () => {
   const authValue = useContext(AuthContext);
   if (!authValue) {
