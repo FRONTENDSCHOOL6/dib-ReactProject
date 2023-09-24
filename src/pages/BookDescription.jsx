@@ -4,17 +4,20 @@ import PostMain from '@/components/userPost/PostMain';
 import CommentsLayout from '@/components/userPost/CommentsLayout';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import debounce from '@/utils/debounce';
+// import debounce from '@/utils/debounce';
 import { pb } from '@/api/pocketbase';
 import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function BookDescription() {
-  const { id } = useParams();
   //특정게시물의 아이디
+  const { id } = useParams();
   const { user } = useAuth();
+  const history = useNavigate();
 
-  const [reviewData, setReviewData] = useState(null); //리뷰
+  // 작성한 내용 상태변수
+  const [reviewData, setReviewData] = useState(null);
   const [writeComment, setWriteComment] = useState('');
   const [userImage, setUserImage] = useState('');
 
@@ -24,8 +27,8 @@ function BookDescription() {
         const record = await pb.collection('posts').getOne(id, {
           expand: 'user_id ,comments',
         });
-        console.log(record);
         setReviewData(record);
+        console.log(record);
         return record;
       } catch (error) {
         throw new Error(error.message);
@@ -38,35 +41,57 @@ function BookDescription() {
     setWriteComment(e.target.value);
   };
 
-  const handleDebounceWriteComment = debounce(handleWriteComment, 500);
+  // const handleDebounceWriteComment = debounce(handleWriteComment, 500);
 
+  // 댓글 남긴다고 누르면 실행되는 부분
   const handleClickPostComment = async (event) => {
     event.preventDefault();
-    const data = {
-      user_id: user.id,
-      comment_contents: writeComment,
-    };
 
-    try {
-      const record = await pb.collection('comments').create(data);
+    if (!user) {
+      const confirmLogin = confirm(
+        '댓글 작성을 위해 로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?'
+      );
 
-      if (record) {
-        showSuccessAlert('댓글 저장에 성공하였습니다! 🚀');
-        const postRecord = await pb.collection('posts').getOne(id);
-        const updatedComments = [...postRecord.comments, record.id];
-        await pb.collection('posts').update(id, { comments: updatedComments });
-
-        // 데이터를 다시 가져오고 싶을 때 reviewData를 업데이트합니다.
-        setReviewData(
-          await pb
-            .collection('posts')
-            .getOne(id, { expand: 'user_id ,comments' })
-        );
-      } else {
-        showErrorAlert('서버와의 통신에 문제가 발생하였습니다. ❌');
+      if (confirmLogin) {
+        history('/login');
       }
-    } catch (error) {
-      throw new Error(error.message);
+    } else {
+      // 댓글쓰고 DB에 넘어가는 정보들
+      const data = {
+        user_id: user.id,
+        userId: user.id,
+        nickName: user.nickname,
+        profileImage: user.profileImage,
+        comment_contents: writeComment,
+      };
+
+      // 댓글 작성 처리 코드
+      try {
+        const record = await pb.collection('comments').create(data);
+
+        if (record) {
+          showSuccessAlert('댓글 저장에 성공하였습니다! 🚀');
+
+          const postRecord = await pb.collection('posts').getOne(id);
+          const updatedComments = [...postRecord.comments, record.id];
+          const commentRegist = await pb
+            .collection('posts')
+            .update(id, { comments: updatedComments });
+
+          console.log(commentRegist);
+          // 데이터를 다시 가져오고 싶을 때 reviewData를 업데이트합니다.
+          setReviewData(
+            await pb
+              .collection('posts')
+              .getOne(id, { expand: 'user_id ,comments' })
+          );
+          setWriteComment('');
+        } else {
+          showErrorAlert('서버와의 통신에 문제가 발생하였습니다. ❌');
+        }
+      } catch (error) {
+        throw new Error(error.message);
+      }
     }
   };
 
@@ -139,10 +164,14 @@ function BookDescription() {
           <PostMain mainText={reviewData.post_contents} />
 
           <CommentsLayout
+            reviewComments={
+              reviewData.comments.length > 0 ? reviewData.comments.length : 0
+            }
             // nickname={user.nickname}
+            writeComment={writeComment}
             reviewData={reviewData}
             onClick={handleClickPostComment}
-            onChange={handleDebounceWriteComment}
+            onChange={handleWriteComment}
             heaetClick={() => handleLikeToggle(reviewData.id)}
             heartRander={
               user ? user.liked_posts.includes(reviewData.id) : false

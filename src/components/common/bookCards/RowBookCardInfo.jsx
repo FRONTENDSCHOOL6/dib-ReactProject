@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 
 function RowBookCardInfo({
   postTitle,
@@ -8,6 +9,7 @@ function RowBookCardInfo({
   heartRander,
   heaetClick,
 }) {
+  const { user } = useAuth();
   const [isClicked, setIsClicked] = useState(heartRander);
 
   return (
@@ -26,8 +28,10 @@ function RowBookCardInfo({
           <button
             type="button"
             onClick={() => {
-              setIsClicked((state) => !state);
               heaetClick?.();
+              if (user) {
+                setIsClicked((state) => !state);
+              }
             }}
           >
             <img src={isClicked ? 'heart.png' : 'emptyheart.png'} alt="" />

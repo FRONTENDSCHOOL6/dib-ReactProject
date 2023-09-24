@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 
 function BookCardImage({
   imgSrc,
@@ -11,7 +12,10 @@ function BookCardImage({
   bookmarkRander,
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isClickBookmark, setIsClickBookMark] = useState(bookmarkRander);
+  const { user } = useAuth();
+  const [isClickBookmark, setIsClickBookMark] = useState(
+    user ? bookmarkRander : false
+  );
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -54,8 +58,10 @@ function BookCardImage({
         <input
           type="checkbox"
           onClick={() => {
-            setIsClickBookMark((state) => !state);
             bookmarkClick?.();
+            if (user) {
+              setIsClickBookMark((state) => !state);
+            }
           }}
           aria-pressed={isClickBookmark}
           aria-label={isClickBookmark ? '선택됨' : '선택 안 됨'}

@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import toast from 'react-hot-toast';
 
 const STYLES = {
   position: 'absolute',
@@ -51,6 +52,9 @@ function NewBook() {
 
   const handleLikeToggle = async (postId) => {
     if (!user) {
+      toast('북마크 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updatedLikedPosts = [...user.liked_posts];
@@ -74,6 +78,9 @@ function NewBook() {
 
   const handleBookmarkToggle = async (postId) => {
     if (!user) {
+      toast('하트 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updataBookmarkPosts = [...user.bookmark_posts];

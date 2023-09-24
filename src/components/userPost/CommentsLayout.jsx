@@ -10,24 +10,38 @@ function CommentsLayout({
   heaetClick,
   reviewData,
   heartRander,
+  writeComment,
+  reviewComments,
 }) {
   const comments = reviewData?.expand?.comments || [];
 
   return (
     <>
-      <PostOptions heaetClick={heaetClick} heartRander={heartRander} />
+      <PostOptions
+        heaetClick={heaetClick}
+        heartRander={heartRander}
+        reviewComments={reviewComments}
+      />
       <RullsOfComment />
-      <InputComment onClick={onClick} onChange={onChange} />
+      <InputComment
+        onClick={onClick}
+        onChange={onChange}
+        writeComment={writeComment}
+      />
 
       {comments.length > 0 ? (
-        comments.map((comment, index) => (
-          <Comments
-            key={index}
-            text={comment.comment_contents}
-            date={comment.created}
-            nickName={comment.user_id}
-          />
-        ))
+        [...comments]
+          .reverse()
+          .map((comment, index) => (
+            <Comments
+              key={index}
+              userId={comment.userId}
+              text={comment.comment_contents}
+              date={comment.created.slice(0, -8)}
+              nickName={comment.nickName}
+              profileImage={comment.profileImage}
+            />
+          ))
       ) : (
         <p className="m-auto w-[1200px] text-center mt-10">
           아직 댓글이 없습니다.
@@ -46,5 +60,7 @@ CommentsLayout.propTypes = {
   putHeart: PropTypes.bool,
   reviewData: PropTypes.object,
   date: PropTypes.string,
+  writeComment: PropTypes.string,
   heartRander: PropTypes.bool,
+  reviewComments: PropTypes.number,
 };
