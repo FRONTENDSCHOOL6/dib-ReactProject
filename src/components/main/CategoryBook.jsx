@@ -8,14 +8,13 @@ import CategoryTabButtonList from './../category/CategoryTabButton';
 import Spinner from '../bookList/Spinner';
 import PropTypes from 'prop-types';
 import { useAuth } from '@/contexts/AuthContext';
-import { usePbData } from '@/contexts/PbDataContext';
+import toast from 'react-hot-toast';
 
 function CategoryBook({ isLoading, setIsLoading }) {
   const [data, setData] = useState([]);
   const { user } = useAuth();
   const [filteredData, setFilteredData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
-  const { bookData } = usePbData();
 
   useEffect(() => {
     pb.autoCancellation(false);
@@ -33,6 +32,9 @@ function CategoryBook({ isLoading, setIsLoading }) {
 
   const handleBookmarkToggle = async (postId) => {
     if (!user) {
+      toast('북마크 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updataBookmarkPosts = [...user.bookmark_posts];
@@ -56,6 +58,9 @@ function CategoryBook({ isLoading, setIsLoading }) {
 
   const handleLikeToggle = async (postId) => {
     if (!user) {
+      toast('하트 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updatedLikedPosts = [...user.liked_posts];
@@ -107,7 +112,7 @@ function CategoryBook({ isLoading, setIsLoading }) {
 
   return (
     <>
-      <section className="bg-dibCategoryBg text-center relative w-[1920px] h-[960px] m-auto flex flex-col">
+      <section className="bg-dibCategoryBg text-center relative w-[1920px] h-[960px] m-auto flex flex-col pb-10">
         <h2 className="text-dibBlack text-[32px] not-italic font-normal leading-[normal] tracking-[-1.5px] mt-[60px] mb-[20px]">
           카테고리별 도서
         </h2>
@@ -116,7 +121,7 @@ function CategoryBook({ isLoading, setIsLoading }) {
         </strong>
         <Link
           to="/bookList"
-          className="absolute top-[190px] right-[410px]"
+          className="absolute top-[185px] right-[410px]"
           title="도서목록 더보기"
         >
           <FontAwesomeIcon icon={faPlus} className="w-[28px] h-[28px]" />
@@ -154,11 +159,11 @@ function CategoryBook({ isLoading, setIsLoading }) {
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}
                       bookmarkRander={
-                        user ? user.bookmark_posts.includes(item.id) : false
+                        user ? user?.bookmark_posts?.includes(item.id) : false
                       }
                       heaetClick={() => handleLikeToggle(item.id)}
                       heartRander={
-                        user ? user.liked_posts.includes(item.id) : false
+                        user ? user?.liked_posts?.includes(item.id) : false
                       }
                     />
                   </li>
