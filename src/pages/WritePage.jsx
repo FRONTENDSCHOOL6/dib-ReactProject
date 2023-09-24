@@ -31,9 +31,7 @@ function WritePage() {
         async function searchBookInfo() {
           const keyword = searchBook;
           const response = await fetch(
-            `${
-              import.meta.env.VITE_NAVER_BOOK_SEARCH_API
-            }?query=${keyword}&display=4`,
+            `https://openapi.naver.com/v1/search/book.json?query=${keyword}&display=4`,
             {
               method: 'GET',
               headers: {
