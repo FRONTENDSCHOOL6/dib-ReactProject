@@ -154,11 +154,11 @@ function CategoryBook({ isLoading, setIsLoading }) {
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}
                       bookmarkRander={
-                        user ? user.bookmark_posts.includes(item.id) : false
+                        user ? user?.bookmark_posts?.includes(item.id) : false
                       }
                       heaetClick={() => handleLikeToggle(item.id)}
                       heartRander={
-                        user ? user.liked_posts.includes(item.id) : false
+                        user ? user?.liked_posts?.includes(item.id) : false
                       }
                     />
                   </li>

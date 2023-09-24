@@ -24,7 +24,7 @@ function BookDescription() {
         const record = await pb.collection('posts').getOne(id, {
           expand: 'user_id ,comments',
         });
-
+        console.log(record);
         setReviewData(record);
         return record;
       } catch (error) {
@@ -139,7 +139,7 @@ function BookDescription() {
           <PostMain mainText={reviewData.post_contents} />
 
           <CommentsLayout
-            nickname={user.nickname}
+            // nickname={user.nickname}
             reviewData={reviewData}
             onClick={handleClickPostComment}
             onChange={handleDebounceWriteComment}

@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 const STYLES = {
   position: 'absolute',
   width: '2100px',
@@ -134,11 +135,11 @@ function NewBook() {
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}
                       bookmarkRander={
-                        user ? user.bookmark_posts.includes(item.id) : false
+                        user ? user?.bookmark_posts?.includes(item.id) : false
                       }
                       heaetClick={() => handleLikeToggle(item.id)}
                       heartRander={
-                        user ? user.liked_posts.includes(item.id) : false
+                        user ? user?.liked_posts?.includes(item.id) : false
                       }
                       bookID={item.id}
                     />
