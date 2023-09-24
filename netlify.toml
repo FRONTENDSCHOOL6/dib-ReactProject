@@ -1,11 +1,9 @@
 [[redirects]]
-  from = "/proxy/*"
-  to = "https://openapi.naver.com/:splat"
+  from = "/api/*"
+  to = "https://openapi.naver.com/v1/search/book.json/:splat"
   status = 200
-  force = true
-[[headers]]
-  for = "/*"
-    [headers.values]
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
-    Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
