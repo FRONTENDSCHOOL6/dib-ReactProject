@@ -11,12 +11,10 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 function BookDescription() {
-  //특정게시물의 아이디
+
   const { id } = useParams();
   const { user } = useAuth();
   const history = useNavigate();
-
-  // 작성한 내용 상태변수
   const [reviewData, setReviewData] = useState(null);
   const [writeComment, setWriteComment] = useState('');
 
@@ -27,7 +25,6 @@ function BookDescription() {
           expand: 'user_id ,comments',
         });
         setReviewData(record);
-        console.log(record);
         return record;
       } catch (error) {
         throw new Error(error.message);
@@ -42,7 +39,6 @@ function BookDescription() {
 
   // const handleDebounceWriteComment = debounce(handleWriteComment, 500);
 
-  // 댓글 남긴다고 누르면 실행되는 부분
   const handleClickPostComment = async (event) => {
     event.preventDefault();
 
@@ -55,7 +51,6 @@ function BookDescription() {
         history('/login');
       }
     } else {
-      // 댓글쓰고 DB에 넘어가는 정보들
       const data = {
         user_id: user.id,
         userId: user.id,
@@ -64,7 +59,6 @@ function BookDescription() {
         comment_contents: writeComment,
       };
 
-      // 댓글 작성 처리 코드
       try {
         const record = await pb.collection('comments').create(data);
 
@@ -73,17 +67,17 @@ function BookDescription() {
 
           const postRecord = await pb.collection('posts').getOne(id);
           const updatedComments = [...postRecord.comments, record.id];
+          // eslint-disable-next-line no-unused-vars
           const commentRegist = await pb
             .collection('posts')
             .update(id, { comments: updatedComments });
-
-          console.log(commentRegist);
-          // 데이터를 다시 가져오고 싶을 때 reviewData를 업데이트합니다.
+            
           setReviewData(
             await pb
               .collection('posts')
               .getOne(id, { expand: 'user_id ,comments' })
           );
+
           setWriteComment('');
         } else {
           showErrorAlert('서버와의 통신에 문제가 발생하였습니다. ❌');
@@ -145,6 +139,7 @@ function BookDescription() {
       {reviewData && (
         <>
           <PostBookInfo
+            category={reviewData.category[0]}
             author={reviewData.author}
             title={reviewData.book_title}
             bookImage={reviewData.book_image_link}
@@ -162,12 +157,10 @@ function BookDescription() {
             createDate={reviewData.created}
           />
           <PostMain mainText={reviewData.post_contents} />
-
           <CommentsLayout
             reviewComments={
               reviewData.comments.length > 0 ? reviewData.comments.length : 0
             }
-            // nickname={user.nickname}
             writeComment={writeComment}
             reviewData={reviewData}
             onClick={handleClickPostComment}
