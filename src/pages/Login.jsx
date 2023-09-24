@@ -4,7 +4,7 @@ import LoginTitle from '@/components/login/LoginTitle';
 
 function Login() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center justify-center">
       <LoginTitle />
       <LoginForm />
       <JoinButton />
