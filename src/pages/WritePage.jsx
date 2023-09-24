@@ -6,7 +6,7 @@ import BookInfo from '@/components/write/BookInfo';
 import SubVisualBanner from '@/components/common/SubVisualBanner';
 import { useState, useEffect } from 'react';
 import { pb } from '@/api/pocketbase';
-import { useCategoryStore } from '@/hooks/categoryStore';
+import { useCategoryStore } from '@/hooks/useStore';
 import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -18,7 +18,7 @@ function WritePage() {
     title: '책 제목',
     author: '저자',
   });
-  const [inputValues, setInputValues] = useState('');
+  const [reviewTitle, setReviewTitle] = useState('');
   const { category, setCategory } = useCategoryStore();
 
   const { user } = useAuth();
@@ -69,13 +69,13 @@ function WritePage() {
 
   const handleReviewTitle = (event) => {
     setTimeout(() => {
-      setInputValues(event.target.value);
+      setReviewTitle(event.target.value);
     }, 1000);
   };
 
   const handleSelectCategory = (event) => {
-    event.preventDefault();
-    setCategory(event.target.textContent);
+    const selectedCategory = event.target.textContent;
+    setCategory(selectedCategory);
   };
 
   const handleSubmitReview = async () => {
@@ -83,23 +83,25 @@ function WritePage() {
       !selectedBook.title ||
       !selectedBook.author ||
       !selectedBook.publisher ||
-      !inputValues ||
-      !reviewMainText
+      !reviewTitle ||
+      !reviewMainText ||
+      !category
     ) {
       showErrorAlert('모든 필드를 입력해주세요.', '🥹');
-
+      console.log(selectedBook.title);
       return;
     }
+
     const data = {
       user_id: user.id,
       book_title: selectedBook.title,
       author: selectedBook.author,
       publisher: selectedBook.publisher,
       book_image_link: selectedBook.image,
-      post_title: inputValues,
+      post_title: reviewTitle,
       post_contents: reviewMainText,
       category: [category],
-      like_count: 22,
+      like_count: 0,
     };
 
     try {
@@ -107,9 +109,9 @@ function WritePage() {
       if (record) {
         const successDataId = record.id;
 
-        await pb.collection('users').update(user.id, successDataId);
-
-        // await pb.collection('user').update(successDataId, { data });
+        await pb.collection('users').update(user.id, {
+          written_posts: [...user.written_posts, successDataId],
+        });
 
         showSuccessAlert('리뷰저장에 성공하였습니다!', '✅');
       } else {
@@ -142,9 +144,7 @@ function WritePage() {
           author={selectedBook.author}
           publisher={selectedBook.publisher}
           image={selectedBook.image}
-          onClick={(event) => {
-            handleSelectCategory(event);
-          }}
+          onClick={handleSelectCategory}
         />
 
         <ReviewInfo

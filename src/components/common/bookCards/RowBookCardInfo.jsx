@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 
-function RowBookCardInfo({ postTitle, bookTitle,nickName }) {
-  const [liked, setLiked] = useState(false);
-  const handleLikeClick = () => {
-    setLiked(!liked);
-    console.log(liked ? '좋아요 취소' : '좋아요 버튼이 클릭되었습니다.');
-  };
+function RowBookCardInfo({
+  postTitle,
+  bookTitle,
+  nickName,
+  heartRander,
+  heaetClick,
+}) {
+  const { user } = useAuth();
+  const [isClicked, setIsClicked] = useState(heartRander);
 
   return (
     <div className="bg-white py-5 px-7 w-[280px] h-[284px] flex flex-col justify-center border-l-8 border-l-[#DCDCDC] border-dashed">
@@ -21,23 +25,17 @@ function RowBookCardInfo({ postTitle, bookTitle,nickName }) {
           <span className="text-sm">{nickName}</span>
         </div>
         <div>
-          <form>
-            <input
-              type="checkbox"
-              onClick={handleLikeClick}
-              aria-pressed={liked}
-              aria-label={liked ? '' : '좋아요 취소'}
-              id="heartButton1"
-              hidden
-            />
-            <label htmlFor="heartButton1">
-              {liked ? (
-                <img src="/heart.png" alt="" />
-              ) : (
-                <img src="/emptyheart.png" alt="" />
-              )}
-            </label>
-          </form>
+          <button
+            type="button"
+            onClick={() => {
+              heaetClick?.();
+              if (user) {
+                setIsClicked((state) => !state);
+              }
+            }}
+          >
+            <img src={isClicked ? 'heart.png' : 'emptyheart.png'} alt="" />
+          </button>
         </div>
       </div>
     </div>
@@ -50,4 +48,6 @@ RowBookCardInfo.propTypes = {
   postTitle: PropTypes.string.isRequired,
   bookTitle: PropTypes.string.isRequired,
   nickName: PropTypes.string.isRequired,
+  heaetClick: PropTypes.func,
+  heartRander: PropTypes.bool,
 };

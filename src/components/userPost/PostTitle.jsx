@@ -9,7 +9,7 @@ function PostTitle({ postTitle, userName, cearteDate, userImg }) {
           <img
             src={userImg}
             alt="유저 아이콘 이미지"
-            className="rounded-[50%] w-[30px] h-[30px] mr-[8px]"
+            className="rounded-[50%] w-[30px] h-[30px] mr-[8px] bg-blue-400"
           />
           <span className="text-base mr-[25px]">{userName}</span>
           <span className="text-horizontal">{cearteDate}</span>

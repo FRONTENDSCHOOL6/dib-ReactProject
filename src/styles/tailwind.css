@@ -19,5 +19,16 @@
 }
 
 body{
-  padding-top: 80px;
+    @apply pt-20;
+}
+.nav-link {
+    @apply relative;
+}
+.nav-link::before,
+.nav-link::after {
+    @apply content-[''] absolute w-[0%] h-0.5 bg-orange-500 duration-[0.3s] mx-auto -bottom-1 inset-x-0;
+}
+.nav-link:hover::before,
+.nav-link:hover::after {
+    @apply w-full;
 }
