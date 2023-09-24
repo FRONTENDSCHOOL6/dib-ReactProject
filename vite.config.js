@@ -18,6 +18,7 @@ export default defineConfig({
         ws: true,
       },
     },
+    cors: true, // 프로덕션 빌드에서도 CORS를 허용합니다.
   },
   css: {
     devSourcemap: true,

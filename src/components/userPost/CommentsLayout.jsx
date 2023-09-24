@@ -11,12 +11,17 @@ function CommentsLayout({
   reviewData,
   heartRander,
   writeComment,
+  reviewComments,
 }) {
   const comments = reviewData?.expand?.comments || [];
 
   return (
     <>
-      <PostOptions heaetClick={heaetClick} heartRander={heartRander} />
+      <PostOptions
+        heaetClick={heaetClick}
+        heartRander={heartRander}
+        reviewComments={reviewComments}
+      />
       <RullsOfComment />
       <InputComment
         onClick={onClick}
@@ -57,4 +62,5 @@ CommentsLayout.propTypes = {
   date: PropTypes.string,
   writeComment: PropTypes.string,
   heartRander: PropTypes.bool,
+  reviewComments: PropTypes.number,
 };

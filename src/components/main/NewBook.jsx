@@ -8,26 +8,26 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import toast from 'react-hot-toast';
+
 const STYLES = {
   position: 'absolute',
-  width: '2100px',
-  height: '40px',
-  top: '80%',
-  color: '#222222',
+  height: '20px',
+  top: '82%',
+  left:'90%',
+  color: '#d6d6d6',
 };
 const STYLES1 = {
-  width: '14px',
-  height: '40px',
-  top: '80%',
-  color: '#222222',
+  height: '20px',
+  top: '82%',
+  color: '#d6d6d6',
 };
 const STYLES2 = {
   position: 'absolute',
   background: '#d6d6d6',
-  width: '1000px',
+  width: '1030px',
   height: '2px',
   top: '80%',
-  color: 'red',
   zIndex: '50',
 };
 
@@ -50,6 +50,9 @@ function NewBook() {
 
   const handleLikeToggle = async (postId) => {
     if (!user) {
+      toast('북마크 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updatedLikedPosts = [...user.liked_posts];
@@ -73,6 +76,9 @@ function NewBook() {
 
   const handleBookmarkToggle = async (postId) => {
     if (!user) {
+      toast('하트 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updataBookmarkPosts = [...user.bookmark_posts];
@@ -96,7 +102,7 @@ function NewBook() {
 
   return (
     <>
-      <section className="text-center relative w-[1920px] h-[670px] m-auto">
+      <section className="text-center relative w-[1920px] h-[670px] m-auto pt-10">
         <h2 className="text-dibBlack text-[32px] not-italic font-normal leading-[normal] tracking-[-1.5px] m-5">
           신규 도서
         </h2>

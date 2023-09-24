@@ -6,6 +6,7 @@ import { Autoplay, Navigation, Scrollbar } from 'swiper/modules';
 import { useRef, useState } from 'react';
 import mainBanner1 from '@/assets/mainBanner1.png';
 import mainBanner2 from '@/assets/mainBanner2.png';
+import mainBanner3 from '@/assets/mainBanner3.png';
 const STYLES = {
   top: '90%',
   left: '35%',
@@ -80,6 +81,15 @@ function MainBanner() {
         <SwiperSlide>
           <img
             src={mainBanner2}
+            alt="더 많은 개발 지식을 알고싶다
+            dib 추천도서"
+            className="inline-block w-full"
+            title=""
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src={mainBanner3}
             alt="더 많은 개발 지식을 알고싶다
             dib 추천도서"
             className="inline-block w-full"

@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 export const showSuccessAlert = (message, icon) => {
   toast.success(message, {
      position: 'top-center',
-     duration: 3000,
+     duration: 2000,
      icon,
      ariaProps: {
        role: 'status',
@@ -14,7 +14,7 @@ export const showSuccessAlert = (message, icon) => {
 export const showErrorAlert = (message, icon) => {
   toast.error(message, {
      position: 'top-center',
-     duration: 3000,
+     duration: 2000,
      icon,
      ariaProps: {
        role: 'status',

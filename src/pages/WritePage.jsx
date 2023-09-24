@@ -9,8 +9,10 @@ import { pb } from '@/api/pocketbase';
 import { useCategoryStore } from '@/hooks/useStore';
 import { showErrorAlert, showSuccessAlert } from '@/utils/showAlert';
 import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function WritePage() {
+  const navigate = useNavigate();
   const [searchBook, setSearchBook] = useState('');
   const [books, setBooks] = useState([]);
   const [reviewMainText, setReviewMainText] = useState('');
@@ -23,6 +25,9 @@ function WritePage() {
 
   const { user } = useAuth();
 
+  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+  const URL = `${PROXY}/v1/search/book.json`;
+
   useEffect(() => {
     let timer;
 
@@ -30,20 +35,15 @@ function WritePage() {
       timer = setTimeout(() => {
         async function searchBookInfo() {
           const keyword = searchBook;
-          const response = await fetch(
-            `${
-              import.meta.env.VITE_NAVER_BOOK_SEARCH_API
-            }?query=${keyword}&display=4`,
-            {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-Naver-Client-Id': import.meta.env.VITE_NAVER_CLIENT_ID,
-                'X-Naver-Client-Secret': import.meta.env
-                  .VITE_NAVER_CLIENT_SECRET,
-              },
-            }
-          );
+          const response = await fetch(`${URL}?query=${keyword}&display=4`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Naver-Client-Id': import.meta.env.VITE_NAVER_CLIENT_ID,
+              'X-Naver-Client-Secret': import.meta.env.VITE_NAVER_CLIENT_SECRET,
+              'Access-Control-Allow-Origin': '*',
+            },
+          });
           const data = await response.json();
           setBooks(data.items);
         }
@@ -114,6 +114,7 @@ function WritePage() {
         });
 
         showSuccessAlert('리뷰저장에 성공하였습니다!', '✅');
+        navigate('/postListPage');
       } else {
         showErrorAlert('서버와의 통신에 문제가 발생하였습니다.', '❌');
       }

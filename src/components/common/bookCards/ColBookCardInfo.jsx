@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 
 function ColBookCardInfo({
   postTitle,
@@ -12,6 +13,7 @@ function ColBookCardInfo({
   userId,
   profileImage,
 }) {
+  const { user } = useAuth();
   const [isClicked, setIsClicked] = useState(heartRander); //프롭스로부터 파생된 상태
 
   return (
@@ -35,8 +37,10 @@ function ColBookCardInfo({
           <button
             type="button"
             onClick={() => {
-              setIsClicked((state) => !state);
               heaetClick?.();
+              if (user) {
+                setIsClicked((state) => !state);
+              }
             }}
           >
             <img src={isClicked ? 'heart.png' : 'emptyheart.png'} alt="" />

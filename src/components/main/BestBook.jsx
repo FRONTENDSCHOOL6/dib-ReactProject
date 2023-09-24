@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { useAuth } from '@/contexts/AuthContext';
 // import { usePbData } from '@/contexts/PbDataContext';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 function BestBook({ isLoading }) {
   // const { bookData } = usePbData();
@@ -31,7 +32,7 @@ function BestBook({ isLoading }) {
     pb.autoCancellation(false);
     async function fetchNewBooks() {
       const newRecords = await pb.collection('posts').getFullList({
-        sort: '-created',
+        sort: '-like_count',
         expand: 'user_id',
       });
       const filteredData = newRecords.slice(0, 4);
@@ -42,6 +43,9 @@ function BestBook({ isLoading }) {
 
   const handleBookmarkToggle = async (postId) => {
     if (!user) {
+      toast('북마크 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updataBookmarkPosts = [...user.bookmark_posts];
@@ -65,6 +69,9 @@ function BestBook({ isLoading }) {
 
   const handleLikeToggle = async (postId) => {
     if (!user) {
+      toast('하트 기능은 로그인 사용자만 가능합니다.', {
+        icon: '🙏🏻',
+      });
       return;
     } else {
       const updatedLikedPosts = [...user.liked_posts];
@@ -111,7 +118,7 @@ function BestBook({ isLoading }) {
                       nickName={item?.expand?.user_id[0]?.nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
-                      bookmarkClick={() => handleBookmarkToggle(item)}
+                      bookmarkClick={() => handleBookmarkToggle(item.id)}
                       bookmarkRander={
                         user ? user?.bookmark_posts?.includes(item.id) : false
                       }
