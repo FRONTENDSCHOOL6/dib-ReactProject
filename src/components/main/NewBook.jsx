@@ -104,7 +104,7 @@ function NewBook() {
 
   return (
     <>
-      <section className="text-center relative w-[1920px] h-[670px] m-auto">
+      <section className="text-center relative w-[1920px] h-[670px] m-auto pt-10">
         <h2 className="text-dibBlack text-[32px] not-italic font-normal leading-[normal] tracking-[-1.5px] m-5">
           신규 도서
         </h2>
