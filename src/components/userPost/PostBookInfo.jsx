@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function BookInfoLayout({ title, bookImage, author, publisher }) {
-  const [isPressed, setIsPressed] = useState(false);
-
-  const handlePressedBtn = () => {
-    setIsPressed(!isPressed);
-  };
+function PostBookInfo({
+  title,
+  bookImage,
+  author,
+  bookmarkRander,
+  bookmarkClick,
+  publisher,
+}) {
+  const [isClickBookmark, setIsClickBookMark] = useState(bookmarkRander);
 
   return (
     <>
@@ -46,27 +49,32 @@ function BookInfoLayout({ title, bookImage, author, publisher }) {
         <input
           className="absolute top-[-5px] right-[300px] w-[46px] h-[98px] hidden"
           type="checkbox"
-          onClick={handlePressedBtn}
-          aria-pressed={isPressed}
-          aria-label={isPressed ? '선택됨' : '선택 안 됨'}
+          onClick={() => {
+            setIsClickBookMark((state) => !state);
+            bookmarkClick?.();
+          }}
+          aria-pressed={isClickBookmark}
+          aria-label={isClickBookmark ? '선택됨' : '선택 안 됨'}
           id="bookMark"
           name="bookMark"
         />
         <label
           htmlFor="bookMark"
           className={`bg-no-repeat absolute top-[-2px] right-[300px] w-[46px] h-[98px] 
-          ${isPressed ? 'bg-bookMarkTrue' : 'bg-bookMarkFalse'}`}
+          ${isClickBookmark ? 'bg-bookMarkTrue' : 'bg-bookMarkFalse'}`}
         ></label>
       </article>
     </>
   );
 }
 
-export default BookInfoLayout;
+export default PostBookInfo;
 
-BookInfoLayout.propTypes = {
+PostBookInfo.propTypes = {
   title: PropTypes.string,
   bookImage: PropTypes.string,
   author: PropTypes.string,
   publisher: PropTypes.string,
+  bookmarkClick: PropTypes.func,
+  bookmarkRander: PropTypes.bool,
 };
