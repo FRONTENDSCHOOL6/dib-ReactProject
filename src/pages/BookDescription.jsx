@@ -17,7 +17,6 @@ function BookDescription() {
   // 작성한 내용 상태변수
   const [reviewData, setReviewData] = useState(null);
   const [writeComment, setWriteComment] = useState('');
-  // 유저 이미지 어디어디에 쓰이는가...
   const [userImage, setUserImage] = useState('');
 
   useEffect(() => {
@@ -47,7 +46,7 @@ function BookDescription() {
     event.preventDefault();
     // 댓글쓰고 DB에 넘어가는 정보들
     const data = {
-      usr_id: user.id,
+      user_id: user.id,
       userId: user.id,
       nickName: user.nickname,
       profileImage: user.profileImage,
