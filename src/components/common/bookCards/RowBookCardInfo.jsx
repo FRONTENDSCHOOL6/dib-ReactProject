@@ -7,6 +7,8 @@ function RowBookCardInfo({
   nickName,
   heartRander,
   heaetClick,
+  userId,
+  profileImage,
 }) {
   const [isClicked, setIsClicked] = useState(heartRander);
 
@@ -19,7 +21,11 @@ function RowBookCardInfo({
 
       <div className="flex items-center justify-between w-[217px]">
         <div className="w-[200px] h-[28px] flex items-center mr-10">
-          <div className="w-7 h-7 rounded-full bg-slate-300 mr-[5px]"></div>
+          <img
+            src={`https://db-dib.pockethost.io/api/files/_pb_users_auth_/${userId}/${profileImage}`}
+            alt="프로필 이미지"
+            className="w-7 h-7 rounded-full mr-[5px]"
+          />
           <span className="text-sm">{nickName}</span>
         </div>
         <div>
@@ -46,4 +52,6 @@ RowBookCardInfo.propTypes = {
   nickName: PropTypes.string.isRequired,
   heaetClick: PropTypes.func,
   heartRander: PropTypes.bool,
+  userId: PropTypes.string,
+  profileImage: PropTypes.string,
 };

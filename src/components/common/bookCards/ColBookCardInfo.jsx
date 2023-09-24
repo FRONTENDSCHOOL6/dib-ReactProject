@@ -9,6 +9,8 @@ function ColBookCardInfo({
   heaetClick,
   heartRander,
   bookID,
+  userId,
+  profileImage,
 }) {
   const [isClicked, setIsClicked] = useState(heartRander); //프롭스로부터 파생된 상태
 
@@ -22,7 +24,11 @@ function ColBookCardInfo({
       </Link>
       <div className="flex items-center justify-between w-[217px]">
         <div className="w-[200px] h-[28px] flex items-center mr-10">
-          <div className="w-7 h-7 rounded-full bg-slate-300 mr-[5px]"></div>
+          <img
+            src={`https://db-dib.pockethost.io/api/files/_pb_users_auth_/${userId}/${profileImage}`}
+            alt="프로필 이미지"
+            className="w-7 h-7 rounded-full mr-[5px]"
+          />
           <span className="text-sm">{nickName}</span>
         </div>
         <div>
@@ -60,5 +66,7 @@ ColBookCardInfo.propTypes = {
   heaetClick: PropTypes.func,
   heartRander: PropTypes.bool,
   bookID: PropTypes.string,
+  userId: PropTypes.string,
+  profileImage: PropTypes.string,
 };
 export default ColBookCardInfo;

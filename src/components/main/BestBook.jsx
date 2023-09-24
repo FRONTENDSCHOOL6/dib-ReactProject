@@ -106,16 +106,18 @@ function BestBook({ isLoading }) {
                     <ColBookCard
                       imgSrc={item.book_image_link}
                       imgAlt={item.book_title}
-                      nickName={item.expand.user_id[0].nickname}
+                      userId={item?.expand?.user_id[0]?.id}
+                      profileImage={item?.expand?.user_id[0]?.profileImage}
+                      nickName={item?.expand?.user_id[0]?.nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item)}
                       bookmarkRander={
-                        user ? user.bookmark_posts.includes(item.id) : false
+                        user ? user?.bookmark_posts?.includes(item.id) : false
                       }
                       heaetClick={() => handleLikeToggle(item.id)}
                       heartRander={
-                        user ? user.liked_posts.includes(item.id) : false
+                        user ? user?.liked_posts?.includes(item.id) : false
                       }
                       bookID={item.id}
                     />
