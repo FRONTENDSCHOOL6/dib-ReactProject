@@ -1,9 +1,8 @@
 [[redirects]]
-  from = "/pathx"
-  to = "<cross-origin-url>"
+  from = "/proxy/*"
+  to = "https://openapi.naver.com/:splat"
   status = 200
   force = true
-  headers = {X-From = "Netlify"}
 [[headers]]
   for = "/*"
     [headers.values]
