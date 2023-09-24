@@ -8,28 +8,28 @@ function PostBookInfo({
   bookmarkRander,
   bookmarkClick,
   publisher,
+  category,
 }) {
   const [isClickBookmark, setIsClickBookMark] = useState(bookmarkRander);
 
   return (
     <>
-      <div className="h-[110px]"></div>
-      <article className="w-screen min-w-[1920px] bg-bookInfoBg h-[600px] flex justify-center items-center relative mb-[170px]">
+      <article className="w-screen min-w-[1920px] bg-bookInfoBg h-[600px] flex justify-center items-center relative mb-[170px] mt-[110px]">
         <dl className="flex justify-between w-[1050px] m-auto">
-          <dt className="sr-only">도서 이미지</dt>
-          <dd className="mr-[100px]">
-            <img
-              src={bookImage}
-              alt="도서 러닝리액트"
-              className="w-[330px] h-[454px] min-w-[400px]"
-            />
-          </dd>
-
+          <div>
+            <dt className="sr-only">도서 이미지</dt>
+            <dd className="mr-[100px]">
+              <img
+                src={bookImage}
+                alt="도서 러닝리액트"
+                className="w-[330px] h-[454px] min-w-[400px]"
+              />
+            </dd>
+          </div>
           <div className="flex flex-col justify-center flex-grow">
-            <dd className="mb-[75px]">
-              <button className="border border-dibBlack text-lg flex justify-center items-center w-[150px] h-[45px] rounded-[50px] px-11 py-5">
-                <p>React</p>
-              </button>
+            <dt className="sr-only">도서종류</dt>
+            <dd className="mb-[75px] border border-dibBlack text-lg flex justify-center items-center w-[150px] h-[45px] rounded-[50px] px-11 py-5">
+              {category}
             </dd>
             <dt className="sr-only">도서 제목</dt>
             <dd className="text-3xl mb-[100px]">{title}</dd>
@@ -43,8 +43,6 @@ function PostBookInfo({
             </dd>
           </div>
         </dl>
-
-        {/* 체크박스 이미지 구현 */}
 
         <input
           className="absolute top-[-5px] right-[300px] w-[46px] h-[98px] hidden"
@@ -77,4 +75,5 @@ PostBookInfo.propTypes = {
   publisher: PropTypes.string,
   bookmarkClick: PropTypes.func,
   bookmarkRander: PropTypes.bool,
+  category: PropTypes.string,
 };
