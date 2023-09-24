@@ -15,8 +15,6 @@ function RegisterProfile() {
   const [nickname, setNickname] = useState('');
   const [redirectToLogin, setRedirectToLogin] = useState(false);
 
-  console.log(location.state.userId);
-
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {

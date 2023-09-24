@@ -28,7 +28,6 @@ function BookDescription() {
           expand: 'user_id ,comments',
         });
         setReviewData(record);
-        console.log(record);
         return record;
       } catch (error) {
         throw new Error(error.message);
