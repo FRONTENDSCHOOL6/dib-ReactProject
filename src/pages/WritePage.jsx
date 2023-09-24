@@ -33,21 +33,11 @@ function WritePage() {
         async function searchBookInfo() {
           const keyword = searchBook;
           const response = await fetch(
-            `${
-              import.meta.env.VITE_NAVER_BOOK_SEARCH_API
-            }?query=${keyword}&display=4`,
-            {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-Naver-Client-Id': import.meta.env.VITE_NAVER_CLIENT_ID,
-                'X-Naver-Client-Secret': import.meta.env
-                  .VITE_NAVER_CLIENT_SECRET,
-              },
-            }
+            `${import.meta.env.VITE_PB_URL}/api/v1/booksdata/?search=${keyword}`
           );
           const data = await response.json();
-          setBooks(data.items);
+          // console.log(data.response.json.items);
+          setBooks(data.response.json.items);
         }
         searchBookInfo();
       }, 800);
