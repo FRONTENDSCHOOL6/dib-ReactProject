@@ -11,6 +11,7 @@
 ![tailwindcss](https://badgen.net/badge/tailwindcss/v3.3.3/cyan?)
 ![framer-motion](https://badgen.net/badge/framer-motion/v10.16.4/FF4154?)
 
+
 ![vite](https://badgen.net/badge/vite/v4.4.5/FF4154?)
 ![Eslint](https://badgen.net/badge/Eslint/v8.48.0/4B32C3?)
 ![Prettier](https://badgen.net/badge/Prettier/v3.0.3/F7B93E?)
@@ -75,44 +76,21 @@
 > 😍**강예나 : 과정이 기억에 남는 프로젝트를 만들어가고 싶습니다!**
 
 
-<br />
-
-## 👨‍👨‍👦‍👦 **dib 팀원 소개**
-
-| [이호(SM)](https://github.com/bomlang)                |                 [전진승](https://github.com/wlstmd1004v)                  |         [양정아(L)](https://github.com/jjang-aaa)         |         [강예나](https://github.com/yenaf)        |
-| :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
-| ![이호의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/40b7515a-ee3e-43de-ac1a-569292cdfbd9) | ![전진승의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/ab8a2d06-9a58-4781-a8ab-5e0f4355e6f4) | ![양정아의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/ed331cc0-f268-44a7-b27e-041456dd50e8) | ![강예나의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/dbe4add9-0e65-4e2d-b33c-ae59cc00e187) |
-
-<br />
-
-
-## ✴️ **역할 분담**
-| 이름   | 담당 기능                                          |
-| ------ | ----------------------------------------------- |
-|🙋🏼‍♂️ 이호 |                            |
-|🙋🏼‍♂️ 전진승 |                             |
-|🙋🏻‍♀️ 양정아 |       |
-|🙋🏻‍♀️ 강예나 |                                  |
-
-
-<br />
 
 
 ## 🎨[Figma](https://www.figma.com/file/6SE7VmNnymvGRP1aqx2K0A/dib?type=design&node-id=206%3A1080&mode=design&t=Vv39hWcGU9PU5OUM-1)
  ![image](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/4bb64b4e-b826-406c-98fe-ef76b7861371)
 
-
-<br />
-
  ## userFlow
 
 <img width="1528" alt="스크린샷 2023-09-05 오전 2 13 11" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/0fbca8f7-4519-40f2-a7c6-7a15a3e613a6">
 
-<br />
+
 
 ## DataBase
 <img width="1562" alt="DB_dib" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/1753e2b3-95c5-4fb1-bb76-2e9147bd36b6">
 
+<br />
 <br />
 
 ## 🔧Tech Stack
@@ -138,7 +116,20 @@
 #### Design & Communication
 <img src="https://img.shields.io/badge/Figma-FF1493?style=for-the-badge&logo=Figma&logoColor=white"/> <img src="https://img.shields.io/badge/Discord-5B61EE?style=for-the-badge&logo=Discord&logoColor=white" /> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
 
-<br />
+## 👨‍👨‍👦‍👦 **dib 팀원 소개**
+
+| [이호(SM)](https://github.com/bomlang)                |                 [전진승](https://github.com/wlstmd1004v)                  |         [양정아(L)](https://github.com/jjang-aaa)         |         [강예나](https://github.com/yenaf)        |
+| :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
+| ![이호의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/40b7515a-ee3e-43de-ac1a-569292cdfbd9) | ![전진승의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/ab8a2d06-9a58-4781-a8ab-5e0f4355e6f4) | ![양정아의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/ed331cc0-f268-44a7-b27e-041456dd50e8) | ![강예나의 프로필 사진](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/dbe4add9-0e65-4e2d-b33c-ae59cc00e187) |
+
+
+## ✴️ **역할 분담**
+| 이름   | 담당 기능                                          |
+| ------ | ----------------------------------------------- |
+|🙋🏼‍♂️ 이호 |                            |
+|🙋🏼‍♂️ 전진승 |                             |
+|🙋🏻‍♀️ 양정아 |       |
+|🙋🏻‍♀️ 강예나 |                                  |
 
 ## ✴️ **주요 기능 소개**
 > ### 메인 페이지
@@ -286,6 +277,7 @@
 
 ### ✴️ **Commit Convention**
 
+
 |Type 키워드|사용 시점|
 |------|---|
 |Feat|새로운 기능 및 구조 추가|
@@ -322,19 +314,17 @@
 
 
 
-<br />
-<br />
 
 ### ✴️ **리팩토링할 부분**
 
 
-<br />
-<br />
 
 ### ✴️ **느낀점**
 > 🧐**이호 :**
 
 > 🤪**전진승 : 아직까지 제가 습득해야 할 내용이 많다고 느끼고, 배운 내용을 제대로 활용하지 못하는 게 아쉬웠습니다. 그래서 기반을 다시 탄탄히 다지고, 코드 리팩토링에 충분한 시간을 할애해야 할 것 같습니다**
+
+> 😍**양정아 :**
 
 > 😍**양정아 :**
 
