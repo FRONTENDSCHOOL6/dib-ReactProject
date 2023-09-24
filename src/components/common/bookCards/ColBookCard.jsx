@@ -14,6 +14,8 @@ function ColBookCard({
   heartRander,
   bookID,
   bookmarkRander,
+  userId,
+  profileImage,
 }) {
   return (
     <div className="shadow-[5px_5px_10px_0px_rgba(0,0,0,0.25)]">
@@ -27,6 +29,8 @@ function ColBookCard({
 
       <ColBookCardInfo
         bookID={bookID}
+        userId={userId}
+        profileImage={profileImage}
         nickName={nickName}
         postTitle={postTitle}
         bookTitle={bookTitle}
@@ -50,6 +54,8 @@ ColBookCard.propTypes = {
   heartRander: PropTypes.bool,
   bookID: PropTypes.string,
   postId: PropTypes.string,
+  userId: PropTypes.string,
+  profileImage: PropTypes.string,
 };
 
 export default ColBookCard;

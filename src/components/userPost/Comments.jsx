@@ -26,7 +26,7 @@ export default Comments;
 Comments.propTypes = {
   text: PropTypes.string,
   date: PropTypes.string,
-  nickName: PropTypes.array,
+  nickName: PropTypes.string,
   profileImage: PropTypes.string,
   userId: PropTypes.string,
 };
