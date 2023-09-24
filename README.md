@@ -81,13 +81,13 @@
 ## 🎨[Figma](https://www.figma.com/file/6SE7VmNnymvGRP1aqx2K0A/dib?type=design&node-id=206%3A1080&mode=design&t=Vv39hWcGU9PU5OUM-1)
  ![image](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/4bb64b4e-b826-406c-98fe-ef76b7861371)
 
- ## userFlow
+ ## 🔍 userFlow
 
 <img width="1528" alt="스크린샷 2023-09-05 오전 2 13 11" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/0fbca8f7-4519-40f2-a7c6-7a15a3e613a6">
 
 
 
-## DataBase
+## 💾 DataBase
 <img width="1273" alt="db" src="https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/57a74622-25de-428f-9bd2-1da0c819861a">
 
 
