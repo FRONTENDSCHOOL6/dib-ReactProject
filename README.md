@@ -134,10 +134,12 @@
 
 ## ✴️ **주요 기능 소개**
 > ### 메인 페이지
- 
+
+ ![main](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/620600e9-1b34-41ad-95d5-a823bbe32a6e)
 
 > ### 도서목록 페이지
 
+![booklist](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/7fb8c8f6-cc5e-4bf9-b1e4-cb7df453a940)
 
 > ### 게시글 페이지
 
@@ -146,10 +148,11 @@
 
 > ### 즐겨찾기 페이지
 
+![Favorite](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/361d2946-d2fa-43c2-8365-1d50aeec04fd)
 
-> ### 로그인 페이지
+> ### 로그인 페이지,회원가입, 프로필 등록 페이지
 
-> ### 회원가입, 프로필 등록 페이지
+![login](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/e097a91a-e774-4dc2-8795-736dcef64ee9)
 
 
 
@@ -312,8 +315,7 @@
 
 ### ✴️ 성능 검사
 
-
-
+![image](https://github.com/FRONTENDSCHOOL6/dib-ReactProject/assets/111503649/efe7e863-3c37-417c-be2c-89430b046925)
 
 
 ### ✴️ **느낀점**
