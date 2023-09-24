@@ -13,6 +13,8 @@ function RowBookCard({
   bookmarkRander,
   heaetClick,
   heartRander,
+  userId,
+  profileImage,
 }) {
   return (
     <div className="flex w-[560px] h-[284px] ">
@@ -26,6 +28,8 @@ function RowBookCard({
       <RowBookCardInfo
         heaetClick={heaetClick}
         heartRander={heartRander}
+        userId={userId}
+        profileImage={profileImage}
         nickName={nickName}
         postTitle={postTitle}
         bookTitle={bookTitle}
@@ -45,6 +49,8 @@ RowBookCard.propTypes = {
   bookmarkClick: PropTypes.func,
   bookmarkRander: PropTypes.bool,
   heartRander: PropTypes.bool,
+  userId: PropTypes.string,
+  profileImage: PropTypes.string,
 };
 
 export default RowBookCard;

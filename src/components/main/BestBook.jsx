@@ -113,7 +113,9 @@ function BestBook({ isLoading }) {
                     <ColBookCard
                       imgSrc={item.book_image_link}
                       imgAlt={item.book_title}
-                      nickName={item.expand.user_id[0].nickname}
+                      userId={item?.expand?.user_id[0]?.id}
+                      profileImage={item?.expand?.user_id[0]?.profileImage}
+                      nickName={item?.expand?.user_id[0]?.nickname}
                       postTitle={item.post_title}
                       bookTitle={item.book_title}
                       bookmarkClick={() => handleBookmarkToggle(item.id)}

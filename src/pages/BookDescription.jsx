@@ -19,7 +19,6 @@ function BookDescription() {
   // 작성한 내용 상태변수
   const [reviewData, setReviewData] = useState(null);
   const [writeComment, setWriteComment] = useState('');
-  const [userImage, setUserImage] = useState('');
 
   useEffect(() => {
     async function renderReviewPage() {
@@ -155,7 +154,8 @@ function BookDescription() {
             }
           />
           <PostTitle
-            userImg={userImage}
+            userId={reviewData.expand.user_id[0].id}
+            userImg={reviewData.expand.user_id[0].profileImage}
             postTitle={reviewData.post_title}
             userName={reviewData.expand.user_id[0].nickname}
             createDate={reviewData.created}

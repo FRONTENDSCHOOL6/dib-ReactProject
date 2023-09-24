@@ -45,6 +45,12 @@ function RegisterProfile() {
     }
     formData.append('nickname', nickname);
 
+    const regex = /^[ㄱ-힣]{1,8}$/;
+    if (!regex.test(nickname)) {
+      console.log('입력이 올바르지 않습니다.');
+      return;
+    }
+
     try {
       await pb.collection('users').update(location.state.userId, formData);
 

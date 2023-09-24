@@ -33,16 +33,16 @@ function WritePage() {
         async function searchBookInfo() {
           const keyword = searchBook;
           const response = await fetch(
-            `${
-              import.meta.env.VITE_NAVER_BOOK_SEARCH_API
-            }?query=${keyword}&display=4`,
+            `https://proxy.cors.sh/https://openapi.naver.com/v1/search/book.json?query=${keyword}&display=4`,
             {
               method: 'GET',
               headers: {
+                'x-cors-api-key': 'temp_9a4a09af6b9cd26ac55470767735344a',
                 'Content-Type': 'application/json',
                 'X-Naver-Client-Id': import.meta.env.VITE_NAVER_CLIENT_ID,
                 'X-Naver-Client-Secret': import.meta.env
                   .VITE_NAVER_CLIENT_SECRET,
+                'Access-Control-Allow-Origin': '*',
               },
             }
           );
